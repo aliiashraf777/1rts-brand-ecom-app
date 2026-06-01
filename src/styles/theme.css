@@ -1,0 +1,41 @@
+@theme {
+
+  /* layout */
+  --container-width: 1180px;
+  --page-padding: 130px;
+
+  /* colors */
+  --color-primary: #0D6EFD;
+  --color-primary-light: #E5F1FF;
+  --color-text-primary: #1C1C1C;
+  --color-text-muted: #8B96A5;
+  --color-page-bg: #F7FAFC;
+  --color-gray-200: #e0e0e0;
+  --color-gray-300: #DEE2E7;
+  --color-gray-500: #8B96A5;
+  --color-gray-600: #505050;
+  --color-gray-800: #606060;
+  --color-discount: #eb001b;
+  --color-discount-bg: #FFE3E3;
+  --color-card-primary: #E3F0FF;
+  --color-card-orange: #F38332;
+  --color-card-sea-green: #55bdc3;
+
+  /* fonts */
+  --font-inter: "Inter", sans-serif;
+
+  /* gradients */
+  --gradient-primary: linear-gradient(to right, #127fff 0%, #0067ff 100%);
+
+  /* radius */
+  --radius-card: 6px;
+
+  /* shadow */
+  --shadow-card: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+  --shadow-card-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* spacing */
+  --spacing-section: 20px;
+  --spacing-section-30: 30px;
+}

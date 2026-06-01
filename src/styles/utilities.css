@@ -1,0 +1,100 @@
+/* layout utilities classes */
+@utility page-padding {
+    /* padding-inline: var(--page-padding) !important; */
+    padding-inline: clamp(20px, 5vw, var(--page-padding));
+}
+
+@utility container-custom {
+    width: 100%;
+    max-width: var(--container-width);
+    margin-inline: auto;
+}
+
+@utility bg-gradient-primary {
+    background-image: var(--gradient-primary);
+}
+
+
+/* fonts utilities */
+@utility txt-body {
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+@utility txt-body-medium {
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0px;
+}
+
+@utility txt-body-title {
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+}
+
+@utility txt-normal {
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    text-align: center;
+}
+
+@utility txt-small {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+@utility heading-h1 {
+    color: var(--color-text-primary);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0px;
+}
+
+@utility heading-h2 {
+    color: var(--color-text-primary);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.2px;
+}
+
+@utility heading-h3 {
+    color: var(--color-text-primary);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: -0.2px;
+}
+
+@utility heading-h4 {
+    color: var(--color-text-primary);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+}
+
+@utility heading-h5 {
+    color: var(--color-text-primary);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0px;
+}
