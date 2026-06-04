@@ -4,7 +4,7 @@ const Footer = (props: Props) => {
   return (
     <footer className="w-full page-padding bg-white">
       <div className="container-custom">
-        Footer
+        Footer 
       </div>
     </footer>
   )

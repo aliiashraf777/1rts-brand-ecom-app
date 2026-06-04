@@ -10,6 +10,7 @@
   --color-text-primary: #1C1C1C;
   --color-text-muted: #8B96A5;
   --color-page-bg: #F7FAFC;
+  --color-gray: #979797;
   --color-gray-200: #e0e0e0;
   --color-gray-300: #DEE2E7;
   --color-gray-500: #8B96A5;
@@ -26,6 +27,7 @@
 
   /* gradients */
   --gradient-primary: linear-gradient(to right, #127fff 0%, #0067ff 100%);
+  --gradient-primary-reverse: linear-gradient(to right, #0067ff 0%, #127fff 100%);
 
   /* radius */
   --radius-card: 6px;

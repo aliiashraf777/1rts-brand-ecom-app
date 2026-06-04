@@ -8,11 +8,11 @@ type LayoutProps = {
 const BaseLayout = ({ header }: LayoutProps) => {
     return (
         <>
-            {header}
+            {/* {header}
 
             <main className="min-h-[90vh]">
                 <Outlet />
-            </main>
+            </main> */}
 
             <Footer />
         </>

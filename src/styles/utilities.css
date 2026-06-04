@@ -1,7 +1,7 @@
 /* layout utilities classes */
 @utility page-padding {
     /* padding-inline: var(--page-padding) !important; */
-    padding-inline: clamp(20px, 5vw, var(--page-padding));
+    padding-inline: clamp(20px, 7vw, var(--page-padding));
 }
 
 @utility container-custom {
@@ -14,14 +14,34 @@
     background-image: var(--gradient-primary);
 }
 
+@utility bg-gradient-primary-reverse {
+    background-image: var(--gradient-primary-reverse)
+}
 
 /* fonts utilities */
+@utility txt-base {
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0px;
+}
+
 @utility txt-body {
     color: var(--color-text-primary);
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0px;
+}
+
+@utility txt-body-shrik {
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    text-align: center;
 }
 
 @utility txt-body-medium {
@@ -38,15 +58,6 @@
     font-weight: 500;
     line-height: 22px;
     letter-spacing: 0px;
-}
-
-@utility txt-normal {
-    color: var(--color-text-primary);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: -0.2px;
-    text-align: center;
 }
 
 @utility txt-small {
