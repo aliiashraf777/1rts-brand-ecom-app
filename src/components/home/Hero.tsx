@@ -10,12 +10,7 @@ const Hero = (props: Props) => {
       <p className="txt-body">Brand Ecom - Ecommerce brand</p>
       <p className="txt-small">small muted text</p>
 
-      <Button>Search</Button>
       <Button variant="white">Search</Button>
-      <Button disabled>Search</Button>
-      <Button variant="white" disabled>Search</Button>
-      <br /><br />
-      <Button size="full">Search</Button>
     </SectionContainer>
   )
 }

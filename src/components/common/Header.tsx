@@ -27,9 +27,9 @@ const Header = (props: Props) => {
         onCloseMobile={closeMobileMenuFn}
       />
 
-      <HeaderCart
+      {/* <HeaderCart
         onOpenMobile={openMobileMenuFn}
-      />
+      /> */}
     </header>
   )
 }
