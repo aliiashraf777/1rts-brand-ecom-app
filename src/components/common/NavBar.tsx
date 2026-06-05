@@ -2,13 +2,15 @@ import { navMenuData } from "@/data/navigationData"
 import { Menu } from "lucide-react"
 import { NavLink } from "react-router"
 import { CurrencySelector, FlagsSelector } from "./DropdownSelectors"
+import { useMobileMenuContext } from "@/context/MobileMenuContext"
 
 type Props = {
   className?: string,
-  onOpenMobile: () => void
 }
 
-const NavBar = ({ className, onOpenMobile }: Props) => {
+const NavBar = ({ className }: Props) => {
+
+  const { openMobileMenu } = useMobileMenuContext();
 
   return (
     <nav className="hidden lg:block page-padding border-b border-gray-300">
@@ -19,7 +21,8 @@ const NavBar = ({ className, onOpenMobile }: Props) => {
           <button
             type="button"
             aria-label="Open menu"
-            onClick={onOpenMobile}
+            // onClick={onOpenMobile}
+            onClick={openMobileMenu}
             className="flex items-center justify-center"
           >
             <Menu

@@ -59,8 +59,10 @@ const Footer = (props: Props) => {
                   {item.heading}
                 </h3>
 
-                {item.fItem.map((item) => (
-                  <Link to={item.link}
+                {item.fItem.map((item, idx) => (
+                  <Link
+                    key={`${item.text}-${idx}`}
+                    to={item.link}
                     className="txt-body text-gray-500 hover:text-gray-600x hover:ml-0.5 transition-all ease-out duration-300"
                   >
                     {item.text}
@@ -100,8 +102,8 @@ const Footer = (props: Props) => {
         </div>
 
         <div className="">
-          <FlagsSelector 
-          direction="top"
+          <FlagsSelector
+            direction="top"
           />
         </div>
       </SectionFull>

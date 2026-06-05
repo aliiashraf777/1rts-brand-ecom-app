@@ -1,4 +1,3 @@
-import { useState } from "react"
 import MobileSidebar from "./MobileSidebar"
 import NavBar from "./NavBar"
 import TopBar from "./TopBar"
@@ -7,29 +6,13 @@ type Props = {}
 
 const Header = (props: Props) => {
 
-  // mobile menu state
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
-
-  const openMobileMenuFn = () => setIsMobileMenuOpen(true);
-  const closeMobileMenuFn = () => setIsMobileMenuOpen(false);
-
   return (
     <header className="w-full bg-white">
-      <TopBar
-        onOpenMobile={openMobileMenuFn}
-      />
-      <NavBar
-        onOpenMobile={openMobileMenuFn}
-      />
+      <TopBar />
+      <NavBar />
 
-      <MobileSidebar
-        open={isMobileMenuOpen}
-        onCloseMobile={closeMobileMenuFn}
-      />
+      <MobileSidebar />
 
-      {/* <HeaderCart
-        onOpenMobile={openMobileMenuFn}
-      /> */}
     </header>
   )
 }
@@ -37,17 +20,12 @@ const Header = (props: Props) => {
 export default Header
 
 
-type HeaderCartTy = {
-  onOpenMobile: () => void
-}
 
-export const HeaderCart = ({ onOpenMobile }: HeaderCartTy) => {
+export const HeaderCart = () => {
+
   return (
     <header className="w-full bg-white">
-      <TopBar
-        onOpenMobile={onOpenMobile}
-        disabled
-      />
+      <TopBar disabled />
     </header>
   )
 }

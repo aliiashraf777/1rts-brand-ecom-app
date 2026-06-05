@@ -1,4 +1,5 @@
 import { avatar } from "@/assets";
+import { useMobileMenuContext } from "@/context/MobileMenuContext";
 import { mobileMenuData } from "@/data/navigationData";
 import type { ImobileMenuItem } from "@/types/menuTypes";
 import { X } from "lucide-react";
@@ -6,18 +7,16 @@ import { useEffect } from "react"
 import { createPortal } from "react-dom";
 import { Link } from "react-router";
 
-type Props = {
-    open: boolean,
-    onCloseMobile: () => void,
-}
 
-const MobileSidebar = ({ open, onCloseMobile }: Props) => {
+const MobileSidebar = () => {
+
+    const { isMobileMenuOpen, closeMobileMenu } = useMobileMenuContext();
 
     useEffect(() => {
-        if (!open) return;
+        if (!isMobileMenuOpen) return;
 
         const onKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") onCloseMobile();
+            if (e.key === "Escape") closeMobileMenu();
         };
 
         document.addEventListener("keydown", onKeyDown);
@@ -28,20 +27,20 @@ const MobileSidebar = ({ open, onCloseMobile }: Props) => {
             document.body.style.overflow = "";
         };
 
-    }, [open, onCloseMobile]);
+    }, [isMobileMenuOpen, closeMobileMenu]);
 
 
     // Check point
-    // if (!open) return null
+    // if (!isMobileMenuOpen) return null
 
     return createPortal(
         <div
-            onClick={onCloseMobile}
+            onClick={closeMobileMenu}
             aria-hidden='true'
-            className={`fixed inset-0 z-50 bg-black/25 backdrop-blur-xs w-screen md:w-[360px] transition-opacity duration-300 ${open ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+            className={`fixed inset-0 z-50 bg-black/25 backdrop-blur-xs w-screen md:w-[360px] transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
         >
             <aside
-                className={`fixed left-0 top-0 h-full w-[280px] bg-white shadow-card-lg overflow-y-scroll scrollbar-none transition-transform duration-300 ease-out ${open ? 'translate-x-0' : '-translate-x-full'}`}
+                className={`fixed left-0 top-0 h-full w-[280px] bg-white shadow-card-lg overflow-y-scroll scrollbar-none transition-transform duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
                 onClick={(e) => e.stopPropagation()}
                 role="dialog"
                 aria-modal='true'
@@ -52,7 +51,7 @@ const MobileSidebar = ({ open, onCloseMobile }: Props) => {
                     <button
                         type="button"
                         aria-label="Close Menu"
-                        onClick={onCloseMobile}
+                        onClick={closeMobileMenu}
                         className="absolute top-5 right-5 cursor-pointer bg-gray-300 p-1"
                     >
                         <X
