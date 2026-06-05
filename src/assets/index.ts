@@ -13,3 +13,7 @@ export { default as flag7 } from '@/assets/flags/flag7-fr.png'
 export { default as flag8 } from '@/assets/flags/flag8-ae.png'
 export { default as flag9 } from '@/assets/flags/flag9-cn.png'
 export { default as flag10 } from '@/assets/flags/flag10-gb.png'
+
+// apps
+export {default as googleApp} from '@/assets/icons/googlePlay.png'
+export {default as appStore} from '@/assets/icons/appStore.png'
