@@ -5,15 +5,18 @@ import App from './App.tsx'
 import { BrowserRouter } from 'react-router'
 import { MobileMenuContextProvider } from './context/MobileMenuContext.tsx'
 import { CurrencyContextProvider } from './context/CurrencyContext.tsx'
+import { FlagsContextProvider } from './context/FlagsContext.tsx'
 BrowserRouter
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <MobileMenuContextProvider>
       <CurrencyContextProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <FlagsContextProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </FlagsContextProvider>
       </CurrencyContextProvider>
     </MobileMenuContextProvider>
   </StrictMode>,
