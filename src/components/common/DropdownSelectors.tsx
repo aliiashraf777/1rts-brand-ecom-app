@@ -1,3 +1,4 @@
+import { useCurrencyContext } from "@/context/CurrencyContext";
 import { langCurrencyData, shipToFlagsData } from "@/data/navigationData";
 import type { IshipToFlagsItem } from "@/types/menuTypes";
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -5,13 +6,17 @@ import { useState } from "react";
 
 export const CurrencySelector = () => {
 
-    const [selectedCurrency, setSelectedCurrency] = useState(langCurrencyData[0]);
-    const [isCurrencyOpen, setIsCurrencyOpen] = useState<boolean>(false);
+    // const [selectedCurrency, setSelectedCurrency] = useState(langCurrencyData[0]);
+    // const [isCurrencyOpen, setIsCurrencyOpen] = useState<boolean>(false);
+
+    const {
+        selectedCurrency, isCurrencyOpen, currencyToggle, currencyClose, currencySet
+    } = useCurrencyContext();
 
     return (
         <div className="relative">
             <button
-                onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
+                onClick={currencyToggle}
                 className="flex items-center gap-2 relative txt-body-title cursor-pointer"
             >
                 <span>
@@ -34,12 +39,12 @@ export const CurrencySelector = () => {
                     : 'pointer-events-none opacity-0 -translate-y-2'}`
                 }>
                 {
-                    langCurrencyData.map((item) => (
+                    langCurrencyData.map((item, idx) => (
                         <button
-                            key={item.currency}
+                            key={`${item.currency}-${idx}`}
                             onClick={() => {
-                                setSelectedCurrency(item)
-                                setIsCurrencyOpen(false)
+                                currencySet(item)
+                                currencyClose
                             }}
                             className="w-fullx px-4 py-2 hover:bg-primary-light cursor-pointer border-b border-gray-200"
                         >

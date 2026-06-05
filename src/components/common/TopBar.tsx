@@ -3,14 +3,17 @@ import { logo } from "@/assets"
 import SearchBar from "./SearchBar"
 import { topIconsData } from "@/data/navigationData"
 import { Link } from "react-router"
+import { useMobileMenuContext } from "@/context/MobileMenuContext"
 
 type Props = {
     className?: string,
     disabled?: boolean,
-    onOpenMobile: () => void
 }
 
-const TopBar = ({ disabled, className, onOpenMobile }: Props) => {
+const TopBar = ({ disabled, className }: Props) => {
+
+    const { openMobileMenu } = useMobileMenuContext();
+
     return (
         <div className="page-padding border-b border-gray-300">
             <div className={`container-custom py-2.5 lg:py-section borderx border-blue-600 flex justify-between items-center gap-2.5 ${className || ''}`}>
@@ -20,7 +23,7 @@ const TopBar = ({ disabled, className, onOpenMobile }: Props) => {
                     <button
                         type="button"
                         aria-label="Open menu"
-                        onClick={onOpenMobile}
+                        onClick={openMobileMenu}
                         className="flex items-center justify-center focus:outline-none"
                     >
                         <Menu

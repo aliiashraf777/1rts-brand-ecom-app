@@ -1,56 +1,91 @@
-import { createContext, useContext, useReducer } from "react"
+import { createContext, useContext, useMemo, useReducer, type PropsWithChildren } from "react"
 
-type Props = {}
 
-export const MobileMenuContext = createContext();
+// state
+type MobileMenuStateTy = {
+    isMobileMenuOpen: boolean,
+}
 
-const mobileInitialState = {
+const mobileInitialState: MobileMenuStateTy = {
     isMobileMenuOpen: false,
 }
 
-const ACTIONS = {
-    TOGGLE_MENU: 'TOGGLE_MENU',
-    OPEN_MENU: 'OPEN_MENU',
-    CLOSE_MENU: 'CLOSE_MENU',
-}
+// actions unions
+type MobileMenuActionsU =
+    | { type: 'TOGGLE_MENU' }
+    | { type: 'OPEN_MENU' }
+    | { type: 'CLOSE_MENU' }
 
-const mobileReducerFn = (state, action) => {
+
+// reducer
+const mobileReducerFn = (
+    state: MobileMenuStateTy,
+    action: MobileMenuActionsU
+) => {
     switch (action.type) {
-        case ACTIONS.TOGGLE_MENU:
+        case 'TOGGLE_MENU':
             return { ...state, isMobileMenuOpen: !state.isMobileMenuOpen }
 
-        case ACTIONS.OPEN_MENU:
+        case 'OPEN_MENU':
             return { ...state, isMobileMenuOpen: true }
 
-        case ACTIONS.CLOSE_MENU:
+        case 'CLOSE_MENU':
             return { ...state, isMobileMenuOpen: false }
 
         default:
-            throw new Error(`Unknown ${action.type} action type`)
+            return state;
     }
 }
 
-const useMobileDispatchActions = (dispatch) => {
-
-    return {
-        toggleMobileMenuDis: () => dispatch({ type: ACTIONS.TOGGLE_MENU }),
-        openMobileMenu: () => dispatch({ type: ACTIONS.OPEN_MENU }),
-        closeMobileMenu: () => dispatch({ type: ACTIONS.CLOSE_MENU }),
-    }
+// Context Value MobileMenuStateTy
+type MobileMenuContextValueTy = MobileMenuStateTy & {
+    toggleMobileMenu: () => void
+    openMobileMenu: () => void
+    closeMobileMenu: () => void
 }
 
-export const MobileMenuContextProvider = ({ children }) => {
+export const MobileMenuContext = createContext<MobileMenuContextValueTy | undefined>(undefined);
+
+
+// context provider function
+export const MobileMenuContextProvider = ({ children }: PropsWithChildren) => {
 
     const [state, dispatch] = useReducer(mobileReducerFn, mobileInitialState)
 
+    const mobileDispatchActions = useMemo(
+        () => ({
+            toggleMobileMenu: () => dispatch({ type: 'TOGGLE_MENU' }),
+            openMobileMenu: () => dispatch({ type: 'OPEN_MENU' }),
+            closeMobileMenu: () => dispatch({ type: 'CLOSE_MENU' }),
+        }),
+        []
+    )
+
+    const value = useMemo(
+        () => ({
+            ...state,
+            ...mobileDispatchActions,
+        }),
+        [state, mobileDispatchActions]
+    )
+
     return (
         <MobileMenuContext.Provider
-            value={{ ...state, ...useMobileDispatchActions(dispatch) }}
+            value={value}
         >
             {children}
         </MobileMenuContext.Provider>
     )
 }
 
+// custom hook
+export const useMobileMenuContext = () => {
 
-export const useMobileMenuContext = () => useContext(MobileMenuContext);
+    const context = useContext(MobileMenuContext);
+
+    if (!context) {
+        throw new Error("useMobileMenuContext must be inside MobileMenuContextProvider")
+    }
+
+    return context;
+}
