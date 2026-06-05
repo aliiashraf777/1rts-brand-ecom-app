@@ -1,4 +1,5 @@
 import { useCurrencyContext } from "@/context/CurrencyContext";
+import { useFlagsContext } from "@/context/FlagsContext";
 import { langCurrencyData, shipToFlagsData } from "@/data/navigationData";
 import type { IshipToFlagsItem } from "@/types/menuTypes";
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -65,13 +66,18 @@ type flagsDirectionTy = {
 
 export const FlagsSelector = ({ direction = 'bottom' }: flagsDirectionTy) => {
 
-    const [selectedCountry, setSelectedCountry] = useState<IshipToFlagsItem>(shipToFlagsData[0]);
-    const [isFlagOpen, setIsFlagOpen] = useState<boolean>(false);
+    const {
+        selectedCountry,
+        isFlagOpen,
+        flagToggle,
+        flagClose,
+        flagSet
+    } = useFlagsContext();
 
     return (
         <div className="relative">
             <button
-                onClick={() => setIsFlagOpen(!isFlagOpen)}
+                onClick={flagToggle}
                 className="flex items-center gap-2 cursor-pointer relative txt-body-title"
             >
                 <span>{selectedCountry.text}</span>
@@ -100,8 +106,8 @@ export const FlagsSelector = ({ direction = 'bottom' }: flagsDirectionTy) => {
                     <button
                         key={idx}
                         onClick={() => {
-                            setSelectedCountry(item)
-                            setIsFlagOpen(false)
+                            flagSet(item)
+                            flagClose
                         }}
                         className="flex items-center gap-2 w-full px-4 py-2 hover:bg-primary-light cursor-pointer border-b border-gray-200"
                     >
