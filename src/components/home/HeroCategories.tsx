@@ -11,14 +11,14 @@ const HeroCategories = (props: Props) => {
   const [selectedCategory, setSelectedCategory] = useState<IsearchCategoriesItem>(searchCategoriesData[1]);
 
   return (
-    <div className="flex gap-section w-full min-w-0">
+    <div className="flex flex-col sm:flex-row gap-section w-full min-w-0 overflow-hidden">
       {/* categories */}
-      <div className="hidden lg:flex flex-col w-[250px] shrink-0">
+      <div className="hiddenx flex flex-row sm:flex-col gap-1 sm:gap-0 w-full sm:w-[250px] shrink-0 whitespace-nowrap overflow-x-scroll scrollbar-none">
         {searchCategoriesData.slice(1,).map((item, idx) => (
           <NavLink
             key={`${item.text}-${idx}`}
             to={item.link}
-            className={`txt-body-medium p-2.5 rounded-card hover:bg-primary-light w-full h-[40px] grid content-center transition-all ease-out duration-300 ${selectedCategory.text === item.text ? 'bg-primary-light' : ''} `}
+            className={`txt-body-medium p-2.5 rounded-card hover:bg-primary-light w-full h-[40px] grid content-center transition-all ease-out duration-300 max-sm:bg-primary-light ${selectedCategory.text === item.text ? 'sm:bg-primary-light' : ''} `}
             onClick={() => setSelectedCategory(item)}
           >
             {item.text}

@@ -1,11 +1,12 @@
 type SectionTy = {
     children: React.ReactNode,
     className?: string,
+    sectionClass?: string,
 }
 
-const SectionContainer = ({ children, className }: SectionTy) => {
+const SectionContainer = ({ children, className, sectionClass }: SectionTy) => {
     return (
-        <section className="page-padding">
+        <section className={`page-padding ${sectionClass}`}>
             <div className={`container-custom ${className || ""}`}>
                 {children}
             </div>

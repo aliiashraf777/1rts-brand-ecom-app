@@ -66,7 +66,7 @@ const TopBar = ({ disabled, className }: Props) => {
                             <span className="text-[20px] group-hover:scale-110 transition">
                                 {data.icon}
                             </span>
-                            <p className="max-sm:hidden txt-small">
+                            <p className="max-sm:hidden txt-tiny">
                                 {data.text}
                             </p>
                         </button>
