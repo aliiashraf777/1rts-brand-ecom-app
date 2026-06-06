@@ -37,3 +37,10 @@ export { default as service4 } from '@/assets/backgrounds/service4.png'
 
 export { default as outdoorBg } from '@/assets/backgrounds/outdoorBg.png'
 export { default as gadgetsBg } from '@/assets/backgrounds/gadgetsBg.png'
+
+// deals categories images
+export { default as deal1 } from '@/assets/deals/deal1.png'
+export { default as deal2 } from '@/assets/deals/deal2.png'
+export { default as deal3 } from '@/assets/deals/deal3.png'
+export { default as deal4 } from '@/assets/deals/deal4.png'
+export { default as deal5 } from '@/assets/deals/deal5.png'
