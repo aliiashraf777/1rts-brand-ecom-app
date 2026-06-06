@@ -40,10 +40,10 @@ const MobileSidebar = () => {
             className={`fixed inset-0 z-50 bg-black/25 backdrop-blur-xs w-screen md:w-[360px] transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
         >
             <aside
-                className={`fixed left-0 top-0 h-full w-[280px] bg-white shadow-card-lg overflow-y-scroll scrollbar-none transition-transform duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
                 onClick={(e) => e.stopPropagation()}
                 role="dialog"
                 aria-modal='true'
+                className={`fixed left-0 top-0 h-full w-[280px] bg-white shadow-card-lg overflow-y-scroll scrollbar-none transition-transform duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
             >
 
                 {/* header */}

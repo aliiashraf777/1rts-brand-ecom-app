@@ -4,6 +4,8 @@ import SearchBar from "./SearchBar"
 import { topIconsData } from "@/data/navigationData"
 import { Link } from "react-router"
 import { useMobileMenuContext } from "@/context/MobileMenuContext"
+import HeroLoginCard from "../home/HeroLoginCard"
+import { useState } from "react"
 
 type Props = {
     className?: string,
@@ -13,6 +15,13 @@ type Props = {
 const TopBar = ({ disabled, className }: Props) => {
 
     const { openMobileMenu } = useMobileMenuContext();
+    const [isLoginOpen, setIsLoginOpen] = useState<boolean>(false)
+
+    const handleProfileLoginClick = (text: string): void => {
+        if (text === 'Profile') {
+            setIsLoginOpen((prev) => !prev)
+        }
+    }
 
     return (
         <div className="page-padding border-b border-gray-300">
@@ -45,24 +54,31 @@ const TopBar = ({ disabled, className }: Props) => {
                 }
 
                 {/* topbar icons */}
-                <div className="flex justify-between items-center max-sm:gap-2.5 sm:gap-4 md:gap-section">
-                    {
-                        topIconsData.map((data, idx) => (
-                            <div
-                                key={idx}
-                                role="button"
-                                aria-label={data.text}
-                                className="flex flex-col gap-1.5 justify-center items-center text-gray group cursor-pointer"
-                            >
-                                <span className="txt-[20px] group-hover:scale-110 transition">
-                                    {data.icon}
-                                </span>
-                                <p className="max-sm:hidden txt-small">
-                                    {data.text}
-                                </p>
-                            </div>
-                        ))
-                    }
+                <div className="flex justify-between items-center max-sm:gap-2.5 sm:gap-4 md:gap-section relative">
+                    {topIconsData.map((data, idx) => (
+                        <button
+                            key={idx}
+                            role="button"
+                            aria-label={data.text}
+                            onClick={() => handleProfileLoginClick(data.text)}
+                            className="flex flex-col gap-1.5 justify-center items-center text-gray group cursor-pointer"
+                        >
+                            <span className="txt-[20px] group-hover:scale-110 transition">
+                                {data.icon}
+                            </span>
+                            <p className="max-sm:hidden txt-small">
+                                {data.text}
+                            </p>
+                        </button>
+                    ))}
+
+                    <div
+                        className={`w-max h-max absolute top-full left-0 -translate-x-1/2 mt-2 z-20 transition-all duration-300 ease-out ${isLoginOpen
+                            ? 'pointer-events-auto opacity-100 translate-y-0'
+                            : 'pointer-events-none opacity-0 -translate-y-2'}`}
+                    >
+                        <HeroLoginCard />
+                    </div>
                 </div>
             </div>
         </div>
