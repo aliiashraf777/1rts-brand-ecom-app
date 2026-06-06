@@ -15,5 +15,9 @@ export { default as flag9 } from '@/assets/flags/flag9-cn.png'
 export { default as flag10 } from '@/assets/flags/flag10-gb.png'
 
 // apps
-export {default as googleApp} from '@/assets/icons/googlePlay.png'
-export {default as appStore} from '@/assets/icons/appStore.png'
+export { default as googleApp } from '@/assets/icons/googlePlay.png'
+export { default as appStore } from '@/assets/icons/appStore.png'
+export { default as loginAvatar } from '@/assets/icons/Avatar.png'
+
+// hero bg imgs
+export { default as heroBanner } from '@/assets/backgrounds/heroBanner.png'

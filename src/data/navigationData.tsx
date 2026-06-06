@@ -1,17 +1,59 @@
-import { flag1, flag2, flag3, flag4, flag5, flag6, flag7, flag8, flag9, flag10, flag0, } from '@/assets';
-import type { IlangCurrencyItem, ImobileMenuItem, InavMenuItem, IshipToFlagsItem, ItopIconsItem, searchCategoriesTy } from '@/types/menuTypes';
+import { flag1, flag2, flag3, flag4, flag5, flag6, flag7, flag8, flag9, flag10, flag0, heroBanner, } from '@/assets';
+import type { IlangCurrencyItem, ImobileMenuItem, InavMenuItem, IsearchCategoriesItem, IshipToFlagsItem, ItopIconsItem } from '@/types/menuTypes';
 import { ArrowRight, Building, Globe, Headset, Heart, House, List, MessageSquareText, PillBottle, ShoppingCart, User } from 'lucide-react';
 
-export const searchCategoriesData: searchCategoriesTy = [
-    'All Category',
-    'Clothes and wear',
-    'Home interiors',
-    'Computer and tech',
-    'Tools, equipment',
-    'Sports and outdoor',
-    'Animal and pets',
-    'Machinery tools',
-    'More category',
+
+export const searchCategoriesData: IsearchCategoriesItem[] = [
+    {
+        text: 'All Category',
+        link: '/',
+        bgImg: heroBanner,
+    },
+    {
+        text: 'Automobiles',
+        link: '/',
+        bgImg: heroBanner,
+    },
+    {
+        text: 'Clothes and wear',
+        link: '/',
+        bgImg: heroBanner,
+    },
+    {
+        text: 'Home interiors',
+        link: '/',
+        bgImg: heroBanner,
+    },
+    {
+        text: 'Computer and tech',
+        link: '/',
+        bgImg: heroBanner,
+    },
+    {
+        text: 'Tools, equipment',
+        link: '/',
+        bgImg: heroBanner,
+    },
+    {
+        text: 'Sports and outdoor',
+        link: '/',
+        bgImg: heroBanner,
+    },
+    {
+        text: 'Animal and pets',
+        link: '/',
+        bgImg: heroBanner,
+    },
+    {
+        text: 'Machinery tools',
+        link: '/',
+        bgImg: heroBanner,
+    },
+    {
+        text: 'More category',
+        link: '/',
+        bgImg: heroBanner,
+    },
 ]
 
 export const topIconsData: ItopIconsItem[] = [

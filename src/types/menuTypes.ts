@@ -2,6 +2,12 @@ import type { LucideIcon } from "lucide-react";
 
 export type searchCategoriesTy = string[]
 
+export interface IsearchCategoriesItem {
+    text: string,
+    link: string,
+    bgImg: string,
+}
+
 export interface ItopIconsItem {
     icon: React.ReactNode,
     text: string,
