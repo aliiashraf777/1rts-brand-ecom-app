@@ -63,7 +63,7 @@ const TopBar = ({ disabled, className }: Props) => {
                             onClick={() => handleProfileLoginClick(data.text)}
                             className="flex flex-col gap-1.5 justify-center items-center text-gray group cursor-pointer"
                         >
-                            <span className="txt-[20px] group-hover:scale-110 transition">
+                            <span className="text-[20px] group-hover:scale-110 transition">
                                 {data.icon}
                             </span>
                             <p className="max-sm:hidden txt-small">
