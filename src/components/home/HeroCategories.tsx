@@ -31,7 +31,7 @@ const HeroCategories = (props: Props) => {
 
       <div
         key={`${selectedCategory.text}-category}`}
-        className="relative w-full flex-1 lg:max-w-[665px] h-[360px]x"
+        className="relative w-full flex-1 lg:max-w-[665px]"
       >
         <img
           src={selectedCategory.bgImg}

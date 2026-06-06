@@ -1,9 +1,8 @@
 import { useCurrencyContext } from "@/context/CurrencyContext";
 import { useFlagsContext } from "@/context/FlagsContext";
 import { langCurrencyData, shipToFlagsData } from "@/data/navigationData";
-import type { IshipToFlagsItem } from "@/types/menuTypes";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+
 
 export const CurrencySelector = () => {
 
@@ -35,9 +34,10 @@ export const CurrencySelector = () => {
             {/* currency custom dropDown Panel */}
             {/* {isCurrencyOpen && ( */}
             <div
-                className={`min-w-max absolute top-full right-0 mt-2 bg-white border border-gray-300 rounded-card overflow-hidden shadow-card-lg flex flex-col transition-all duration-300 ease-in ${isCurrencyOpen
-                    ? 'pointer-events-auto opacity-100 translate-y-0'
-                    : 'pointer-events-none opacity-0 -translate-y-2'}`
+                className={`min-w-max absolute top-full right-0 mt-2 z-10 bg-white border border-gray-300 rounded-card overflow-hidden shadow-card-lg flex flex-col transition-all duration-300 ease-in 
+                    ${isCurrencyOpen
+                        ? 'pointer-events-auto opacity-100 translate-y-0'
+                        : 'pointer-events-none opacity-0 -translate-y-2'}`
                 }>
                 {
                     langCurrencyData.map((item, idx) => (

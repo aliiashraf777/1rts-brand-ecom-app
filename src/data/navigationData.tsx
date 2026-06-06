@@ -1,4 +1,4 @@
-import { flag1, flag2, flag3, flag4, flag5, flag6, flag7, flag8, flag9, flag10, flag0, heroBanner, } from '@/assets';
+import { flag1, flag2, flag3, flag4, flag5, flag6, flag7, flag8, flag9, flag10, flag0, heroBanner, computerBg, machineryBg, sportsBg, petBg, interiorBg, heroBg, } from '@/assets';
 import type { IlangCurrencyItem, ImobileMenuItem, InavMenuItem, IsearchCategoriesItem, IshipToFlagsItem, ItopIconsItem } from '@/types/menuTypes';
 import { ArrowRight, Building, Globe, Headset, Heart, House, List, MessageSquareText, PillBottle, ShoppingCart, User } from 'lucide-react';
 
@@ -17,17 +17,17 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
     {
         text: 'Clothes and wear',
         link: '/',
-        bgImg: heroBanner,
+        bgImg: heroBg,
     },
     {
         text: 'Home interiors',
         link: '/',
-        bgImg: heroBanner,
+        bgImg: interiorBg,
     },
     {
         text: 'Computer and tech',
         link: '/',
-        bgImg: heroBanner,
+        bgImg: computerBg,
     },
     {
         text: 'Tools, equipment',
@@ -37,22 +37,22 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
     {
         text: 'Sports and outdoor',
         link: '/',
-        bgImg: heroBanner,
+        bgImg: sportsBg,
     },
     {
         text: 'Animal and pets',
         link: '/',
-        bgImg: heroBanner,
+        bgImg: petBg,
     },
     {
         text: 'Machinery tools',
         link: '/',
-        bgImg: heroBanner,
+        bgImg: heroBg,
     },
     {
         text: 'More category',
         link: '/',
-        bgImg: heroBanner,
+        bgImg: heroBg,
     },
 ]
 
