@@ -18,8 +18,8 @@ const SearchBar = (props: Props) => {
             <div className="relative h-full">
                 <select name="search_categories" id="" className="border-x border-primary min-w-max shrink-0 h-full px-2.5 txt-body focus:outline-none appearance-none">
                     {searchCategoriesData.map((category, idx) => (
-                        <option value={category} key={idx}>
-                            {category}
+                        <option value={category.text} key={idx}>
+                            {category.text}
                         </option>
                     ))}
                 </select>

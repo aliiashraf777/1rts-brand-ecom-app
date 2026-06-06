@@ -16,7 +16,7 @@ const Button = ({ variant = 'gradient', size = 'normal', className, disabled, ch
             disabled={disabled}
             className={cn(
                 // 1. base - always applied
-                'txt-base cursor-pointer h-full shrink-0 whitespace-nowrap transition-all duration-200 rounded-card border border-transparent box-border',
+                'txt-base cursor-pointer w-max h-max shrink-0 whitespace-nowrap transition-all duration-200 rounded-card border border-transparent box-border',
 
                 // 2. size variants
                 size === 'normal' && 'px-5 py-2.5',

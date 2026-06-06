@@ -20,7 +20,7 @@ const NewsLetter = (props: Props) => {
         Get daily news on upcoming offers from many suppliers all over the world
       </p>
 
-      <div className="flex justify-between items-center gap-2 mt-5">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-2 mt-5">
         {/* icon + input */}
         <div className="flex items-center gap-2 bg-white p-2.5 rounded-card w-[275px]">
           <Mail
@@ -35,9 +35,17 @@ const NewsLetter = (props: Props) => {
           />
         </div>
 
-        <Button>
-          Subscribe
-        </Button>
+        <div className="hidden md:block">
+          <Button>
+            Subscribe
+          </Button>
+        </div>
+
+        <div className="w-full block md:hidden">
+          <Button size="full">
+            Subscribe
+          </Button>
+        </div>
       </div>
 
     </SectionFull>
