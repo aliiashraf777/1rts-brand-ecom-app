@@ -21,3 +21,19 @@ export { default as loginAvatar } from '@/assets/icons/Avatar.png'
 
 // hero bg imgs
 export { default as heroBanner } from '@/assets/backgrounds/heroBanner.png'
+export { default as computerBg } from '@/assets/backgrounds/computer.png'
+export { default as electicBg } from '@/assets/backgrounds/electric.png'
+export { default as heroBg } from '@/assets/backgrounds/hero.png'
+export { default as interiorBg } from '@/assets/backgrounds/interior.png'
+export { default as machineryBg } from '@/assets/backgrounds/machinery.png'
+export { default as petBg } from '@/assets/backgrounds/pet.png'
+export { default as sportsBg } from '@/assets/backgrounds/sportsBg.jpg'
+
+// services imgs
+export { default as service1 } from '@/assets/backgrounds/service1.png'
+export { default as service2 } from '@/assets/backgrounds/service2.png'
+export { default as service3 } from '@/assets/backgrounds/service3.png'
+export { default as service4 } from '@/assets/backgrounds/service4.png'
+
+export { default as outdoorBg } from '@/assets/backgrounds/outdoorBg.png'
+export { default as gadgetsBg } from '@/assets/backgrounds/gadgetsBg.png'
