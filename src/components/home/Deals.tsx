@@ -30,22 +30,22 @@ const Deals = (props: Props) => {
 
                 {/* deals boxes list */}
                 <div className="flex-1 min-w-0">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                    <div className="flex overflow-x-auto lg:grid lg:grid-cols-5 lg:overflow-x-visible lg:scrollbar-none">
                         {dealsData.map((item, idx) => (
                             <Link
                                 key={`${item.title}-${idx}`}
                                 to={item.link}
-                                className="p-section border-r border-b lg:border-b-0 border-gray-300 last:border-0 flex min-w-0 flex-col items-center"
+                                className="min-w-[180px] lg:min-w-0 flex flex-col items-center text-center p-section pt-2.5 border-r border-b lg:border-b-0 border-gray-300 last:border-0"
                             >
-                                <div className="w-[140px] h-[140px] flex justify-center items-start borderx">
+                                <div className="w-[98px] h-[98px] md:w-[140px] md:h-[140px] px-3 py-2.5 flex justify-center items-center">
                                     <img
                                         src={item.image}
                                         alt={item.title}
-                                        className="object-contain borderx"
+                                        className="object-contain"
                                     />
                                 </div>
 
-                                <p className="txt-body pb-2.5">
+                                <p className="txt-tiny text-text-primary md:txt-body pb-2.5">
                                     {item.title}
                                 </p>
 
