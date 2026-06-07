@@ -1,6 +1,7 @@
 import { gadgetsBg, outdoorBg } from "@/assets"
 import Deals from "@/components/home/Deals"
 import OutdoorCategories from "@/components/home/OutdoorCategories"
+import QuoteForm from "@/components/home/QuoteForm"
 import { gadgetsData, outdoorData } from "@/data/outdoorData"
 import Hero from "@/screens/Hero"
 
@@ -29,6 +30,8 @@ const Home = (props: Props) => {
                 data={gadgetsData}
                 categoryBg={gadgetsBg}
             />
+
+            <QuoteForm />
         </div>
     )
 }
