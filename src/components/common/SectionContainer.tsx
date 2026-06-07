@@ -6,7 +6,7 @@ type SectionTy = {
 
 const SectionContainer = ({ children, className, sectionClass }: SectionTy) => {
     return (
-        <section className={`page-padding ${sectionClass}`}>
+        <section className={`md:page-padding ${sectionClass}`}>
             <div className={`container-custom ${className || ""}`}>
                 {children}
             </div>
@@ -27,7 +27,7 @@ type SectionFullPropsTy = {
 export const SectionFull = ({ sectionClass, containerClass, children }: SectionFullPropsTy) => {
 
     return (
-        <section className={`page-padding ${sectionClass}`}>
+        <section className={`md:page-padding ${sectionClass}`}>
             <div className={`container-custom ${containerClass}`}>
                 {children}
             </div>
