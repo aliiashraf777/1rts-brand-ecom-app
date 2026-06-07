@@ -44,3 +44,23 @@ export { default as deal2 } from '@/assets/deals/deal2.png'
 export { default as deal3 } from '@/assets/deals/deal3.png'
 export { default as deal4 } from '@/assets/deals/deal4.png'
 export { default as deal5 } from '@/assets/deals/deal5.png'
+
+// outdoor categories images
+export {default as outdoor1} from '@/assets/outdoor/outdoor1.png'
+export {default as outdoor2} from '@/assets/outdoor/outdoor2.png'
+export {default as outdoor3} from '@/assets/outdoor/outdoor3.png'
+export {default as outdoor4} from '@/assets/outdoor/outdoor4.png'
+export {default as outdoor5} from '@/assets/outdoor/outdoor5.png'
+export {default as outdoor6} from '@/assets/outdoor/outdoor6.png'
+export {default as outdoor7} from '@/assets/outdoor/outdoor7.png'
+export {default as outdoor8} from '@/assets/outdoor/outdoor8.png'
+
+// gadgets categories images
+export {default as gadget1} from '@/assets/gadgets/gadget1.png'
+export {default as gadget2} from '@/assets/gadgets/gadget2.png'
+export {default as gadget3} from '@/assets/gadgets/gadget3.png'
+export {default as gadget4} from '@/assets/gadgets/gadget4.png'
+export {default as gadget5} from '@/assets/gadgets/gadget5.png'
+export {default as gadget6} from '@/assets/gadgets/gadget6.png'
+export {default as gadget7} from '@/assets/gadgets/gadget7.png'
+export {default as gadget8} from '@/assets/gadgets/gadget8.png'

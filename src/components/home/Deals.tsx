@@ -8,12 +8,12 @@ const Deals = (props: Props) => {
     return (
         <SectionContainer
             sectionClass="mb-section"
-            className="bg-white rounded-card border border-gray-300"
+            className="bg-white md:rounded-card border border-gray-300"
         >
             <div className="w-full min-w-0 flex flex-col lg:flex-row">
 
                 {/* countdown box */}
-                <div className="w-full lg:w-[280px] shrink-0 flex flex-row lg:flex-col gap-5 justify-between lg:justify-normal p-section border-b sm:border-r border-gray-300">
+                <div className="w-full lg:w-[280px] shrink-0 flex flex-row lg:flex-col gap-5 justify-between lg:justify-normal p-4 md:p-section border-b sm:border-r border-gray-300">
                     <div className="">
                         <h4 className="heading-h5 sm:heading-h4">
                             Deals and offers
@@ -35,13 +35,13 @@ const Deals = (props: Props) => {
                             <Link
                                 key={`${item.title}-${idx}`}
                                 to={item.link}
-                                className="min-w-[180px] lg:min-w-0 flex flex-col items-center text-center p-section pt-2.5 border-r border-b lg:border-b-0 border-gray-300 last:border-0"
+                                className="min-w-[180px] lg:min-w-0 flex flex-col items-center text-center p-section pt-2.5 border-r border-b lg:border-b-0 border-gray-300 last:border-0 group"
                             >
                                 <div className="w-[98px] h-[98px] md:w-[140px] md:h-[140px] px-3 py-2.5 flex justify-center items-center">
                                     <img
                                         src={item.image}
                                         alt={item.title}
-                                        className="object-contain"
+                                        className="object-contain group-hover:scale-105 transition-all duration-300 ease-out"
                                     />
                                 </div>
 
