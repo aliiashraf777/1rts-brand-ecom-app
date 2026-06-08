@@ -1,6 +1,7 @@
 import { productsData } from "@/data/productsData"
 import SectionContainer from "../common/SectionContainer"
 import { Link } from "react-router"
+import SectionHeading from "../common/SectionHeading"
 
 type Props = {}
 
@@ -8,9 +9,9 @@ const RecommendedProducts = (props: Props) => {
   return (
     <SectionContainer sectionClass="mb-section-30">
       <div className="px-2.5 md:px-0">
-        <h3 className="heading-h3 pb-6">
-          Recommended items
-        </h3>
+        <SectionHeading
+          heading="Recommended items"
+        />
 
         <div className="flex-1 min-w-0">
           <div
