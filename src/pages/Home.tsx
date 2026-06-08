@@ -3,6 +3,7 @@ import Deals from "@/components/home/Deals"
 import OutdoorCategories from "@/components/home/OutdoorCategories"
 import QuoteForm from "@/components/home/QuoteForm"
 import RecommendedProducts from "@/components/home/RecommendedProducts"
+import ServicesCards from "@/components/home/ServicesCards"
 import { gadgetsData, outdoorData } from "@/data/outdoorData"
 import Hero from "@/screens/Hero"
 
@@ -35,6 +36,8 @@ const Home = (props: Props) => {
             <QuoteForm />
 
             <RecommendedProducts />
+
+            <ServicesCards />
         </div>
     )
 }
