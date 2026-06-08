@@ -24,7 +24,7 @@ const RecommendedProducts = (props: Props) => {
               >
 
                 {/* imageBox */}
-                <div className="flex aspect-squarex h-[200px] items-center justify-center p-4 mb-3.5">
+                <div className="flex aspect-square items-center justify-center p-4 mb-3.5">
                   <img
                     src={item.image}
                     alt=""
