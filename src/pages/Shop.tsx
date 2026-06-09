@@ -28,7 +28,7 @@ const Shop = (props: Props) => {
 
             {/* products grid/list layout */}
             <ShopGridProducts />
-            
+
             <ShopListProducts />
 
 

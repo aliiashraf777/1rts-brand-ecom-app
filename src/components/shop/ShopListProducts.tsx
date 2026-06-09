@@ -1,8 +1,5 @@
 import { productsData } from "@/data/productsData"
-import { IoMdStar, IoMdStarHalf } from "react-icons/io"
-import { Link } from "react-router"
 import { AddCartHeartBtn, LinkBtn } from "../common/Button"
-import { Heart } from "lucide-react"
 import StarsDynamicRatings from "./StarsDynamicRatings"
 
 type Props = {}
@@ -28,12 +25,12 @@ const ShopListProducts = (props: Props) => {
 
                             {/* context */}
                             <div className="flex flex-col pl-2.5 pt-0 md:pt-4 pb-0 md:pb-5">
-                                <p className="txt-small md:txt-body-title pb-1 md:pb-4">
+                                <p className="txt-small md:txt-body-title capitalize pb-1 md:pb-4">
                                     {item.title}
                                 </p>
 
                                 <div className="flex items-center gap-2">
-                                    <h4 className="txt-body-medium   md:heading-h4">
+                                    <h4 className="txt-body-medium md:heading-h4">
                                         ${item.price}
                                     </h4>
                                     {item.oldPrice &&
