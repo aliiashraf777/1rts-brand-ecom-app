@@ -29,6 +29,7 @@ export interface IshipToFlagsItem {
     flag: string,
     emojiFlagCode: string,
     country: string,
+    website: string,
 }
 
 export interface ImobileMenuItem {

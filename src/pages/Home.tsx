@@ -1,5 +1,6 @@
 import { gadgetsBg, outdoorBg } from "@/assets"
 import Deals from "@/components/home/Deals"
+import FlagsRegions from "@/components/home/FlagsRegions"
 import OutdoorCategories from "@/components/home/OutdoorCategories"
 import QuoteForm from "@/components/home/QuoteForm"
 import RecommendedProducts from "@/components/home/RecommendedProducts"
@@ -38,6 +39,8 @@ const Home = (props: Props) => {
             <RecommendedProducts />
 
             <ServicesCards />
+
+            <FlagsRegions />
         </div>
     )
 }
