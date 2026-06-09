@@ -19,6 +19,12 @@
     background-image: var(--gradient-primary-reverse)
 }
 
+@utility brand-card {
+    background-color: white;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-card);
+}
+
 /* fonts utilities */
 @utility txt-base {
     font-size: 16px;
