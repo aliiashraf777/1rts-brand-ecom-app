@@ -1,4 +1,6 @@
 import { cn } from "@/utils/cn"
+import { Heart } from "lucide-react"
+import { Link } from "react-router"
 
 type Props = {
     variant?: 'gradient' | 'white',
@@ -39,3 +41,40 @@ const Button = ({ variant = 'gradient', size = 'normal', className, disabled, ch
 }
 
 export default Button
+
+
+type LinkBtnTy = {
+    children: string,
+    to: string,
+    className?: string,
+}
+
+export const LinkBtn = ({ children, to, className }: LinkBtnTy) => {
+
+    return (
+        <Link
+            to={to}
+            className={`txt-small text-primary md:txt-body-medium md:text-primary border-b-2 border-transparent w-max hover:border-b-2 hover:border-primary transition-all duration-300 ease-out ${className || ""}`}
+        >
+            {children}
+        </Link>
+    )
+}
+
+type HeartBtnTy = {
+    className: string,
+    onClick?: () => void
+}
+
+export const AddCartHeartBtn = ({ className, onClick }: HeartBtnTy) => {
+
+    return (
+        <button
+            className={`w-max h-max border border-gray-300 rounded-card p-1 md:p-2 cursor-pointer transition-all duration-300 ease-out hover:scale-110 ${className || ''}`}
+        >
+            <Heart
+                className="text-primary"
+            />
+        </button>
+    )
+}

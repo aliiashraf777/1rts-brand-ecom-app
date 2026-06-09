@@ -21,51 +21,51 @@
 
 /* fonts utilities */
 @utility txt-base {
-    color: var(--color-text-primary);
     font-size: 16px;
     font-weight: 400;
     line-height: normal;
+    color: var(--color-text-primary);
     letter-spacing: 0px;
 }
 
 @utility txt-body {
-    color: var(--color-text-primary);
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
+    color: var(--color-text-primary);
     letter-spacing: 0px;
 }
 
 @utility txt-body-shrik {
-    color: var(--color-text-primary);
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
+    color: var(--color-text-primary);
     letter-spacing: -0.2px;
     text-align: center;
 }
 
 @utility txt-body-medium {
-    color: var(--color-text-primary);
     font-size: 16px;
     font-weight: 500;
     line-height: normal;
+    color: var(--color-text-primary);
     letter-spacing: 0px;
 }
 
 @utility txt-body-title {
-    color: var(--color-text-primary);
     font-size: 16px;
     font-weight: 500;
     line-height: 22px;
+    color: var(--color-text-primary);
     letter-spacing: 0px;
 }
 
 @utility txt-small {
-    color: var(--color-text-primary);
     font-size: 14px;
     font-weight: 400;
     line-height: normal;
+    color: var(--color-text-primary);
     letter-spacing: -0.2px;
 }
 
@@ -80,41 +80,41 @@
 }
 
 @utility heading-h1 {
-    color: var(--color-text-primary);
     font-size: 32px;
     font-weight: 700;
     line-height: normal;
+    color: var(--color-text-primary);
     letter-spacing: 0px;
 }
 
 @utility heading-h2 {
-    color: var(--color-text-primary);
     font-size: 32px;
     font-weight: 600;
     line-height: normal;
+    color: var(--color-text-primary);
     letter-spacing: -0.2px;
 }
 
 @utility heading-h3 {
-    color: var(--color-text-primary);
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
+    color: var(--color-text-primary);
     letter-spacing: -0.2px;
 }
 
 @utility heading-h4 {
-    color: var(--color-text-primary);
     font-size: 20px;
     font-weight: 600;
     line-height: 28px;
+    color: var(--color-text-primary);
     letter-spacing: -0.2px;
 }
 
 @utility heading-h5 {
-    color: var(--color-text-primary);
     font-size: 18px;
     font-weight: 600;
     line-height: normal;
+    color: var(--color-text-primary);
     letter-spacing: 0px;
 }
