@@ -118,67 +118,78 @@ export const shipToFlagsData: IshipToFlagsItem[] = [
         text: 'Ship to',
         flag: flag0,
         emojiFlagCode: 'GER',
-        country: 'Germany'
+        country: 'Germany',
+        website: 'shopname.ae',
     },
     {
         text: 'Ship to',
         flag: flag1,
         emojiFlagCode: 'UAE',
-        country: 'United Arab Emirates'
+        country: 'United Arab Emirates',
+        website: 'shopname.ae',
     },
     {
         text: 'Ship to',
         flag: flag2,
         emojiFlagCode: 'AU',
-        country: 'Australia'
+        country: 'Australia',
+        website: 'shopname.au',
     },
     {
         text: 'Ship to',
         flag: flag3,
         emojiFlagCode: 'US',
-        country: 'United States'
+        country: 'United States',
+        website: 'shopname.us',
     },
     {
         text: 'Ship to',
         flag: flag4,
         emojiFlagCode: 'RU',
-        country: 'Russia'
+        country: 'Russia',
+        website: 'shopname.ru',
     },
     {
         text: 'Ship to',
         flag: flag5,
         emojiFlagCode: 'IT',
-        country: 'Italy'
+        country: 'Italy',
+        website: 'shopname.it',
     },
     {
         text: 'Ship to',
         flag: flag6,
         emojiFlagCode: 'DK',
-        country: 'Denmark'
+        country: 'Denmark',
+        website: 'shopname.dk',
     },
     {
         text: 'Ship to',
         flag: flag7,
         emojiFlagCode: 'FR',
-        country: 'France'
+        country: 'France',
+        website: 'shopname.fr',
     },
     {
         text: 'Ship to',
         flag: flag8,
         emojiFlagCode: 'UAE',
-        country: 'United Arab Emirates'
+        country: 'United Arab Emirates',
+        website: 'shopname.ae',
     },
     {
         text: 'Ship to',
         flag: flag9,
         emojiFlagCode: 'CN',
-        country: 'China'
+        country: 'China',
+        website: 'shopname.cn',
     },
     {
         text: 'Ship to',
         flag: flag10,
         emojiFlagCode: 'GB',
-        country: 'Great Britain'
+        country: 'Great Britain',
+        website: 'shopname.uk',
     },
 ]
 
