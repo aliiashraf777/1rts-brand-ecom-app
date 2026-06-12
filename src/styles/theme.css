@@ -25,6 +25,8 @@
   --color-card-sea-green: #55bdc3;
   --color-brand-green: #00B517;
   --color-brand-blue: #0D6EFD;
+  --color-checkbox-fill: #D9D9D9;
+  --color-checkbox-border: #BDBDBD;
 
   /* fonts */
   --font-inter: "Inter", sans-serif;
