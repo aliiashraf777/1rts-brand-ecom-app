@@ -10,6 +10,7 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
         label: 'All Category',
         link: '/',
         bgImg: heroBanner,
+        items: '12,911'
     },
     {
         id: 'cat1',
@@ -17,6 +18,7 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
         label: 'Automobiles',
         link: '/',
         bgImg: heroBanner,
+        items: '10,231'
     },
     {
         id: 'cat2',
@@ -24,6 +26,7 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
         label: 'Clothes and wear',
         link: '/',
         bgImg: heroBg,
+        items: '11,211'
     },
     {
         id: 'cat3',
@@ -31,6 +34,7 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
         label: 'Home interiors',
         link: '/',
         bgImg: interiorBg,
+        items: '12,911'
     },
     {
         id: 'cat4',
@@ -38,6 +42,7 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
         label: 'Computer and tech',
         link: '/',
         bgImg: computerBg,
+        items: '13,901'
     },
     {
         id: 'cat5',
@@ -45,6 +50,7 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
         label: 'Tools, equipment',
         link: '/',
         bgImg: heroBanner,
+        items: '12,911'
     },
     {
         id: 'cat6',
@@ -52,6 +58,7 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
         label: 'Sports and outdoor',
         link: '/',
         bgImg: sportsBg,
+        items: '9,911'
     },
     {
         id: 'cat7',
@@ -59,6 +66,7 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
         label: 'Animal and pets',
         link: '/',
         bgImg: petBg,
+        items: '5,011'
     },
     {
         id: 'cat8',
@@ -66,6 +74,7 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
         label: 'Machinery tools',
         link: '/',
         bgImg: heroBg,
+        items: '7,939'
     },
     {
         id: 'cat9',
@@ -73,6 +82,7 @@ export const searchCategoriesData: IsearchCategoriesItem[] = [
         label: 'More category',
         link: '/',
         bgImg: heroBg,
+        items: '12,911'
     },
 ]
 
