@@ -3,6 +3,7 @@ import type { LucideIcon } from "lucide-react";
 export type searchCategoriesTy = string[]
 
 export interface IsearchCategoriesItem {
+    id: string,
     text: string,
     link: string,
     bgImg: string,

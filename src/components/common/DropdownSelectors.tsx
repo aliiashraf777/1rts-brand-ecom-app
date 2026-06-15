@@ -98,7 +98,7 @@ export const FlagsSelector = ({ direction = 'bottom' }: flagsDirectionTy) => {
 
             {/* flags dropdown panel */}
             <div
-                className={`min-w-max absolute right-0 ${direction === 'bottom' ? 'top-full mt-2' : 'bottom-full mb-2'} bg-white border border-gray-300 rounded-card overflow-hidden shadow-card-lg flex flex-col transform transition-all duration-300 ease-out ${isFlagOpen
+                className={`min-w-max absolute right-0 ${direction === 'bottom' ? 'top-full mt-2' : 'bottom-full mb-2'} z-10 bg-white border border-gray-300 rounded-card overflow-hidden shadow-card-lg flex flex-col transform transition-all duration-300 ease-out ${isFlagOpen
                     ? 'pointer-events-auto opacity-100 translate-y-0'
                     : 'pointer-events-none opacity-0 -translate-y-2'}`}
             >

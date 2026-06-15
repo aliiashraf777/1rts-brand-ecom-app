@@ -1,35 +1,34 @@
 import React, { useState } from "react"
 import FilterItem from "./FilterItem"
 import { searchCategoriesData } from "@/data/navigationData";
-import { filterBrandsData, filterConditionData, filterFeaturesData, filterRatingsData, type filterBrandItem } from "@/data/shopFiltersData";
+import { filterBrandsData, filterConditionData, filterFeaturesData, filterRatingsData, } from "@/data/shopFiltersData";
 import CheckboxBtn from "./CheckboxBtn";
 import Button from "../common/Button";
+import type { ProductFiltersTy } from "@/pages/shop/Shop";
 
-type Props = {}
+type Props = {
+    productFilters: ProductFiltersTy,
+    setProductFilters: React.Dispatch<React.SetStateAction<ProductFiltersTy>>,
+}
 
-const ShopFilters = (props: Props) => {
+const ShopFilters = ({ productFilters, setProductFilters }: Props) => {
 
     const [isCategoryFilterOpen, setIsCategoryFilterOpen] = useState<boolean>(true);
-    const [selectedFilterCategory, setSelectedFilterCategory] = useState(searchCategoriesData[0])
 
-    // brands filter state
+    // brands toggle state
     const [isBrandsFilterOpen, setIsBrandsFilterOpen] = useState<boolean>(true);
-    const [selectedBrandsCategory, setSelectedBrandsCategory] = useState<filterBrandItem>(filterBrandsData[0]);
 
-    // features filter state
+    // features toggle state
     const [isFeaturesFilterOpen, setIsFeaturesFilterOpen] = useState(true);
-    const [selectedFeature, setSelectedFeature] = useState(filterFeaturesData[0]);
 
-    // price filter state
+    // price toggle state
     const [isPriceFilterOpen, setIsPriceFilterOpen] = useState<boolean>(true)
 
-    // condition filter state
+    // condition toggle state
     const [isConditionFilterOpen, setIsConditionFilterOpen] = useState<boolean>(true);
-    const [selectedCondition, setSelectedCondition] = useState(filterConditionData[0]);
 
-    // ratings filter state
+    // ratings toggle state
     const [isRatingsFilterOpen, setIsRatingsFilterOpen] = useState(true)
-    const [selectedRating, setSelectedRating] = useState(filterRatingsData[0]);
 
     const toggleFilter = (filter: string) => {
         switch (filter) {
@@ -58,16 +57,16 @@ const ShopFilters = (props: Props) => {
     }
 
     const MIN_PRICE = 0
-    const MAX_PRICE = 1000
-    const MIN_GAP = 100
+    const MAX_PRICE = 100
+    const MIN_GAP = 10
 
     const clamp = (value: number, min: number, max: number) =>
         Math.min(max, Math.max(min, value))
 
-    const [minRange, setMinRange] = useState(300)
-    const [maxRange, setMaxRange] = useState(700)
-    const [minInput, setMinInput] = useState("300")
-    const [maxInput, setMaxInput] = useState("700")
+    const [minRange, setMinRange] = useState(0)
+    const [maxRange, setMaxRange] = useState(100)
+    const [minInput, setMinInput] = useState("0")
+    const [maxInput, setMaxInput] = useState("100")
 
 
     const handleMinChange = (raw: number) => {
@@ -107,7 +106,8 @@ const ShopFilters = (props: Props) => {
     // enter commit
     const handleEnterCommit = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter')
-            e.currentTarget.blur();
+            // e.currentTarget.blur();
+            applyPriceRange()
     }
 
     // on apply button click
@@ -115,17 +115,22 @@ const ShopFilters = (props: Props) => {
         const rawMin = Number(minInput)
         const rawMax = Number(maxInput)
 
+        let nextMin = minRange;
+        let nextMax = maxRange;
+
         if (!Number.isNaN(rawMin)) {
-            const nextMin = clamp(rawMin, MIN_PRICE, MAX_PRICE - MIN_GAP)
+            nextMin = clamp(rawMin, MIN_PRICE, MAX_PRICE - MIN_GAP)
             setMinRange(nextMin)
             setMinInput(String(nextMin))
         }
 
         if (!Number.isNaN(rawMax)) {
-            const nextMax = clamp(rawMax, MIN_PRICE + MIN_GAP, MAX_PRICE)
+            nextMax = clamp(rawMax, MIN_PRICE + MIN_GAP, MAX_PRICE)
             setMaxRange(nextMax)
             setMaxInput(String(nextMax))
         }
+
+        updatePriceRange(nextMin, nextMax);
     }
 
     // min max thumb position
@@ -133,8 +138,55 @@ const ShopFilters = (props: Props) => {
     const maxPercent = ((maxRange - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100
 
 
+    // filters onClick update methods
+    const updateCategory = (categoryId: string) => {
+        setProductFilters((prev) => ({
+            ...prev,
+            categoryId: [categoryId],
+        }))
+    };
+
+    const updateBrand = (brandId: string) => {
+        setProductFilters((prev) => ({
+            ...prev,
+            brandIds: [brandId],
+        }))
+    };
+
+    const updateFeature = (featureId: string) => {
+        setProductFilters((prev) => ({
+            ...prev,
+            featureIds: [featureId],
+        }))
+    };
+
+    const updateCondition = (conditionId: string) => {
+        setProductFilters((prev) => ({
+            ...prev,
+            conditionId,
+        }));
+    };
+
+    const updateRatings = (rating: number) => {
+        setProductFilters((prev) => ({
+            ...prev,
+            rating,
+        }));
+    };
+
+    const updatePriceRange = (minPrice: number, maxPrice: number) => {
+        setProductFilters((prev) => ({
+            ...prev,
+            minPrice,
+            maxPrice,
+        }));
+    };
+
+
     return (
         <div className="hidden lg:block w-[240px] shrink-0">
+
+            {/* category filter */}
             <FilterItem
                 title="Category"
                 state={isCategoryFilterOpen}
@@ -145,9 +197,9 @@ const ShopFilters = (props: Props) => {
                     <button
                         key={`${item.text}-${idx}`}
                         type="button"
-                        onClick={() => setSelectedFilterCategory(item)}
+                        onClick={() => updateCategory(item.id)}
                         className={`w-full py-2.5 px-2 txt-base text-gray-600 flex items-center transition-all duration-300 ease-out cursor-pointer hover:bg-gray-200 
-                            ${selectedFilterCategory === item ? 'text-primary' : ''}
+                            ${productFilters.categoryId[0] === item.id ? 'text-primary' : ''}
                         `}
                     >
                         {item.text}
@@ -162,13 +214,12 @@ const ShopFilters = (props: Props) => {
                 onClick={() => toggleFilter('brands')}
                 seeAll
             >
-                {filterBrandsData.map((item, idx) => (
+                {filterBrandsData.map((item) => (
                     <CheckboxBtn
-                        key={`${item.brand}-${idx}`}
+                        key={`${item.id}`}
                         item={item}
-                        text={item.brand}
-                        selectedState={selectedBrandsCategory}
-                        onClick={() => setSelectedBrandsCategory(item)}
+                        selectedId={productFilters.brandIds[0] ?? ""}
+                        onClick={() => updateBrand(item.id)}
                     />
                 ))}
             </FilterItem>
@@ -182,11 +233,10 @@ const ShopFilters = (props: Props) => {
             >
                 {filterFeaturesData.map((item, idx) => (
                     <CheckboxBtn
-                        key={`${item.feature}-${idx}`}
+                        key={`${item.label}-${idx}`}
                         item={item}
-                        text={item.feature}
-                        selectedState={selectedFeature}
-                        onClick={() => setSelectedFeature(item)}
+                        selectedId={productFilters.featureIds[0] ?? ""}
+                        onClick={() => updateFeature(item.id)}
                     />
                 ))}
             </FilterItem>
@@ -277,13 +327,12 @@ const ShopFilters = (props: Props) => {
                 onClick={() => toggleFilter('condition')}
                 seeAll
             >
-                {filterConditionData.map((item, idx) => (
+                {filterConditionData.map((item) => (
                     <CheckboxBtn
-                        key={`${item.condition}-${idx}`}
+                        key={`${item.id}`}
                         item={item}
-                        text={item.condition}
-                        selectedState={selectedCondition}
-                        onClick={() => setSelectedCondition(item)}
+                        selectedId={productFilters.conditionId ?? ""}
+                        onClick={() => updateCondition(item.id)}
                         variant="radio"
                     />
                 ))}
@@ -296,13 +345,15 @@ const ShopFilters = (props: Props) => {
                 state={isRatingsFilterOpen}
                 onClick={() => toggleFilter('ratings')}
             >
-                {filterRatingsData.map((item, idx) => (
+                {filterRatingsData.map((item) => (
                     <CheckboxBtn
-                        key={`${item.rating}-${idx}`}
+                        key={`${item.id}`}
                         item={item}
-                        selectedState={selectedRating}
-                        onClick={() => setSelectedRating(item)}
-                        rating={item.rating}
+                        selectedId={productFilters.rating === item.rating
+                            ? item.id
+                            : ""
+                        }
+                        onClick={() => updateRatings(item.rating!)}
                     />
                 ))}
             </FilterItem>

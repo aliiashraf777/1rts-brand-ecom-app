@@ -1,28 +1,32 @@
-import { productsData } from "@/data/productsData"
+import { productsData, type IproductsDataItem } from "@/data/productsData"
 import StarsDynamicRatings from "./StarsDynamicRatings"
-import { AddCartHeartBtn, LinkBtn } from "../common/Button"
+import { AddCartHeartBtn } from "../common/Button"
 import { Link } from "react-router"
 
-type Props = {}
+type Props = {
+  filteredProducts: IproductsDataItem[],
+}
 
-const ShopGridProducts = (props: Props) => {
+const ShopGridProducts = ({ filteredProducts }: Props) => {
   return (
     <div className="w-full mb-section-30">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-section">
-        {productsData.slice(0, 9).map((item, idx) => (
-          <Link
-            to={item.detailsLink}
+        {/* {productsData.slice(0, 9).map((item, idx) => ( */}
+        {filteredProducts.slice(0, 9).map((item, idx) => (
+          <div
             key={`${item.title}-${idx}`}
             className="brand-card group transition-all duration-300 ease-out hover:-translate-y-1"
           >
             {/* img */}
-            <div className="flex items-center justify-center aspect-squarex h-[230px] w-[230px]x border-b border-gray-200">
+            <Link
+              to={item.detailsLink}
+              className="flex items-center justify-center aspect-squarex h-[230px] w-[230px]x border-b border-gray-200">
               <img
                 src={item.image}
                 alt={item.title}
                 className="object-contain transition-all duration-300 ease-out group-hover:scale-105"
               />
-            </div>
+            </Link>
 
             {/* textBox */}
             <div className="px-section py-4.5 relative">
@@ -62,7 +66,7 @@ const ShopGridProducts = (props: Props) => {
                 className="absolute right-5 top-5"
               />
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
