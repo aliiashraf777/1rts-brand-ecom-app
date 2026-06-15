@@ -5,6 +5,7 @@ export type searchCategoriesTy = string[]
 export interface IsearchCategoriesItem {
     id: string,
     text: string,
+    label: string,
     link: string,
     bgImg: string,
 }
