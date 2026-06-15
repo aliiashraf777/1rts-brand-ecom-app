@@ -5,51 +5,61 @@ import { ArrowRight, Building, Globe, Headset, Heart, House, List, MessageSquare
 
 export const searchCategoriesData: IsearchCategoriesItem[] = [
     {
+        id: 'cat0',
         text: 'All Category',
         link: '/',
         bgImg: heroBanner,
     },
     {
+        id: 'cat1',
         text: 'Automobiles',
         link: '/',
         bgImg: heroBanner,
     },
     {
+        id: 'cat2',
         text: 'Clothes and wear',
         link: '/',
         bgImg: heroBg,
     },
     {
+        id: 'cat3',
         text: 'Home interiors',
         link: '/',
         bgImg: interiorBg,
     },
     {
+        id: 'cat4',
         text: 'Computer and tech',
         link: '/',
         bgImg: computerBg,
     },
     {
+        id: 'cat5',
         text: 'Tools, equipment',
         link: '/',
         bgImg: heroBanner,
     },
     {
+        id: 'cat6',
         text: 'Sports and outdoor',
         link: '/',
         bgImg: sportsBg,
     },
     {
+        id: 'cat7',
         text: 'Animal and pets',
         link: '/',
         bgImg: petBg,
     },
     {
+        id: 'cat8',
         text: 'Machinery tools',
         link: '/',
         bgImg: heroBg,
     },
     {
+        id: 'cat9',
         text: 'More category',
         link: '/',
         bgImg: heroBg,

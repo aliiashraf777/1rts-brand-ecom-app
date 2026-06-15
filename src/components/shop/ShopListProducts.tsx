@@ -1,14 +1,17 @@
-import { productsData } from "@/data/productsData"
+import { productsData, type IproductsDataItem } from "@/data/productsData"
 import { AddCartHeartBtn, LinkBtn } from "../common/Button"
 import StarsDynamicRatings from "./StarsDynamicRatings"
 
-type Props = {}
+type Props = {
+    filteredProducts: IproductsDataItem[],
+}
 
-const ShopListProducts = (props: Props) => {
+const ShopListProducts = ({ filteredProducts }: Props) => {
     return (
         <div className="w-full mb-section-30">
             <div className="flex flex-col gap-2.5">
-                {productsData.slice(1, 7).map((item, idx) => {
+                {/* {productsData.slice(1, 8).map((item, idx) => { */}
+                {filteredProducts.slice(1, 8).map((item, idx) => {
                     return (
                         <div
                             key={`${item.title}-${idx}`}

@@ -1,10 +1,10 @@
-import { ChevronDown } from "lucide-react"
+import { ChevronDown } from "lucide-react";
 
 type Props = {
     title: string,
     className?: string,
     state: boolean,
-    onClick?: any,
+    onClick?: () => void,
     children: React.ReactNode,
     bodyClass?: string,
     seeAll?: boolean,
