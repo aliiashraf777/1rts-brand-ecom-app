@@ -8,10 +8,11 @@ type Props = {
     children: React.ReactNode,
     bodyClass?: string,
     seeAll?: boolean,
+    isSeeAllOpen?: boolean,
     seeAllOnClick?: () => void
 }
 
-const FilterItem = ({ title, className, state, onClick, children, bodyClass, seeAll, seeAllOnClick }: Props) => {
+const FilterItem = ({ title, className, state, onClick, children, bodyClass, seeAll, isSeeAllOpen, seeAllOnClick }: Props) => {
     return (
         <div className="w-full border-t border-gray-300">
             {/* filter title */}
@@ -40,7 +41,7 @@ const FilterItem = ({ title, className, state, onClick, children, bodyClass, see
                         onClick={seeAllOnClick}
                         className="w-full py-2.5 px-2 txt-base text-primary flex items-center transition-all duration-300 ease-out cursor-pointer hover:bg-gray-200"
                     >
-                        See all
+                        {!isSeeAllOpen ? 'See all' : 'See less'}
                     </button>
                 }
             </div>

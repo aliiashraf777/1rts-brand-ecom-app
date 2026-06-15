@@ -8,24 +8,35 @@ import { useMemo, useState } from "react"
 
 
 export type ProductFiltersTy = {
-  categoryId: string[],
+  categoryIds: string[],
   brandIds: string[],
   featureIds: string[],
-  conditionId: string | null,
-  rating: number | null,
+  conditionIds: string[],
+  ratings: string[],
   minPrice: number,
   maxPrice: number,
 };
 
-const initialFilters: ProductFiltersTy = {
-  categoryId: [],
+export const initialFilters: ProductFiltersTy = {
+  categoryIds: [],
   brandIds: [],
   featureIds: [],
-  conditionId: null,
-  rating: null,
+  conditionIds: [],
+  ratings: [],
   minPrice: 0,
   maxPrice: 1000,
 };
+
+// helper for clear all buttons
+export const hasActiveFilters = (filters: ProductFiltersTy) =>
+  filters.categoryIds.length > 0 ||
+  filters.brandIds.length > 0 ||
+  filters.featureIds.length > 0 ||
+  filters.conditionIds.length > 0 ||
+  filters.ratings.length > 0 ||
+  filters.minPrice !== initialFilters.minPrice ||
+  filters.maxPrice !== initialFilters.maxPrice;
+
 
 type Props = {}
 
@@ -38,12 +49,14 @@ const Shop = (props: Props) => {
     productsData.filter((product) => {
 
       const matchedCategory =
-        productFilters.categoryId.length === 0 ||
-        (product.categoryId?.some((catId) => productFilters.categoryId.includes(catId)) ?? false)
+        productFilters.categoryIds.length === 0 ||
+        (product.categoryId?.some((catId) => productFilters.categoryIds.includes(catId)) ?? false);
 
       const matchedBrand =
         productFilters.brandIds.length === 0 ||
-        (product.brandId && productFilters.brandIds.includes(product.brandId));
+        (product.brandId
+          ? productFilters.brandIds.includes(product.brandId)
+          : false);
 
       const matchedFeature =
         productFilters.featureIds.length === 0 ||
@@ -59,12 +72,14 @@ const Shop = (props: Props) => {
         productPrice <= productFilters.maxPrice;
 
       const matchedCondition =
-        !productFilters.conditionId ||
-        product.conditionId === productFilters.conditionId;
+        productFilters.conditionIds.length === 0 ||
+        (product.conditionId
+          ? productFilters.conditionIds.includes(product.conditionId)
+          : false);
 
       const matchedRatings =
-        !productFilters.rating ||
-        productRating >= productFilters.rating;
+        productFilters.ratings.length === 0 ||
+        productFilters.ratings.some((r) => productRating >= Number(r))
 
       return (
         matchedPrice &&
