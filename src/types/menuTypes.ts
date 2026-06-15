@@ -8,6 +8,7 @@ export interface IsearchCategoriesItem {
     label: string,
     link: string,
     bgImg: string,
+    items: string,
 }
 
 export interface ItopIconsItem {

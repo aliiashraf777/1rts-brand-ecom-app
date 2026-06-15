@@ -14,6 +14,7 @@ type Props = {
 const Button = ({ variant = 'gradient', size = 'normal', className, disabled, children, onClick }: Props) => {
     return (
         <button
+            type="button"
             onClick={onClick}
             disabled={disabled}
             className={cn(
