@@ -3,15 +3,15 @@ import { AddCartHeartBtn, LinkBtn } from "../common/Button"
 import StarsDynamicRatings from "./StarsDynamicRatings"
 
 type Props = {
-    filteredProducts: IproductsDataItem[],
+    filteredProductsH: IproductsDataItem[],
 }
 
-const ShopListProducts = ({ filteredProducts }: Props) => {
+const ShopListProducts = ({ filteredProductsH }: Props) => {
     return (
         <div className="w-full mb-section-30">
             <div className="flex flex-col gap-2.5">
                 {/* {productsData.slice(1, 8).map((item, idx) => { */}
-                {filteredProducts.slice(1, 8).map((item, idx) => {
+                {filteredProductsH.slice(1, 8).map((item, idx) => {
                     return (
                         <div
                             key={`${item.title}-${idx}`}

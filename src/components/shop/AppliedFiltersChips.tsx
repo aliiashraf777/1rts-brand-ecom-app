@@ -4,22 +4,22 @@ import ClearAllFilters from "./ClearAllFilters"
 import { X } from "lucide-react"
 
 type Props = {
-    appliedFiltersChips: AppliedFiltersChipsTy[],
+    appliedFiltersChipsH: AppliedFiltersChipsTy[],
     productFilters: ProductFiltersTy,
     clearAllFilters: () => void,
 }
 
-const AppliedFiltersChips = ({ appliedFiltersChips, productFilters, clearAllFilters }: Props) => {
+const AppliedFiltersChips = ({ appliedFiltersChipsH, productFilters, clearAllFilters }: Props) => {
     return (
         <div className="w-full h-max mb-section flex min-w-0 flex-wrap items-center gap-2">
-            {appliedFiltersChips.length === 0
+            {appliedFiltersChipsH.length === 0
                 ?
                 (<p className="txt-small text-gray-500 italic">
                     no filters applied
                 </p>)
                 :
                 (<>
-                    {appliedFiltersChips.map((item) => (
+                    {appliedFiltersChipsH.map((item) => (
                         <Button
                             key={`${item.key}-${item.label}`}
                             variant="white"

@@ -4,15 +4,15 @@ import { AddCartHeartBtn } from "../common/Button"
 import { Link } from "react-router"
 
 type Props = {
-  filteredProducts: IproductsDataItem[],
+  filteredProductsH: IproductsDataItem[],
 }
 
-const ShopGridProducts = ({ filteredProducts }: Props) => {
+const ShopGridProducts = ({ filteredProductsH }: Props) => {
   return (
     <div className="w-full mb-section-30">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-section">
         {/* {productsData.slice(0, 9).map((item, idx) => ( */}
-        {filteredProducts.slice(0, 9).map((item, idx) => (
+        {filteredProductsH.slice(0, 9).map((item, idx) => (
           <div
             key={`${item.title}-${idx}`}
             className="brand-card group transition-all duration-300 ease-out hover:-translate-y-1"
