@@ -1,7 +1,6 @@
 import { Check } from "lucide-react"
 import StarsDynamicRatings from "./StarsDynamicRatings"
 import type { IfilterOption } from "@/data/shopFiltersData"
-import type { IsearchCategoriesItem } from "@/types/menuTypes"
 
 type Props = {
     item: IfilterOption,
@@ -61,22 +60,6 @@ const CheckboxBtn = ({ item, selectedIds, onClick, variant = 'checkbox' }: Props
                     />
                 )
             }
-
-            {/* {item.label &&
-                <p className="text-text-primary">
-                    {item.label}
-                </p>
-            }
-            {(item.label && variant === 'noCheckRadio') &&
-                <p className={`text-gray-600`}>
-                    {item.label}
-                </p>
-            }
-            {item.rating &&
-                <StarsDynamicRatings
-                    rating={item.rating!}
-                />
-            } */}
         </button >
     )
 }

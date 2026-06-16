@@ -4,49 +4,21 @@ import { searchCategoriesData } from "@/data/navigationData";
 import { filterBrandsData, filterConditionData, filterFeaturesData, filterRatingsData, } from "@/data/shopFiltersData";
 import CheckboxBtn from "./CheckboxBtn";
 import Button from "../common/Button";
-import { hasActiveFilters, initialFilters, type ProductFiltersTy } from "@/pages/shop/Shop";
+import { type ProductFiltersTy } from "@/pages/shop/Shop";
 import ClearAllFilters from "./ClearAllFilters";
+import type { PriceRangePropsTy } from "@/hooks/usePriceRange";
+import type { onClickFiltersHandlersTy } from "@/hooks/useProductFilters";
 
-
-type PriceRangePropsTy = {
-    minRange: number,
-    maxRange: number,
-    minInput: string,
-    maxInput: string,
-    MIN_PRICE: number,
-    MAX_PRICE: number,
-    MIN_GAP: number,
-    minPercent: number,
-    maxPercent: number,
-    handleMinChange: (raw: number) => void,
-    handleMaxChange: (raw: number) => void,
-    handleMinInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    handleMaxInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    commitMinInput: () => void,
-    commitMaxInput: () => void,
-    handleEnterCommit: (e: React.KeyboardEvent<HTMLInputElement>) => void,
-    applyPriceRange: () => void,
-}
-
-type onClickFiltersHandlersTy = {
-    updateCategory: (categoryId: string) => void;
-    updateBrand: (brandId: string) => void;
-    updateFeature: (featureId: string) => void;
-    updateCondition: (conditionId: string) => void;
-    selectedRatingIds: string[];
-    updateRatings: (rating: number) => void;
-    updatePriceRange: (minPrice: number, maxPrice: number) => void;
-}
 
 type Props = {
     productFilters: ProductFiltersTy,
     setProductFilters: React.Dispatch<React.SetStateAction<ProductFiltersTy>>,
-    priceRange: PriceRangePropsTy,
+    priceRangeH: PriceRangePropsTy,
     clearAllFilters: () => void,
     onClickFiltersHandlers: onClickFiltersHandlersTy,
 }
 
-const ShopFilters = ({ productFilters, setProductFilters, priceRange, clearAllFilters, onClickFiltersHandlers }: Props) => {
+const ShopFilters = ({ productFilters, setProductFilters, priceRangeH, clearAllFilters, onClickFiltersHandlers }: Props) => {
 
     const [isCategoryFilterOpen, setIsCategoryFilterOpen] = useState<boolean>(true);
 
@@ -105,7 +77,7 @@ const ShopFilters = ({ productFilters, setProductFilters, priceRange, clearAllFi
                 state={isCategoryFilterOpen}
                 onClick={() => toggleFilter('category')}
                 seeAll
-                isSeeAllOpen
+                isSeeAllOpen={isSeeAllOpen}
                 seeAllOnClick={() => setIsSeeAllOpen((prev) => !prev)}
             >
                 {searchCategoriesData.slice(0, 5).map((item) => (
@@ -178,8 +150,8 @@ const ShopFilters = ({ productFilters, setProductFilters, priceRange, clearAllFi
                     <span
                         className="absolute h-full bg-primary rounded-card"
                         style={{
-                            left: `${priceRange.minPercent}%`,
-                            width: `${priceRange.maxPercent - priceRange.minPercent}%`
+                            left: `${priceRangeH.minPercent}%`,
+                            width: `${priceRangeH.maxPercent - priceRangeH.minPercent}%`
                         }}
                     />
                 </div>
@@ -188,20 +160,20 @@ const ShopFilters = ({ productFilters, setProductFilters, priceRange, clearAllFi
                 <div className="price-range relative mb-section h-4">
                     <input
                         type="range"
-                        min={priceRange.MIN_PRICE}
-                        max={priceRange.MAX_PRICE}
+                        min={priceRangeH.MIN_PRICE}
+                        max={priceRangeH.MAX_PRICE}
                         step={10}
-                        value={priceRange.minRange}
-                        onChange={(e) => priceRange.handleMinChange(Number(e.target.value))}
+                        value={priceRangeH.minRange}
+                        onChange={(e) => priceRangeH.handleMinChange(Number(e.target.value))}
                     />
 
                     <input
                         type="range"
-                        min={priceRange.MIN_PRICE}
-                        max={priceRange.MAX_PRICE}
+                        min={priceRangeH.MIN_PRICE}
+                        max={priceRangeH.MAX_PRICE}
                         step={10}
-                        value={priceRange.maxRange}
-                        onChange={(e) => priceRange.handleMaxChange(Number(e.target.value))}
+                        value={priceRangeH.maxRange}
+                        onChange={(e) => priceRangeH.handleMaxChange(Number(e.target.value))}
                     />
                 </div>
 
@@ -213,10 +185,10 @@ const ShopFilters = ({ productFilters, setProductFilters, priceRange, clearAllFi
                             type="number"
                             name="min"
                             id="min"
-                            value={priceRange.minInput}
-                            onChange={priceRange.handleMinInputChange}
-                            // onBlur={priceRange.commitMinInput}
-                            onKeyDown={priceRange.handleEnterCommit}
+                            value={priceRangeH.minInput}
+                            onChange={priceRangeH.handleMinInputChange}
+                            // onBlur={priceRangeH.commitMinInput}
+                            onKeyDown={priceRangeH.handleEnterCommit}
                             className="w-full h-10 bg-white border border-gray-300 rounded-card p-2.5"
                         />
                     </div>
@@ -227,10 +199,10 @@ const ShopFilters = ({ productFilters, setProductFilters, priceRange, clearAllFi
                             type="number"
                             name="max"
                             id="max"
-                            value={priceRange.maxInput}
-                            onChange={priceRange.handleMaxInputChange}
-                            // onBlur={priceRange.commitMaxInput}
-                            onKeyDown={priceRange.handleEnterCommit}
+                            value={priceRangeH.maxInput}
+                            onChange={priceRangeH.handleMaxInputChange}
+                            // onBlur={priceRangeH.commitMaxInput}
+                            onKeyDown={priceRangeH.handleEnterCommit}
                             className="w-full h-10 bg-white border border-gray-300 rounded-card p-2.5"
                         />
                     </div>
@@ -239,7 +211,7 @@ const ShopFilters = ({ productFilters, setProductFilters, priceRange, clearAllFi
                 <Button
                     variant="white"
                     size="full"
-                    onClick={priceRange.applyPriceRange}
+                    onClick={priceRangeH.applyPriceRange}
                 >
                     Apply
                 </Button>
