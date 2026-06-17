@@ -9,6 +9,8 @@ import useFilteredProducts from "@/hooks/useFilteredProducts"
 import useFiltersChips from "@/hooks/useFiltersChips"
 import usePriceRange from "@/hooks/usePriceRange"
 import useFiltersUpdateHandlers from "@/hooks/useFiltersUpdateHandlers"
+import { useProductViewContext } from "@/context/ProductViewContext"
+import { searchCategoriesData } from "@/data/navigationData"
 
 
 export type ProductFiltersTy = {
@@ -55,6 +57,8 @@ const Shop = () => {
 
   const appliedFiltersChipsH = useFiltersChips(productFilters, setProductFilters, priceRangeH.reset);
 
+  const { isListView, isGridView, productViewToggle } = useProductViewContext();
+
   return (
     <div className="w-full">
 
@@ -92,12 +96,16 @@ const Shop = () => {
             />
 
             {/* products grid/list layout */}
-            <ShopGridProducts
-              filteredProductsH={filteredProductsH}
-            />
-            <ShopListProducts
-              filteredProductsH={filteredProductsH}
-            />
+            {isListView
+              ?
+              <ShopListProducts
+                filteredProductsH={filteredProductsH}
+              />
+              :
+              <ShopGridProducts
+                filteredProductsH={filteredProductsH}
+              />
+            }
 
           </div>
         </div>

@@ -15,7 +15,7 @@ const AppliedFiltersChips = ({ appliedFiltersChipsH, productFilters, clearAllFil
         <div className="w-full h-max mb-section flex min-w-0 flex-wrap items-center gap-2">
             {appliedFiltersChipsH.length === 0
                 ?
-                (<p className="txt-small text-gray-500 italic px-2">
+                (<p className="txt-small text-gray-300 italic px-2">
                     no filters applied
                 </p>)
                 :
