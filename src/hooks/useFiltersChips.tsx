@@ -15,6 +15,7 @@ const useFiltersChips = (
     setProductFilters: React.Dispatch<React.SetStateAction<ProductFiltersTy>>,
     resetPriceSlider: () => void,
 ): AppliedFiltersChipsTy[] => {
+    
     return useMemo(() => {
         const chips: AppliedFiltersChipsTy[] = [];
 
@@ -94,6 +95,17 @@ const useFiltersChips = (
                 },
             })
         }
+
+        if (productFilters.verified) chips.push({
+            key: 'verified',
+            label: 'Verified only',
+            onRemove: () => {
+                setProductFilters((prev) => ({
+                    ...prev,
+                    verified: false,
+                }))
+            },
+        })
 
         return chips;
     }, [productFilters])

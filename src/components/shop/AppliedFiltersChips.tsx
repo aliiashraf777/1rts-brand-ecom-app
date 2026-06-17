@@ -1,7 +1,8 @@
-import type { AppliedFiltersChipsTy, ProductFiltersTy } from "@/pages/shop/Shop"
+import type { ProductFiltersTy } from "@/pages/shop/Shop"
 import Button from "../common/Button"
 import ClearAllFilters from "./ClearAllFilters"
 import { X } from "lucide-react"
+import type { AppliedFiltersChipsTy } from "@/hooks/useFiltersChips"
 
 type Props = {
     appliedFiltersChipsH: AppliedFiltersChipsTy[],
@@ -14,7 +15,7 @@ const AppliedFiltersChips = ({ appliedFiltersChipsH, productFilters, clearAllFil
         <div className="w-full h-max mb-section flex min-w-0 flex-wrap items-center gap-2">
             {appliedFiltersChipsH.length === 0
                 ?
-                (<p className="txt-small text-gray-500 italic">
+                (<p className="txt-small text-gray-500 italic px-2">
                     no filters applied
                 </p>)
                 :

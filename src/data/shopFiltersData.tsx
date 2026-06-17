@@ -111,3 +111,33 @@ export const filterRatingsData: IfilterOption[] = [
         rating: 2,
     },
 ]
+
+export const filterVerifiedData: IfilterOption[] = [
+    {
+        id: 'verified0',
+        label: 'Verified only',
+    }
+]
+
+export const sortTopData: IfilterOption[] = [
+    {
+        id: 'sort0',
+        label: 'Featured',
+    },
+    {
+        id: 'sort1',
+        label: 'Best seller',
+    },
+    {
+        id: 'sort2',
+        label: 'Sale',
+    },
+    {
+        id: 'sort3',
+        label: 'Newest',
+    },
+    {
+        id: 'sort4',
+        label: 'Old',
+    },
+]

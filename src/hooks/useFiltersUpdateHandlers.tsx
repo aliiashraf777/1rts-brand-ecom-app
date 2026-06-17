@@ -16,6 +16,7 @@ export type onClickFiltersHandlersTy = {
     updateRatings: (rating: number) => void;
     updatePriceRange: (minPrice: number, maxPrice: number) => void;
     selectedRatingIds: string[];
+    updateVerified: () => void,
 }
 
 export type UseProductFiltersTy = {
@@ -26,7 +27,7 @@ export type UseProductFiltersTy = {
 }
 
 
-const useProductFilters = (): UseProductFiltersTy => {
+const useFiltersUpdateHandlers = (): UseProductFiltersTy => {
 
     const [productFilters, setProductFilters] = useState(initialFilters);
 
@@ -76,11 +77,18 @@ const useProductFilters = (): UseProductFiltersTy => {
     const clearAllFilters = (resetSlider: () => void) => {
         setProductFilters(initialFilters)
         resetSlider()
-    }
+    };
 
     const selectedRatingIds = filterRatingsData
         .filter((d) => productFilters.ratings.includes(String(d.rating!)))
-        .map((d) => d.id)
+        .map((d) => d.id);
+
+    const updateVerified = () => {
+        setProductFilters((prev) => ({
+            ...prev,
+            verified: !prev.verified,
+        }));
+    };
 
     return ({
         productFilters,
@@ -93,9 +101,10 @@ const useProductFilters = (): UseProductFiltersTy => {
             updateRatings,
             updatePriceRange,
             selectedRatingIds,
+            updateVerified,
         },
         clearAllFilters,
     })
 }
 
-export default useProductFilters
+export default useFiltersUpdateHandlers

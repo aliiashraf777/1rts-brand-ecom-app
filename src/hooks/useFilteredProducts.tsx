@@ -39,7 +39,11 @@ const useFilteredProducts = (productFilters: ProductFiltersTy) => {
 
             const matchedRatings =
                 productFilters.ratings.length === 0 ||
-                productFilters.ratings.some((r) => productRating >= Number(r))
+                productFilters.ratings.some((r) => productRating >= Number(r));
+
+            const matchedVerified =
+                !productFilters.verified ||
+                product.verified === true;
 
             return (
                 matchedPrice &&
@@ -47,7 +51,8 @@ const useFilteredProducts = (productFilters: ProductFiltersTy) => {
                 matchedCategory &&
                 matchedBrand &&
                 matchedFeature &&
-                matchedCondition
+                matchedCondition &&
+                matchedVerified
             );
         })
     ), [productFilters])
