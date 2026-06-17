@@ -46,7 +46,7 @@ export const CurrencySelector = () => {
                             key={`${item.currency}-${idx}`}
                             onClick={() => {
                                 currencySet(item)
-                                currencyClose
+                                currencyClose()
                             }}
                             className="w-fullx px-4 py-2 hover:bg-primary-light/50 cursor-pointer border-b border-gray-200 text-left"
                         >
@@ -106,7 +106,7 @@ export const FlagsSelector = ({ direction = 'bottom' }: flagsDirectionTy) => {
                         key={idx}
                         onClick={() => {
                             flagSet(item)
-                            flagClose
+                            flagClose()
                         }}
                         className="flex items-center gap-2 w-full px-4 py-2 hover:bg-primary-light/50 cursor-pointer border-b border-gray-200 text-left"
                     >
@@ -131,7 +131,6 @@ export const TopSortSelector = () => {
         isSortOpen,
         selectedSort,
         sortToggle,
-        sortOpen,
         sortClose,
         sortSelect
     } = useSortContext();
@@ -141,7 +140,7 @@ export const TopSortSelector = () => {
             <button
                 type="button"
                 onClick={sortToggle}
-                className="min-w-[150px] shirnk-0 flex items-center justify-between relative txt-base py-2.5 px-2 cursor-pointer border border-gray-100 rounded-card transition-all duration-300 ease-out hover:bg-gray-100"
+                className="min-w-[170px] shirnk-0 flex items-center justify-between relative txt-base py-2.5 px-2 cursor-pointer border border-gray-100 rounded-card transition-all duration-300 ease-out hover:bg-gray-100"
             >
                 <span>
                     {selectedSort.label}
@@ -165,7 +164,7 @@ export const TopSortSelector = () => {
                             sortSelect(item)
                             sortClose()
                         }}
-                        className={`px-4 py-2 border-r last:border-r-0 border-gray-200 hover:bg-primary-light/50 text-left`}
+                        className={`px-4 py-2 border-b last:border-b-0 border-gray-200 hover:bg-primary-light/50 text-left`}
                     >
                         {item.label}
                     </button>

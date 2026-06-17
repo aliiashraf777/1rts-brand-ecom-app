@@ -15,6 +15,10 @@ export interface IproductsDataItem {
     featureId?: string,
     conditionId?: string,
     verified?: boolean,
+    featured?: boolean,
+    isNew?: boolean,
+    isOld?: boolean,
+    selectSort?: boolean,
 }
 
 export const productsData: IproductsDataItem[] = [
@@ -48,6 +52,7 @@ export const productsData: IproductsDataItem[] = [
         featureId: 'feature1',
         conditionId: 'condition1',
         verified: true,
+        isNew: true,
     },
     {
         id: 'product2',
@@ -64,6 +69,7 @@ export const productsData: IproductsDataItem[] = [
         featureId: 'feature2',
         conditionId: 'condition2',
         verified: true,
+        isOld: true,
     },
     {
         id: 'product3',
@@ -104,6 +110,7 @@ export const productsData: IproductsDataItem[] = [
         orders: '179',
         categoryId: ['cat0', 'cat6'],
         brandId: 'brand4',
+        featured: true,
     },
     {
         id: 'product6',
@@ -115,6 +122,7 @@ export const productsData: IproductsDataItem[] = [
         ratings: "4.5",
         detailsLink: "/",
         orders: '257',
+        featured: true,
     },
     {
         id: 'product7',
@@ -124,7 +132,8 @@ export const productsData: IproductsDataItem[] = [
         desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit",
         ratings: "5",
         detailsLink: "/",
-        orders: '150'
+        orders: '150',
+        featured: true,
     },
     {
         id: 'product8',

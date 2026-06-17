@@ -22,6 +22,7 @@ export interface IfilterOption {
     id: string,
     label?: string,
     rating?: number,
+    sortKey?: 'SelectSort' | 'featured' | 'bestSellers' | 'new' | 'old' | 'priceLowToHigh' | 'priceHighToLow'
 }
 
 // export const filterBrandsData: filterBrandItem[] = [
@@ -121,23 +122,38 @@ export const filterVerifiedData: IfilterOption[] = [
 
 export const sortTopData: IfilterOption[] = [
     {
+        id: 'sort00',
+        label: 'Select sort',
+        sortKey: 'SelectSort'
+    },
+    {
         id: 'sort0',
         label: 'Featured',
+        sortKey: 'featured'
     },
     {
         id: 'sort1',
         label: 'Best seller',
+        sortKey: 'bestSellers'
     },
     {
         id: 'sort2',
-        label: 'Sale',
+        label: 'New',
+        sortKey: 'new'
     },
     {
         id: 'sort3',
-        label: 'Newest',
+        label: 'Old',
+        sortKey: 'old'
     },
     {
         id: 'sort4',
-        label: 'Old',
+        label: 'Price low to high',
+        sortKey: 'priceLowToHigh'
+    },
+    {
+        id: 'sort5',
+        label: 'Price high to low',
+        sortKey: 'priceHighToLow'
     },
 ]
