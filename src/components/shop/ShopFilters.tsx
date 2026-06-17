@@ -6,14 +6,14 @@ import CheckboxBtn from "./CheckboxBtn";
 import Button from "../common/Button";
 import { type ProductFiltersTy } from "@/pages/shop/Shop";
 import ClearAllFilters from "./ClearAllFilters";
-import type { PriceRangePropsTy } from "@/hooks/usePriceRange";
-import type { onClickFiltersHandlersTy } from "@/hooks/useProductFilters";
+import type { PriceRangeForConsumerTy } from "@/hooks/usePriceRange";
+import type { onClickFiltersHandlersTy } from "@/hooks/useFiltersUpdateHandlers";
 
 
 type Props = {
     productFilters: ProductFiltersTy,
     setProductFilters: React.Dispatch<React.SetStateAction<ProductFiltersTy>>,
-    priceRangeH: PriceRangePropsTy,
+    priceRangeH: PriceRangeForConsumerTy,
     clearAllFilters: () => void,
     onClickFiltersHandlers: onClickFiltersHandlersTy,
 }
@@ -188,7 +188,7 @@ const ShopFilters = ({ productFilters, setProductFilters, priceRangeH, clearAllF
                             value={priceRangeH.minInput}
                             onChange={priceRangeH.handleMinInputChange}
                             // onBlur={priceRangeH.commitMinInput}
-                            onKeyDown={priceRangeH.handleEnterCommit}
+                            onKeyDown={(e) => priceRangeH.handleEnterCommit(e, 'min')}
                             className="w-full h-10 bg-white border border-gray-300 rounded-card p-2.5"
                         />
                     </div>
@@ -202,7 +202,7 @@ const ShopFilters = ({ productFilters, setProductFilters, priceRangeH, clearAllF
                             value={priceRangeH.maxInput}
                             onChange={priceRangeH.handleMaxInputChange}
                             // onBlur={priceRangeH.commitMaxInput}
-                            onKeyDown={priceRangeH.handleEnterCommit}
+                            onKeyDown={(e) => priceRangeH.handleEnterCommit(e, 'max')}
                             className="w-full h-10 bg-white border border-gray-300 rounded-card p-2.5"
                         />
                     </div>

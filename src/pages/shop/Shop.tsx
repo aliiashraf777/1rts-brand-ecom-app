@@ -4,10 +4,11 @@ import BreadCrumb from "@/components/shop/BreadCrumb"
 import ShopFilters from "@/components/shop/ShopFilters"
 import ShopGridProducts from "@/components/shop/ShopGridProducts"
 import ShopListProducts from "@/components/shop/ShopListProducts"
+import TopFiltersBar from "@/components/shop/TopFiltersBar"
 import useFilteredProducts from "@/hooks/useFilteredProducts"
 import useFiltersChips from "@/hooks/useFiltersChips"
 import usePriceRange from "@/hooks/usePriceRange"
-import useProductFilters from "@/hooks/useProductFilters"
+import useFiltersUpdateHandlers from "@/hooks/useFiltersUpdateHandlers"
 
 
 export type ProductFiltersTy = {
@@ -18,6 +19,7 @@ export type ProductFiltersTy = {
   ratings: string[],
   minPrice: number,
   maxPrice: number,
+  verified: boolean,
 };
 
 export const initialFilters: ProductFiltersTy = {
@@ -28,6 +30,7 @@ export const initialFilters: ProductFiltersTy = {
   ratings: [],
   minPrice: 0,
   maxPrice: 1000,
+  verified: false,
 };
 
 // helper for clear all buttons
@@ -38,20 +41,15 @@ export const hasActiveFilters = (filters: ProductFiltersTy) =>
   filters.conditionIds.length > 0 ||
   filters.ratings.length > 0 ||
   filters.minPrice !== initialFilters.minPrice ||
-  filters.maxPrice !== initialFilters.maxPrice;
-
-export type AppliedFiltersChipsTy = {
-  key: string,
-  label: string,
-  onRemove: () => void,
-}
+  filters.maxPrice !== initialFilters.maxPrice ||
+  filters.verified;
 
 
 const Shop = () => {
 
   const priceRangeH = usePriceRange();
 
-  const { productFilters, setProductFilters, filtersHandlers, clearAllFilters } = useProductFilters();
+  const { productFilters, setProductFilters, filtersHandlers, clearAllFilters } = useFiltersUpdateHandlers();
 
   const filteredProductsH = useFilteredProducts(productFilters);
 
@@ -81,9 +79,10 @@ const Shop = () => {
           <div className="flex-1 min-w-0 p-2.5 md:p-0">
 
             {/* top filters bar */}
-            <div className="w-full bg-white p-2 border border-gray-300 rounded-card mb-section">
-              12,911 items in <strong>Mobile accessory</strong>
-            </div>
+            <TopFiltersBar
+              productFilters={productFilters}
+              updateVerified={filtersHandlers.updateVerified}
+            />
 
             {/* appliedFiltersChips */}
             <AppliedFiltersChips

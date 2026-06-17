@@ -23,9 +23,13 @@ export type PriceRangePropsTy = {
     handleMaxInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
     commitMinInput: () => void,
     commitMaxInput: () => void,
-    handleEnterCommit: (e: React.KeyboardEvent<HTMLInputElement>) => void,
+    handleEnterCommit: (e: React.KeyboardEvent<HTMLInputElement>, which: 'min' | 'max') => void,
     applyPriceRange: (onApply: (min: number, max: number) => void) => void,
     reset: () => void,
+}
+
+export type PriceRangeForConsumerTy = Omit<PriceRangePropsTy, 'applyPriceRange'> & {
+    applyPriceRange: () => void,
 }
 
 const usePriceRange = (): PriceRangePropsTy => {
@@ -98,11 +102,13 @@ const usePriceRange = (): PriceRangePropsTy => {
     }
 
     // enter commit
-    const handleEnterCommit = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter')
-            // e.currentTarget.blur();
-            // applyPriceRange()
-            commitMinInput();
+    const handleEnterCommit = (
+        e: React.KeyboardEvent<HTMLInputElement>,
+        which: 'min' | 'max',
+    ) => {
+        if (e.key !== 'Enter') return
+        if (which === 'min') commitMinInput()
+        else commitMaxInput()
     }
 
     // reset

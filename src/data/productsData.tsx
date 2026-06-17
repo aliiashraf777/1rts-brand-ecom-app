@@ -14,6 +14,7 @@ export interface IproductsDataItem {
     brandId?: string,
     featureId?: string,
     conditionId?: string,
+    verified?: boolean,
 }
 
 export const productsData: IproductsDataItem[] = [
@@ -31,6 +32,7 @@ export const productsData: IproductsDataItem[] = [
         brandId: 'brand0',
         featureId: 'feature0',
         conditionId: 'condition0',
+        verified: true,
     },
     {
         id: 'product1',
@@ -45,6 +47,7 @@ export const productsData: IproductsDataItem[] = [
         brandId: 'brand1',
         featureId: 'feature1',
         conditionId: 'condition1',
+        verified: true,
     },
     {
         id: 'product2',
@@ -60,6 +63,7 @@ export const productsData: IproductsDataItem[] = [
         brandId: 'brand2',
         featureId: 'feature2',
         conditionId: 'condition2',
+        verified: true,
     },
     {
         id: 'product3',

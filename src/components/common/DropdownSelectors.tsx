@@ -1,7 +1,10 @@
 import { useCurrencyContext } from "@/context/CurrencyContext";
 import { useFlagsContext } from "@/context/FlagsContext";
+import { useSortContext } from "@/context/TopSortContext";
 import { langCurrencyData, shipToFlagsData } from "@/data/navigationData";
+import { sortTopData, type IfilterOption } from "@/data/shopFiltersData";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 
 
 export const CurrencySelector = () => {
@@ -23,12 +26,10 @@ export const CurrencySelector = () => {
                     {selectedCurrency.language}, {selectedCurrency.currencyCode}
                 </span>
 
-                {!isCurrencyOpen
-                    ?
-                    < ChevronDown className="text-gray-500 w-4 h-4" />
-                    :
-                    < ChevronUp className="text-gray-500 w-4 h-4" />
-                }
+                <ChevronDown
+                    className={`text-gray-500 w-4 h-4 
+                    ${isCurrencyOpen ? 'rotate-180' : ''}`}
+                />
             </button>
 
             {/* currency custom dropDown Panel */}
@@ -37,8 +38,8 @@ export const CurrencySelector = () => {
                 className={`min-w-max absolute top-full right-0 mt-2 z-10 bg-white border border-gray-300 rounded-card overflow-hidden shadow-card-lg flex flex-col transition-all duration-300 ease-in 
                     ${isCurrencyOpen
                         ? 'pointer-events-auto opacity-100 translate-y-0'
-                        : 'pointer-events-none opacity-0 -translate-y-2'}`
-                }>
+                        : 'pointer-events-none opacity-0 -translate-y-2'}`}
+            >
                 {
                     langCurrencyData.map((item, idx) => (
                         <button
@@ -47,7 +48,7 @@ export const CurrencySelector = () => {
                                 currencySet(item)
                                 currencyClose
                             }}
-                            className="w-fullx px-4 py-2 hover:bg-primary-light cursor-pointer border-b border-gray-200"
+                            className="w-fullx px-4 py-2 hover:bg-primary-light/50 cursor-pointer border-b border-gray-200 text-left"
                         >
                             <span>{item.language}, {item.currencyCode}</span>
                         </button>
@@ -88,12 +89,10 @@ export const FlagsSelector = ({ direction = 'bottom' }: flagsDirectionTy) => {
                     className="w-5"
                 />
 
-                {!isFlagOpen
-                    ?
-                    < ChevronDown className="text-gray-500 w-4 h-4" />
-                    :
-                    < ChevronUp className="text-gray-500 w-4 h-4" />
-                }
+                <ChevronDown
+                    className={`text-gray-500 w-4 h-4 
+                    ${isFlagOpen ? 'rotate-180' : ''}`}
+                />
             </button>
 
             {/* flags dropdown panel */}
@@ -109,7 +108,7 @@ export const FlagsSelector = ({ direction = 'bottom' }: flagsDirectionTy) => {
                             flagSet(item)
                             flagClose
                         }}
-                        className="flex items-center gap-2 w-full px-4 py-2 hover:bg-primary-light cursor-pointer border-b border-gray-200"
+                        className="flex items-center gap-2 w-full px-4 py-2 hover:bg-primary-light/50 cursor-pointer border-b border-gray-200 text-left"
                     >
                         <span>{item.country}</span>
                         <img
@@ -117,6 +116,58 @@ export const FlagsSelector = ({ direction = 'bottom' }: flagsDirectionTy) => {
                             alt={item.country}
                             className="w-5"
                         />
+                    </button>
+                ))}
+            </div>
+        </div>
+    )
+}
+
+
+// ------------
+export const TopSortSelector = () => {
+
+    const {
+        isSortOpen,
+        selectedSort,
+        sortToggle,
+        sortOpen,
+        sortClose,
+        sortSelect
+    } = useSortContext();
+
+    return (
+        <div className="relative">
+            <button
+                type="button"
+                onClick={sortToggle}
+                className="min-w-[150px] shirnk-0 flex items-center justify-between relative txt-base py-2.5 px-2 cursor-pointer border border-gray-100 rounded-card transition-all duration-300 ease-out hover:bg-gray-100"
+            >
+                <span>
+                    {selectedSort.label}
+                </span>
+
+                <ChevronDown
+                    className={`text-gray-500 w-4 h-4 
+                    ${isSortOpen ? 'rotate-180' : ''}`}
+                />
+            </button>
+
+            <div
+                className={`flex flex-col min-w-max absolute top-full right-0 mt-2 z-10 bg-white border border-gray-300 rounded-card overflow-hidden shadow-card-lg transition-all duration-300 ease-out ${isSortOpen
+                    ? "pointer-events-auto opacity-100 translate-y-0"
+                    : "pointer-events-none opacity-0 -translate-y-2"}`}
+            >
+                {sortTopData.map((item) => (
+                    <button
+                        key={item.id}
+                        onClick={() => {
+                            sortSelect(item)
+                            sortClose()
+                        }}
+                        className={`px-4 py-2 border-r last:border-r-0 border-gray-200 hover:bg-primary-light/50 text-left`}
+                    >
+                        {item.label}
                     </button>
                 ))}
             </div>
