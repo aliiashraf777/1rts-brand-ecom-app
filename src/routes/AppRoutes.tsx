@@ -30,7 +30,6 @@ const AppRoutes = (props: Props) => {
                     path: "*",
                     Component: NotFound,
                 },
-
             ]
         },
         {
