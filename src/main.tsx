@@ -2,13 +2,12 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
-import { BrowserRouter } from 'react-router'
 import { MobileMenuContextProvider } from './context/MobileMenuContext.tsx'
 import { CurrencyContextProvider } from './context/CurrencyContext.tsx'
 import { FlagsContextProvider } from './context/FlagsContext.tsx'
 import { SortContextProvider } from './context/TopSortContext.tsx'
-import { ProductViewContextProvider } from './context/ProductViewContext.tsx'
-BrowserRouter
+import { ProductViewContextProvider } from './context/ProductViewContext.tsx';
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,9 +16,9 @@ createRoot(document.getElementById('root')!).render(
         <MobileMenuContextProvider>
           <CurrencyContextProvider>
             <FlagsContextProvider>
-              <BrowserRouter>
+                {/* <BrowserRouter> */}
                 <App />
-              </BrowserRouter>
+                {/* </BrowserRouter> */}
             </FlagsContextProvider>
           </CurrencyContextProvider>
         </MobileMenuContextProvider>

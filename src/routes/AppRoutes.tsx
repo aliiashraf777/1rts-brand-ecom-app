@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router"
+import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router"
 import MainLayout from "../layouts/MainLayout"
 import { Cart, Home, Login, NotFound, Register, Shop, SingleProductDetail } from "../pages"
 import CartLayout from "../layouts/CartLayout"
@@ -6,8 +6,56 @@ import CartLayout from "../layouts/CartLayout"
 type Props = {}
 
 const AppRoutes = (props: Props) => {
-    return (
-        <Routes>
+
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            Component: MainLayout,
+            children: [
+                {
+                    index: true,
+                    Component: Home,
+                },
+                {
+                    path: "shop",
+                    Component: Shop,
+                    handle: { crumb: () => "Shop" },
+                },
+                {
+                    path: "shop/:id",
+                    Component: SingleProductDetail,
+                    handle: { crumb: (data: any) => data?.product?.name ?? "Product" }
+                },
+                {
+                    path: "*",
+                    Component: NotFound,
+                },
+
+            ]
+        },
+        {
+            Component: CartLayout,
+            children: [
+                {
+                    index: true,
+                    path: "cart",
+                    Component: Cart,
+                    handle: {crumb: () => "Cart"},
+                },
+                {
+                    path: "login",
+                    Component: Login,
+                },
+                {
+                    path: 'register',
+                    Component: Register,
+                }
+            ]
+        }
+    ])
+
+    return (<>
+        {/* <Routes>
             <Route element={<MainLayout />}>
                 <Route index element={<Home />} />
                 <Route path="shop" element={<Shop />} />
@@ -21,8 +69,10 @@ const AppRoutes = (props: Props) => {
                 <Route path="/login" element={<Login />} />
                 <Route path="register" element={<Register />} />
             </Route>
-        </Routes>
-    )
+        </Routes> */}
+
+        <RouterProvider router={router} />
+    </>)
 }
 
 export default AppRoutes

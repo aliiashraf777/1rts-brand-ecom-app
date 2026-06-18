@@ -69,6 +69,7 @@ const ShopFilters = ({ productFilters, setProductFilters, priceRangeH, clearAllF
             <ClearAllFilters
                 productFilters={productFilters}
                 onClick={clearAllFilters}
+                borderT
             />
 
             {/* category filter */}
@@ -185,6 +186,7 @@ const ShopFilters = ({ productFilters, setProductFilters, priceRangeH, clearAllF
                             type="number"
                             name="min"
                             id="min"
+                            placeholder="0"
                             value={priceRangeH.minInput}
                             onChange={priceRangeH.handleMinInputChange}
                             // onBlur={priceRangeH.commitMinInput}
@@ -199,6 +201,7 @@ const ShopFilters = ({ productFilters, setProductFilters, priceRangeH, clearAllF
                             type="number"
                             name="max"
                             id="max"
+                            placeholder="99"
                             value={priceRangeH.maxInput}
                             onChange={priceRangeH.handleMaxInputChange}
                             // onBlur={priceRangeH.commitMaxInput}

@@ -4,12 +4,17 @@ type Props = {
     productFilters: ProductFiltersTy
     onClick: () => void,
     variant?: 'text' | 'onlyBtn'
+    borderT?: boolean,
 }
 
-const ClearAllFilters = ({ productFilters, onClick, variant = 'text' }: Props) => {
+const ClearAllFilters = ({ productFilters, onClick, variant = 'text', borderT }: Props) => {
     return (
-        <div className="flex items-center justify-between py-3 px-2">
-            <p className={`txt-body-medium ${variant === "onlyBtn" && 'hidden'}`}>
+        <div
+            className={`flex items-center justify-between py-3 px-2 ${borderT ? 'border-t border-gray-300' : ''} `}
+        >
+            <p
+                className={`txt-body-medium ${variant === "onlyBtn" && 'hidden'}`}
+            >
                 Filters
             </p>
 

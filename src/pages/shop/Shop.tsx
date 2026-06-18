@@ -1,6 +1,6 @@
 import SectionContainer from "@/components/common/SectionContainer"
 import AppliedFiltersChips from "@/components/shop/AppliedFiltersChips"
-import BreadCrumb from "@/components/shop/BreadCrumb"
+import BreadCrumb, { DynamicBreadCrumb } from "@/components/shop/BreadCrumb"
 import ShopFilters from "@/components/shop/ShopFilters"
 import ShopGridProducts from "@/components/shop/ShopGridProducts"
 import ShopListProducts from "@/components/shop/ShopListProducts"
@@ -10,7 +10,6 @@ import useFiltersChips from "@/hooks/useFiltersChips"
 import usePriceRange from "@/hooks/usePriceRange"
 import useFiltersUpdateHandlers from "@/hooks/useFiltersUpdateHandlers"
 import { useProductViewContext } from "@/context/ProductViewContext"
-import { searchCategoriesData } from "@/data/navigationData"
 
 
 export type ProductFiltersTy = {
@@ -46,6 +45,11 @@ export const hasActiveFilters = (filters: ProductFiltersTy) =>
   filters.maxPrice !== initialFilters.maxPrice ||
   filters.verified;
 
+export type breadCrumbItemTy = {
+  id: string,
+  label: string,
+  link: string,
+}
 
 const Shop = () => {
 
@@ -58,11 +62,12 @@ const Shop = () => {
   const appliedFiltersChipsH = useFiltersChips(productFilters, setProductFilters, priceRangeH.reset);
 
   const { isListView, isGridView, productViewToggle } = useProductViewContext();
+  
 
   return (
     <div className="w-full">
 
-      <BreadCrumb />
+      <DynamicBreadCrumb />
 
       <SectionContainer>
         <div className="flex gap-4">
