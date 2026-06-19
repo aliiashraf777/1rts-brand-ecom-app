@@ -37,7 +37,10 @@ const NavBar = ({ className }: Props) => {
                   key={`${nav.link}-${nav.text}`}
                   className="txt-body-title hover:text-primary cursor-pointer transition-all duration-300"
                 >
-                  <NavLink to={nav.link}>
+                  <NavLink
+                    to={nav.link}
+                    className={({ isActive }) => isActive ? 'text-primary' : ''}
+                  >
                     {nav.text}
                   </NavLink>
                 </li>

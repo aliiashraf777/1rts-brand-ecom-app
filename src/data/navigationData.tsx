@@ -107,23 +107,27 @@ export const topIconsData: ItopIconsItem[] = [
 
 export const navMenuData: InavMenuItem[] = [
     {
-        link: '/',
+        link: '/all-category',
         text: 'All category',
+    },
+    {
+        link: '/',
+        text: 'Home',
     },
     {
         link: '/shop',
         text: 'Shop',
     },
     {
-        link: '/',
+        link: '/about',
         text: 'About',
     },
     {
-        link: '/',
+        link: '/contact',
         text: 'Contact',
     },
     {
-        link: '/',
+        link: '/help',
         text: 'Help',
     },
 ]
