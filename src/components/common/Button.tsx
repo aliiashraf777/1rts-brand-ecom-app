@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn"
-import { Heart } from "lucide-react"
+import { Eye, Heart, ShoppingCart } from "lucide-react"
 import { Link } from "react-router"
 
 type Props = {
@@ -63,19 +63,30 @@ export const LinkBtn = ({ children, to, className }: LinkBtnTy) => {
 }
 
 type HeartBtnTy = {
-    className: string,
-    onClick?: () => void
+    className?: string,
+    onClick?: () => void,
+    variant?: 'heart' | 'cart' | 'eye',
 }
 
-export const AddCartHeartBtn = ({ className, onClick }: HeartBtnTy) => {
+export const AddCartHeartBtn = ({ className, onClick, variant = 'heart' }: HeartBtnTy) => {
 
     return (
         <button
-            className={`w-max h-max border border-gray-300 rounded-card p-1 md:p-2 cursor-pointer transition-all duration-300 ease-out hover:scale-110 ${className || ''}`}
+            className={`w-max h-max border border-gray-300 bg-white text-primary rounded-card p-1 md:p-2 cursor-pointer transition-all duration-300 ease-out hover:scale-110 ${className || ''}`}
+            onClick={onClick}
         >
-            <Heart
-                className="text-primary"
-            />
+            {variant === 'heart' &&
+                <Heart />
+            }
+
+            {variant === 'cart' &&
+                <ShoppingCart />
+            }
+
+            {variant === 'eye' &&
+                <Eye />
+            }
+
         </button>
     )
 }

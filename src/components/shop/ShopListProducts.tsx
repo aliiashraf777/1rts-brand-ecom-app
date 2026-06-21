@@ -1,21 +1,26 @@
-import { productsData, type IproductsDataItem } from "@/data/productsData"
+import { type IproductsDataItem } from "@/data/productsData"
 import { AddCartHeartBtn, LinkBtn } from "../common/Button"
 import StarsDynamicRatings from "./StarsDynamicRatings"
+import { useCartActions } from "@/redux/features/useCartActions"
+import ProductActionBtns from "./ProductActionBtns"
 
 type Props = {
     filteredProductsH: IproductsDataItem[],
 }
 
 const ShopListProducts = ({ filteredProductsH }: Props) => {
+
+    const { addToCart } = useCartActions();
+
     return (
         <div className="w-full mb-section-30">
             <div className="flex flex-col gap-2.5">
                 {/* {productsData.slice(1, 8).map((item, idx) => { */}
-                {filteredProductsH.slice(1, 8).map((item, idx) => {
+                {filteredProductsH.slice(1, 8).map((item) => {
                     return (
                         <div
-                            key={`${item.title}-${idx}`}
-                            className="w-full bg-white border border-gray-300 rounded-card flex relative group p-2.5"
+                            key={`${item.id}`}
+                            className="w-full bg-white border border-gray-300 rounded-card flex relative group p-2.5 group"
                         >
                             {/* image */}
                             <div className="flex w-[100px] h-[100px] md:w-[210px] md:h-[210px] shrink-0 justify-center items-center self-center md:self-auto">
@@ -63,7 +68,7 @@ const ShopListProducts = ({ filteredProductsH }: Props) => {
                                     </p>
 
                                     {/* period */}
-                                    <div className="hidden md:blcok w-1.5 h-1.5 bg-gray-300 rounded-full"></div>
+                                    <div className="hidden md:block w-1.5 h-1.5 bg-gray-300 rounded-full"></div>
 
                                     <p className="txt-small md:text-base text-brand-green">
                                         Free shipping
@@ -72,7 +77,7 @@ const ShopListProducts = ({ filteredProductsH }: Props) => {
 
                                 {/* description & cta */}
                                 <div className="flex flex-col gap-0.5 md:gap-2.5">
-                                    <p className="hidden lg:inline-block max-w-[550px] txt-body text-gray-600">
+                                    <p className="hidden lg:inline-block max-w-[520px] txt-body text-gray-600">
                                         {item.desc}
                                     </p>
 
@@ -86,9 +91,15 @@ const ShopListProducts = ({ filteredProductsH }: Props) => {
                             </div>
 
                             {/* add to wishlist btn */}
-                            <AddCartHeartBtn
-                                className="absolute right-2.5 md:right-5 bottom-2.5 sm:top-5"
+                            <ProductActionBtns
+                                addToCart={() => addToCart({
+                                    id: item.id,
+                                    title: item.title,
+                                    image: item.image,
+                                    price: item.price,
+                                })}
                             />
+
                         </div>
                     )
                 })}

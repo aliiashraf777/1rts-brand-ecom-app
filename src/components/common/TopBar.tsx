@@ -5,7 +5,7 @@ import { topIconsData } from "@/data/navigationData"
 import { Link } from "react-router"
 import { useMobileMenuContext } from "@/context/MobileMenuContext"
 import HeroLoginCard from "../home/HeroLoginCard"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 type Props = {
     className?: string,
@@ -15,7 +15,10 @@ type Props = {
 const TopBar = ({ disabled, className }: Props) => {
 
     const { openMobileMenu } = useMobileMenuContext();
-    const [isLoginOpen, setIsLoginOpen] = useState<boolean>(false)
+    const [isLoginOpen, setIsLoginOpen] = useState<boolean>(false);
+
+    // on scroll header stick
+    const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
     const handleProfileLoginClick = (text: string): void => {
         if (text === 'Profile') {
@@ -23,9 +26,29 @@ const TopBar = ({ disabled, className }: Props) => {
         }
     }
 
+    const handleScroll = () => {
+        if (window.scrollY > 100) {
+            setIsScrolled(true)
+        } else {
+            setIsScrolled(false);
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('scroll', handleScroll);
+
+        return () => {
+            document.removeEventListener('scroll', handleScroll);
+        }
+    }, [])
+
     return (
-        <div className="page-padding border-b border-gray-300">
-            <div className={`container-custom py-2.5 lg:py-section borderx border-blue-600 flex justify-between items-center gap-2.5 ${className || ''}`}>
+        <div
+            className={`topbar page-padding border-b border-gray-300  bg-white ${isScrolled ? 'scrolled' : ''}
+                `}
+        >
+            <div className={`container-custom py-2.5 lg:py-section borderx border-blue-600 flex justify-between items-center gap-2.5 ${className || ''}`}
+            >
 
                 {/* hamBurger + logo */}
                 <div className="flex items-center gap-section lg:gap-0">

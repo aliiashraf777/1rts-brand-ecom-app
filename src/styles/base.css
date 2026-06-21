@@ -82,4 +82,30 @@
     pointer-events: auto;
   }
 
+  .topbar {
+    width: 100%;
+    transition: all 0.3s ease-out;
+  }
+
+  .topbar.scrolled {
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    background-color: #fff;
+    animation: fadeInDown 0.5s ease;
+    z-index: 50;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
 }

@@ -45,11 +45,6 @@ export const hasActiveFilters = (filters: ProductFiltersTy) =>
   filters.maxPrice !== initialFilters.maxPrice ||
   filters.verified;
 
-export type breadCrumbItemTy = {
-  id: string,
-  label: string,
-  link: string,
-}
 
 const Shop = () => {
 
