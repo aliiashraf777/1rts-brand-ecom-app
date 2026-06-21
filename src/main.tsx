@@ -7,22 +7,26 @@ import { CurrencyContextProvider } from './context/CurrencyContext.tsx'
 import { FlagsContextProvider } from './context/FlagsContext.tsx'
 import { SortContextProvider } from './context/TopSortContext.tsx'
 import { ProductViewContextProvider } from './context/ProductViewContext.tsx';
+import { Provider } from 'react-redux'
+import { store } from './redux/store.ts'
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ProductViewContextProvider>
-      <SortContextProvider>
-        <MobileMenuContextProvider>
-          <CurrencyContextProvider>
-            <FlagsContextProvider>
+    <Provider store={store}>
+      <ProductViewContextProvider>
+        <SortContextProvider>
+          <MobileMenuContextProvider>
+            <CurrencyContextProvider>
+              <FlagsContextProvider>
                 {/* <BrowserRouter> */}
                 <App />
                 {/* </BrowserRouter> */}
-            </FlagsContextProvider>
-          </CurrencyContextProvider>
-        </MobileMenuContextProvider>
-      </SortContextProvider>
-    </ProductViewContextProvider>
+              </FlagsContextProvider>
+            </CurrencyContextProvider>
+          </MobileMenuContextProvider>
+        </SortContextProvider>
+      </ProductViewContextProvider>
+    </Provider>
   </StrictMode>,
 )
