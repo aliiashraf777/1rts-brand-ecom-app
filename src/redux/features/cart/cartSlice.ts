@@ -1,14 +1,7 @@
+import type { AddItemPayloadTy, IProductItem } from "@/types/productTypes";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-
-export interface ICartItem {
-    id: string,
-    title: string,
-    image: string,
-    price: number,
-    qty: number,
-    totalPrice: number,
-}
+export type ICartItem = IProductItem;
 
 export type CartInitialStateTy = {
     cartItemsList: ICartItem[],
@@ -18,14 +11,14 @@ export const initialState: CartInitialStateTy = {
     cartItemsList: []
 }
 
-type AddToCartPayloadTy = Omit<ICartItem, 'qty' | 'totalPrice'>
-
 export const cartReducerSlice = createSlice({
     name: 'cartSlice',
     initialState,
     reducers: {
-        addToCart: (state, action: PayloadAction<AddToCartPayloadTy>) => {
-
+        addToCart: (
+            state,
+            action: PayloadAction<AddItemPayloadTy>
+        ) => {
             const newItem = action.payload;
 
             const existingItem = state.cartItemsList.find(
@@ -71,17 +64,11 @@ export const cartReducerSlice = createSlice({
         deleteFromCart: (state, action: PayloadAction<string>) => {
             const toDeleteItemId = action.payload;
 
-            const existingItem = state.cartItemsList.find(
-                (item) => item.id === toDeleteItemId)
-
-            if (!existingItem) return;
-
             state.cartItemsList = state.cartItemsList.filter(
                 (item) => item.id !== toDeleteItemId);
         },
 
         emptyCart: (state) => {
-            alert('Empty Cart...!')
             state.cartItemsList = [];
         }
     }

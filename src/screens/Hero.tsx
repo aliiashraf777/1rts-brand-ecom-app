@@ -1,4 +1,4 @@
-import SectionContainer from "@/components/common/SectionContainer"
+import SectionContainer from "@/components/common/section/SectionContainer"
 import HeroCategories from "@/components/home/HeroCategories"
 import HeroInfoCard from "@/components/home/HeroInfoCard"
 import HeroLoginCard from "@/components/home/HeroLoginCard"

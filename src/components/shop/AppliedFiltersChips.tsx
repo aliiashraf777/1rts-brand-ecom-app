@@ -1,5 +1,5 @@
 import type { ProductFiltersTy } from "@/pages/shop/Shop"
-import Button from "../common/Button"
+import Button from "../common/btns/Button"
 import ClearAllFilters from "./ClearAllFilters"
 import { X } from "lucide-react"
 import type { AppliedFiltersChipsTy } from "@/hooks/useFiltersChips"

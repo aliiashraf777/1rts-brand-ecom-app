@@ -1,6 +1,6 @@
 import { shipToFlagsData } from "@/data/navigationData"
-import SectionContainer from "../common/SectionContainer"
-import SectionHeading from "../common/SectionHeading"
+import SectionContainer from "../common/section/SectionContainer"
+import SectionHeading from "../common/section/SectionHeading"
 
 type Props = {}
 

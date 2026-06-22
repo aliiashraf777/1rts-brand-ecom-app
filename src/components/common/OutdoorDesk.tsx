@@ -1,6 +1,6 @@
 import type { IProductCategoriesItem } from "@/data/outdoorData"
 import { Link } from "react-router"
-import Button from "./Button"
+import Button from "./btns/Button"
 
 type Props = {
     categoryBg: string,

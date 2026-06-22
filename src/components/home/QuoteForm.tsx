@@ -1,6 +1,6 @@
 import { formBg } from "@/assets"
-import SectionContainer from "../common/SectionContainer"
-import Button from "../common/Button"
+import SectionContainer from "../common/section/SectionContainer"
+import Button from "../common/btns/Button"
 import FormQuote from "./FormQuote"
 
 type Props = {}

@@ -1,5 +1,6 @@
 import type { IproductsDataItem } from "@/data/productsData"
-import { AddCartHeartBtn } from "../common/Button"
+import { AddCartHeartBtn } from "./Button"
+import type { AddItemPayloadTy, IProductItem } from "@/types/productTypes"
 
 type Props = {
     addToCart?: () => void,
@@ -40,6 +41,9 @@ const ProductActionBtns = ({ addToCart, addToFav, quickView }: Props) => {
 
 export default ProductActionBtns
 
+
+
+// -----------------------------
 export type GridTypes = {
     addToCart?: () => void,
     addToFav?: () => void,
@@ -75,16 +79,22 @@ export const ProductGridActionBtns = ({ addToCart, addToFav, quickView, variant 
 }
 
 
+// -----------------------------
 // mini Products action btns
 type MiniProductBtnsProp = {
-    addToFav?: () => void,
-    addToCart?: () => void,
-    deleteFromCart?: () => void,
-    deleteFromFavs?: () => void,
-    variant?: 'default' | 'favs'
+    variant: 'cart' | 'favs'
+    item: IProductItem,
+    removeFromClick: (id: string) => void,
+    addToClick: (item: AddItemPayloadTy) => void,
+    deleteFromClick: (id: string) => void,
 }
 
-export const MiniProductActionBtns = ({ addToFav, addToCart, deleteFromCart, deleteFromFavs, variant = 'default' }: MiniProductBtnsProp) => {
+export const MiniProductActionBtns = ({
+    variant, item, removeFromClick, addToClick, deleteFromClick
+
+}: MiniProductBtnsProp) => {
+
+    const { id, title, image, price, qty, totalPrice } = item;
 
     return (
         <div
@@ -92,25 +102,25 @@ export const MiniProductActionBtns = ({ addToFav, addToCart, deleteFromCart, del
             absolute right-4"
         >
 
-            {variant === 'default'
+            {variant === 'cart'
                 ? (<>
                     <AddCartHeartBtn
                         variant="del"
-                        onClick={deleteFromCart}
+                        onClick={() => deleteFromClick(id)}
                     />
                     <AddCartHeartBtn
-                        onClick={addToFav}
+                        onClick={() => addToClick({ id, title, image, price })}
                     />
 
                 </>)
                 : (<>
                     <AddCartHeartBtn
                         variant="del"
-                        onClick={deleteFromFavs}
+                        onClick={() => deleteFromClick(id)}
                     />
                     <AddCartHeartBtn
-                        onClick={addToCart}
                         variant="cart"
+                        onClick={() => addToClick({ id, title, image, price })}
                     />
                 </>)
             }

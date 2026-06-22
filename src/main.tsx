@@ -10,26 +10,29 @@ import { ProductViewContextProvider } from './context/ProductViewContext.tsx';
 import { Provider } from 'react-redux'
 import { store } from './redux/store.ts'
 import { CartPortalContextProvider } from './context/CartPortalContext.tsx'
+import { FavsPortalContextProvider } from './context/FavsPortalContext.tsx'
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <CartPortalContextProvider>
-      <Provider store={store}>
-        <ProductViewContextProvider>
-          <SortContextProvider>
-            <MobileMenuContextProvider>
-              <CurrencyContextProvider>
-                <FlagsContextProvider>
-                  {/* <BrowserRouter> */}
-                  <App />
-                  {/* </BrowserRouter> */}
-                </FlagsContextProvider>
-              </CurrencyContextProvider>
-            </MobileMenuContextProvider>
-          </SortContextProvider>
-        </ProductViewContextProvider>
-      </Provider>
-    </CartPortalContextProvider>
+    <FavsPortalContextProvider>
+      <CartPortalContextProvider>
+        <Provider store={store}>
+          <ProductViewContextProvider>
+            <SortContextProvider>
+              <MobileMenuContextProvider>
+                <CurrencyContextProvider>
+                  <FlagsContextProvider>
+                    {/* <BrowserRouter> */}
+                    <App />
+                    {/* </BrowserRouter> */}
+                  </FlagsContextProvider>
+                </CurrencyContextProvider>
+              </MobileMenuContextProvider>
+            </SortContextProvider>
+          </ProductViewContextProvider>
+        </Provider>
+      </CartPortalContextProvider>
+    </FavsPortalContextProvider>
   </StrictMode>,
 )

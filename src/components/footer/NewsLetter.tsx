@@ -1,5 +1,5 @@
-import Button from "../common/Button";
-import SectionContainer, { SectionFull } from "../common/SectionContainer"
+import Button from "../common/btns/Button";
+import SectionContainer, { SectionFull } from "../common/section/SectionContainer"
 import { Mail } from 'lucide-react';
 
 

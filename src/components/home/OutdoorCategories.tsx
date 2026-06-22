@@ -1,7 +1,7 @@
 import { outdoorData, type IProductCategoriesItem } from "@/data/outdoorData"
 import OutdoorDesk from "../common/OutdoorDesk"
 import OutdoorMobile from "../common/OutdoorMobile"
-import SectionContainer from "../common/SectionContainer"
+import SectionContainer from "../common/section/SectionContainer"
 
 type Props = {
     heading: string,

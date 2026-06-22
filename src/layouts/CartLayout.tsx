@@ -1,4 +1,4 @@
-import { HeaderCart } from "../components/common/Header"
+import { HeaderCart } from "../components/common/header/Header"
 import BaseLayout from "./BaseLayout"
 
 type Props = {}

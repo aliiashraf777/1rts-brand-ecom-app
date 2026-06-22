@@ -4,9 +4,10 @@ import SearchBar from "./SearchBar"
 import { topIconsData } from "@/data/navigationData"
 import { Link } from "react-router"
 import { useMobileMenuContext } from "@/context/MobileMenuContext"
-import HeroLoginCard from "../home/HeroLoginCard"
+import HeroLoginCard from "../../home/HeroLoginCard"
 import { useEffect, useState } from "react"
 import { useCartPortalContext } from "@/context/CartPortalContext"
+import { useFavsPortalContext } from "@/context/FavsPortalContext"
 
 type Props = {
     className?: string,
@@ -19,6 +20,7 @@ const TopBar = ({ disabled, className }: Props) => {
     const [isLoginOpen, setIsLoginOpen] = useState<boolean>(false);
 
     const { cartOpen } = useCartPortalContext();
+    const { favsOpen } = useFavsPortalContext();
 
     // on scroll header stick
     const [isScrolled, setIsScrolled] = useState<boolean>(false);
@@ -30,6 +32,9 @@ const TopBar = ({ disabled, className }: Props) => {
 
         text === 'Cart' &&
             cartOpen();
+
+        text === 'Wishlist' &&
+            favsOpen();
     }
 
     const handleScroll = () => {

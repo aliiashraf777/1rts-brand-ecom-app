@@ -1,5 +1,5 @@
 import { searchCategoriesData } from "@/data/navigationData"
-import Button from "./Button"
+import Button from "../btns/Button"
 import { ChevronDown } from "lucide-react"
 
 type Props = {}

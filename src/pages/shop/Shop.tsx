@@ -1,4 +1,4 @@
-import SectionContainer from "@/components/common/SectionContainer"
+import SectionContainer from "@/components/common/section/SectionContainer"
 import AppliedFiltersChips from "@/components/shop/AppliedFiltersChips"
 import BreadCrumb, { DynamicBreadCrumb } from "@/components/shop/BreadCrumb"
 import ShopFilters from "@/components/shop/ShopFilters"
@@ -57,7 +57,7 @@ const Shop = () => {
   const appliedFiltersChipsH = useFiltersChips(productFilters, setProductFilters, priceRangeH.reset);
 
   const { isListView, isGridView, productViewToggle } = useProductViewContext();
-  
+
 
   return (
     <div className="w-full">

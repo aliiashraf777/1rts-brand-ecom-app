@@ -1,7 +1,7 @@
 import { productsData } from "@/data/productsData"
-import SectionContainer from "../common/SectionContainer"
+import SectionContainer from "../common/section/SectionContainer"
 import { Link } from "react-router"
-import SectionHeading from "../common/SectionHeading"
+import SectionHeading from "../common/section/SectionHeading"
 
 type Props = {}
 
