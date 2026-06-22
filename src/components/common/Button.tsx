@@ -1,9 +1,9 @@
 import { cn } from "@/utils/cn"
-import { Eye, Heart, ShoppingCart } from "lucide-react"
+import { Eye, Heart, ShoppingCart, Trash2 } from "lucide-react"
 import { Link } from "react-router"
 
 type Props = {
-    variant?: 'gradient' | 'white',
+    variant?: 'gradient' | 'white' | 'green',
     size?: 'normal' | 'full',
     className?: string,
     disabled?: boolean,
@@ -28,6 +28,7 @@ const Button = ({ variant = 'gradient', size = 'normal', className, disabled, ch
                 // 3. color variants
                 variant === 'gradient' && 'bg-gradient-primary hover:bg-gradient-primary-reverse text-white',
                 variant === 'white' && 'bg-white text-text-primary hover:bg-primary hover:text-white border border-white hover:border-primary shadow-card-lg',
+                variant === 'green' && 'bg-brand-green text-white',
 
                 // 4. disabled state
                 disabled && 'opacity-50 cursor-not-allowed pointer-events-none',
@@ -65,14 +66,14 @@ export const LinkBtn = ({ children, to, className }: LinkBtnTy) => {
 type HeartBtnTy = {
     className?: string,
     onClick?: () => void,
-    variant?: 'heart' | 'cart' | 'eye',
+    variant?: 'heart' | 'cart' | 'eye' | 'del',
 }
 
 export const AddCartHeartBtn = ({ className, onClick, variant = 'heart' }: HeartBtnTy) => {
 
     return (
         <button
-            className={`w-max h-max border border-gray-300 bg-white text-primary rounded-card p-1 md:p-2 cursor-pointer transition-all duration-300 ease-out hover:scale-110 ${className || ''}`}
+            className={`w-max h-max border border-gray-300 bg-white text-primary p-1 md:p-2 rounded-card cursor-pointer transition-all duration-300 ease-out hover:scale-110 ${className || ''}`}
             onClick={onClick}
         >
             {variant === 'heart' &&
@@ -85,6 +86,10 @@ export const AddCartHeartBtn = ({ className, onClick, variant = 'heart' }: Heart
 
             {variant === 'eye' &&
                 <Eye />
+            }
+
+            {variant === 'del' &&
+                <Trash2 />
             }
 
         </button>

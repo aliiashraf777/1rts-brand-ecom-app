@@ -1,5 +1,5 @@
 import { type IproductsDataItem } from "@/data/productsData"
-import { AddCartHeartBtn, LinkBtn } from "../common/Button"
+import { LinkBtn } from "../common/Button"
 import StarsDynamicRatings from "./StarsDynamicRatings"
 import { useCartActions } from "@/redux/features/useCartActions"
 import ProductActionBtns from "./ProductActionBtns"

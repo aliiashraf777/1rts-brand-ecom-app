@@ -17,7 +17,7 @@ const TopFiltersBar = ({ productFilters, updateVerified }: Props) => {
     const { isListView, isGridView, productViewToggle } = useProductViewContext();
 
     return (
-        <div className="w-full bg-white p-2.5 border border-gray-300 rounded-card mb-section">
+        <div className="overflow-x-hiddenx w-full bg-white p-2.5 border border-gray-300 rounded-card mb-section">
             <div className="w-full flex justify-between items-center gap-2">
                 {/* selected category */}
                 <div className="flex items-center gap-1">

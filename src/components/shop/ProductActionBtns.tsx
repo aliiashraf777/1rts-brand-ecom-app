@@ -73,3 +73,48 @@ export const ProductGridActionBtns = ({ addToCart, addToFav, quickView, variant 
         </div>
     )
 }
+
+
+// mini Products action btns
+type MiniProductBtnsProp = {
+    addToFav?: () => void,
+    addToCart?: () => void,
+    deleteFromCart?: () => void,
+    deleteFromFavs?: () => void,
+    variant?: 'default' | 'favs'
+}
+
+export const MiniProductActionBtns = ({ addToFav, addToCart, deleteFromCart, deleteFromFavs, variant = 'default' }: MiniProductBtnsProp) => {
+
+    return (
+        <div
+            className="flex flex-col gap-2
+            absolute right-4"
+        >
+
+            {variant === 'default'
+                ? (<>
+                    <AddCartHeartBtn
+                        variant="del"
+                        onClick={deleteFromCart}
+                    />
+                    <AddCartHeartBtn
+                        onClick={addToFav}
+                    />
+
+                </>)
+                : (<>
+                    <AddCartHeartBtn
+                        variant="del"
+                        onClick={deleteFromFavs}
+                    />
+                    <AddCartHeartBtn
+                        onClick={addToCart}
+                        variant="cart"
+                    />
+                </>)
+            }
+
+        </div>
+    )
+}
