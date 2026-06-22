@@ -1,14 +1,19 @@
 import { useCartPortalContext } from "@/context/CartPortalContext";
-import { ArrowLeft } from "lucide-react";
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import CartPortalBody from "./CartPortalBody";
+import PortalsHead from "../PortalsHead";
+import { useAppSelector } from "@/redux/features/storeHooks";
+import { selectCartItemsList } from "@/redux/features/cart/cartSelectors";
+import { useCartActions } from "@/redux/features/cart/useCartActions";
 
 type Props = {}
 
 const CartPortal = (props: Props) => {
 
     const { isCartPortalOpen, cartClose } = useCartPortalContext();
+    const cartItemsList = useAppSelector(selectCartItemsList);
+    const { addToCart, removeFromCart, deleteFromCart, emptyCart } = useCartActions();
 
     useEffect(() => {
         if (!isCartPortalOpen) return;
@@ -29,9 +34,9 @@ const CartPortal = (props: Props) => {
 
     return createPortal(
         <div
-            aria-hidden='true'
+            aria-hidden={!isCartPortalOpen}
             onClick={cartClose}
-            className={`fixed top-0 right-0 z-50 bg-black/25 w-screen md:w-[460px] h-screen transition-opacity duration-300 ease-out 
+            className={`fixed top-0 right-0 z-50 bg-black/25 backdrop-blur-xs w-screen md:w-[460px] h-screen transition-opacity duration-300 ease-out 
                 ${isCartPortalOpen ? "opacity-100" : "pointer-events-none opacity-0"}
             `}
         >
@@ -44,22 +49,21 @@ const CartPortal = (props: Props) => {
                 `}
             >
                 {/* header */}
-                <div className="flex items-center gap-4 p-4 heading-h5">
-                    <ArrowLeft
-                        className="cursor-pointer"
-                        onClick={() => cartClose()}
-                    />
-
-                    <p>Shopping cart</p>
-                </div>
-
-                <div className="flex">
-                    <div className={`flex-1 h-0.5 bg-gray-100`}
-                    ></div>
-                </div>
+                <PortalsHead
+                    arrowClick={() => cartClose()}
+                    title="Shopping cart"
+                />
 
                 {/* body */}
-                <CartPortalBody />
+                <CartPortalBody
+                    variant="cart"
+                    data={cartItemsList}
+                    viewLink="/cart"
+                    clearClick={emptyCart}
+                    removeFromClick={removeFromCart}
+                    addToClick={addToCart}
+                    deleteFromClick={deleteFromCart}
+                />
             </aside>
         </div>,
         document.body

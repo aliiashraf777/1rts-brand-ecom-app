@@ -1,10 +1,10 @@
 import { createSelector } from "@reduxjs/toolkit";
-import type { RootState } from "../store";
+import type { RootState } from "../../store";
 
 // base selector for memoized selectors
 export const selectBaseCartState = (state: RootState) => {
     console.log('redux state: ', state);
-    console.log('redux state key: ', state.cartReducer);
+    console.log('cart redux state: ', state.cartReducer);
     return state.cartReducer;
 }
 

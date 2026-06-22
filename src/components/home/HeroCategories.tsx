@@ -2,7 +2,7 @@ import { searchCategoriesData } from "@/data/navigationData"
 import type { IsearchCategoriesItem } from "@/types/menuTypes"
 import { useState } from "react"
 import { Link, NavLink } from "react-router"
-import Button from "../common/Button"
+import Button from "../common/btns/Button"
 
 type Props = {}
 

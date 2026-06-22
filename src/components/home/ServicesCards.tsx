@@ -1,6 +1,6 @@
 import { servicesData } from "@/data/servicesData"
-import SectionContainer from "../common/SectionContainer"
-import SectionHeading from "../common/SectionHeading"
+import SectionContainer from "../common/section/SectionContainer"
+import SectionHeading from "../common/section/SectionHeading"
 import { Link } from "react-router"
 
 type Props = {}

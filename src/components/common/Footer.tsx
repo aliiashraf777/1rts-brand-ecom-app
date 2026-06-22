@@ -1,9 +1,9 @@
 import { appStore, googleApp, logo } from "@/assets"
 import NewsLetter from "../footer/NewsLetter"
-import SectionContainer, { SectionFull } from "./SectionContainer"
+import SectionContainer, { SectionFull } from "./section/SectionContainer"
 import { footerData, footerSocials } from "@/data/footerData"
 import { Link } from "react-router"
-import { FlagsSelector } from "./DropdownSelectors"
+import { FlagsSelector } from "./header/DropdownSelectors"
 
 type Props = {}
 

@@ -2,7 +2,7 @@ import { searchCategoriesData } from "@/data/navigationData";
 import { filterVerifiedData } from "@/data/shopFiltersData";
 import type { ProductFiltersTy } from "@/pages/shop/Shop";
 import CheckboxBtn from "./CheckboxBtn";
-import { TopSortSelector } from "../common/DropdownSelectors";
+import { TopSortSelector } from "../common/header/DropdownSelectors";
 import { IoGridSharp } from "react-icons/io5";
 import { FaThList } from "react-icons/fa";
 import { useProductViewContext } from "@/context/ProductViewContext";

@@ -1,4 +1,4 @@
-import SectionContainer from "@/components/common/SectionContainer"
+import SectionContainer from "@/components/common/section/SectionContainer"
 
 type Props = {}
 

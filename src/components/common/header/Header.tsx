@@ -1,6 +1,7 @@
 import MobileSidebar from "./MobileSidebar"
 import NavBar from "./NavBar"
-import CartPortal from "./portals/CartPortal"
+import CartPortal from "../portals/cart/CartPortal"
+import FavsPortal from "../portals/favs/FavsPortal"
 import TopBar from "./TopBar"
 
 type Props = {}
@@ -14,7 +15,10 @@ const Header = (props: Props) => {
       <NavBar />
 
       <MobileSidebar />
+
       <CartPortal />
+
+      <FavsPortal />
 
     </header>
   )

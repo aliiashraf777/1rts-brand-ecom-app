@@ -1,6 +1,6 @@
 import { flag1, flag2, flag3, flag4, flag5, flag6, flag7, flag8, flag9, flag10, flag0, heroBanner, computerBg, machineryBg, sportsBg, petBg, interiorBg, heroBg, } from '@/assets';
 import type { IlangCurrencyItem, ImobileMenuItem, InavMenuItem, IsearchCategoriesItem, IshipToFlagsItem, ItopIconsItem } from '@/types/menuTypes';
-import { ArrowRight, Building, Globe, Headset, Heart, House, List, MessageSquareText, PillBottle, ShoppingCart, User } from 'lucide-react';
+import { ArrowRight, Building, Globe, Headset, Heart, House, List, MessageSquareText, PillBottle, SeparatorVertical, ShoppingCart, User } from 'lucide-react';
 
 
 export const searchCategoriesData: IsearchCategoriesItem[] = [
@@ -92,8 +92,8 @@ export const topIconsData: ItopIconsItem[] = [
         text: 'Profile',
     },
     {
-        icon: <MessageSquareText />,
-        text: 'Message',
+        icon: <SeparatorVertical />,
+        text: 'Compare',
     },
     {
         icon: <Heart />,

@@ -1,5 +1,5 @@
 import { Link, useMatches } from "react-router"
-import SectionContainer from "../common/SectionContainer"
+import SectionContainer from "../common/section/SectionContainer"
 import { ChevronRight } from "lucide-react"
 import type { breadCrumbItemTy } from "@/pages/shop/Shop"
 

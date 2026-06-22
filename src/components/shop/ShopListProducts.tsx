@@ -1,8 +1,9 @@
 import { type IproductsDataItem } from "@/data/productsData"
-import { LinkBtn } from "../common/Button"
+import { LinkBtn } from "../common/btns/Button"
 import StarsDynamicRatings from "./StarsDynamicRatings"
-import { useCartActions } from "@/redux/features/useCartActions"
-import ProductActionBtns from "./ProductActionBtns"
+import { useCartActions } from "@/redux/features/cart/useCartActions"
+import ProductActionBtns from "../common/btns/ProductActionBtns"
+import { useFavsActions } from "@/redux/features/favs/useFavsActions"
 
 type Props = {
     filteredProductsH: IproductsDataItem[],
@@ -11,6 +12,7 @@ type Props = {
 const ShopListProducts = ({ filteredProductsH }: Props) => {
 
     const { addToCart } = useCartActions();
+    const { addToFavs } = useFavsActions();
 
     return (
         <div className="w-full mb-section-30">
@@ -98,6 +100,13 @@ const ShopListProducts = ({ filteredProductsH }: Props) => {
                                     image: item.image,
                                     price: item.price,
                                 })}
+                                addToFav={() => addToFavs({
+                                    id: item.id,
+                                    title: item.title,
+                                    image: item.image,
+                                    price: item.price
+                                })}
+                            // quickView={}
                             />
 
                         </div>

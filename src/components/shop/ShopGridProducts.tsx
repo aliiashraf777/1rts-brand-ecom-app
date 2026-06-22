@@ -1,9 +1,10 @@
 import { productsData, type IproductsDataItem } from "@/data/productsData"
 import StarsDynamicRatings from "./StarsDynamicRatings"
-import { AddCartHeartBtn } from "../common/Button"
+import { AddCartHeartBtn } from "../common/btns/Button"
 import { Link } from "react-router"
-import { ProductGridActionBtns } from "./ProductActionBtns"
-import { useCartActions } from "@/redux/features/useCartActions"
+import { ProductGridActionBtns } from "../common/btns/ProductActionBtns"
+import { useCartActions } from "@/redux/features/cart/useCartActions"
+import { useFavsActions } from "@/redux/features/favs/useFavsActions"
 
 type Props = {
   filteredProductsH: IproductsDataItem[],
@@ -12,6 +13,7 @@ type Props = {
 const ShopGridProducts = ({ filteredProductsH }: Props) => {
 
   const { addToCart } = useCartActions();
+  const { addToFavs } = useFavsActions();
 
   return (
     <div className="w-full mb-section-30">
@@ -32,6 +34,13 @@ const ShopGridProducts = ({ filteredProductsH }: Props) => {
               />
 
               <ProductGridActionBtns
+                addToFav={() => addToFavs({
+                  id: item.id,
+                  title: item.title,
+                  image: item.image,
+                  price: item.price,
+                })}
+              // quickView={}
               />
             </div>
 
