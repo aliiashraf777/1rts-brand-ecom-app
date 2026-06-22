@@ -1,4 +1,4 @@
-import { createSelector, createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 
 export interface ICartItem {
@@ -81,6 +81,7 @@ export const cartReducerSlice = createSlice({
         },
 
         emptyCart: (state) => {
+            alert('Empty Cart...!')
             state.cartItemsList = [];
         }
     }

@@ -101,30 +101,30 @@ export const topIconsData: ItopIconsItem[] = [
     },
     {
         icon: <ShoppingCart />,
-        text: 'My cart',
+        text: 'Cart',
     },
 ]
 
 export const navMenuData: InavMenuItem[] = [
     {
-        link: '/',
         text: 'All category',
+        link: '/categories',
     },
     {
-        link: '/shop',
         text: 'Shop',
+        link: '/shop',
     },
     {
-        link: '/',
         text: 'About',
+        link: '/about',
     },
     {
-        link: '/',
         text: 'Contact',
+        link: '/contact',
     },
     {
-        link: '/',
         text: 'Help',
+        link: '/help',
     },
 ]
 

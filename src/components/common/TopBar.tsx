@@ -6,6 +6,7 @@ import { Link } from "react-router"
 import { useMobileMenuContext } from "@/context/MobileMenuContext"
 import HeroLoginCard from "../home/HeroLoginCard"
 import { useEffect, useState } from "react"
+import { useCartPortalContext } from "@/context/CartPortalContext"
 
 type Props = {
     className?: string,
@@ -17,13 +18,18 @@ const TopBar = ({ disabled, className }: Props) => {
     const { openMobileMenu } = useMobileMenuContext();
     const [isLoginOpen, setIsLoginOpen] = useState<boolean>(false);
 
+    const { cartOpen } = useCartPortalContext();
+
     // on scroll header stick
     const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
     const handleProfileLoginClick = (text: string): void => {
-        if (text === 'Profile') {
+
+        text === 'Profile' &&
             setIsLoginOpen((prev) => !prev)
-        }
+
+        text === 'Cart' &&
+            cartOpen();
     }
 
     const handleScroll = () => {
