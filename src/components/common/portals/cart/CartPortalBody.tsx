@@ -10,11 +10,12 @@ type Props = {
     clearClick?: () => void,
     removeFromClick: (id: string) => void,
     addToClick: (item: AddItemPayloadTy) => void,
+    crossAddToClick: (item: AddItemPayloadTy) => void,
     deleteFromClick: (id: string) => void
 }
 
 const CartPortalBody = ({
-    variant, data, viewLink = '', clearClick, removeFromClick, addToClick, deleteFromClick
+    variant, data, viewLink = '', clearClick, removeFromClick, addToClick, crossAddToClick, deleteFromClick
 }: Props) => {
 
     return (<>
@@ -31,6 +32,7 @@ const CartPortalBody = ({
                                 item={item}
                                 removeFromClick={removeFromClick}
                                 addToClick={addToClick}
+                                crossAddToClick={crossAddToClick}
                                 deleteFromClick={deleteFromClick}
                             />
                         ))

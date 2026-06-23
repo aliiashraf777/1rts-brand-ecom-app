@@ -11,17 +11,34 @@ export const useCartActions = () => {
         () => ({
             addToCart: (
                 item: Omit<ICartItem, 'qty' | 'totalPrice'>
-            ) =>
-                dispatch(cartReducerActions.addToCart(item)),
+            ) => {
+                dispatch(cartReducerActions.addToCart(item))
+                dispatch(cartReducerActions.itemAddedToast())
+            },
 
-            removeFromCart: (id: string) =>
-                dispatch(cartReducerActions.removeFromCart(id)),
+            removeFromCart: (id: string) => {
+                dispatch(cartReducerActions.removeFromCart(id))
+                dispatch(cartReducerActions.itemRemovedToast())
+            },
 
-            deleteFromCart: (id: string) =>
-                dispatch(cartReducerActions.deleteFromCart(id)),
+            deleteFromCart: (id: string) => {
+                dispatch(cartReducerActions.deleteFromCart(id))
+                dispatch(cartReducerActions.itemRemovedToast())
+            },
 
-            emptyCart: () =>
-                dispatch(cartReducerActions.emptyCart()),
+            emptyCart: () => {
+                dispatch(cartReducerActions.emptyCart())
+                dispatch(cartReducerActions.itemRemovedToast())
+            },
+
+            itemAddedToast: () =>
+                dispatch(cartReducerActions.itemAddedToast()),
+
+            itemRemovedToast: () =>
+                dispatch(cartReducerActions.itemRemovedToast()),
+
+            orderPlacedToast: () =>
+                dispatch(cartReducerActions.orderPlacedToast()),
 
         }), [dispatch]
     )

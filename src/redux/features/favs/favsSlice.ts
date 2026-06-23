@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { AddItemPayloadTy, IProductItem } from "@/types/productTypes";
+import { toast, Zoom } from "react-toastify";
 
 export type IFavItem = IProductItem
 // if favs ever needs extra fields, extend here
@@ -67,7 +68,35 @@ export const favsReducerSlice = createSlice({
 
         emptyFavs: (state) => {
             state.favsItemsList = [];
-        }
+        },
+
+        itemAddedToast: () => {
+            toast.success('item added...!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                transition: Zoom,
+            });
+        },
+
+        itemRemovedToast: () => {
+            toast.warn('item removed...!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                transition: Zoom,
+            });
+        },
     }
 })
 

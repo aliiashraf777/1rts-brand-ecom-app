@@ -1,5 +1,6 @@
 import type { AddItemPayloadTy, IProductItem } from "@/types/productTypes";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { toast, Zoom } from "react-toastify";
 
 export type ICartItem = IProductItem;
 
@@ -70,7 +71,49 @@ export const cartReducerSlice = createSlice({
 
         emptyCart: (state) => {
             state.cartItemsList = [];
-        }
+        },
+
+        itemAddedToast: () => {
+            toast.success('item added...!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                transition: Zoom,
+            });
+        },
+
+        itemRemovedToast: () => {
+            toast.warn('item removed...!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                transition: Zoom,
+            });
+        },
+
+        orderPlacedToast: () => {
+            toast.success('order placed successfully...!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                transition: Zoom,
+            });
+        },
     }
 })
 

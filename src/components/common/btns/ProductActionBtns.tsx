@@ -86,11 +86,12 @@ type MiniProductBtnsProp = {
     item: IProductItem,
     removeFromClick: (id: string) => void,
     addToClick: (item: AddItemPayloadTy) => void,
+    crossAddToClick: (item: AddItemPayloadTy) => void,
     deleteFromClick: (id: string) => void,
 }
 
 export const MiniProductActionBtns = ({
-    variant, item, removeFromClick, addToClick, deleteFromClick
+    variant, item, removeFromClick, addToClick, crossAddToClick, deleteFromClick
 
 }: MiniProductBtnsProp) => {
 
@@ -101,29 +102,18 @@ export const MiniProductActionBtns = ({
             className="flex flex-col gap-2
             absolute right-4"
         >
+            {/* delete same in both variants */}
+            <AddCartHeartBtn
+                variant="del"
+                onClick={() => deleteFromClick(id)}
+            />
 
-            {variant === 'cart'
-                ? (<>
-                    <AddCartHeartBtn
-                        variant="del"
-                        onClick={() => deleteFromClick(id)}
-                    />
-                    <AddCartHeartBtn
-                        onClick={() => addToClick({ id, title, image, price })}
-                    />
+            {/* cross-add: cart portal shows heart (→ favs), favs portal shows cart (→ cart) */}
 
-                </>)
-                : (<>
-                    <AddCartHeartBtn
-                        variant="del"
-                        onClick={() => deleteFromClick(id)}
-                    />
-                    <AddCartHeartBtn
-                        variant="cart"
-                        onClick={() => addToClick({ id, title, image, price })}
-                    />
-                </>)
-            }
+            <AddCartHeartBtn
+                variant={variant === "cart" ? "heart" : "cart"}
+                onClick={() => crossAddToClick({ id, title, image, price })}
+            />
 
         </div>
     )

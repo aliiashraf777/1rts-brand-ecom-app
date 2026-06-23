@@ -13,7 +13,7 @@ export const selectCartItemsList = createSelector(
     (cart) => cart.cartItemsList
 )
 
-export const selectTotalQty = createSelector(
+export const selectCartTotalQty = createSelector(
     [selectCartItemsList],
     (items) => items.reduce(
         (total, item) => total + item.qty, 0)
