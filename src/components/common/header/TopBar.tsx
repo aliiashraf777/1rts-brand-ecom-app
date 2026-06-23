@@ -8,6 +8,9 @@ import HeroLoginCard from "../../home/HeroLoginCard"
 import { useEffect, useState } from "react"
 import { useCartPortalContext } from "@/context/CartPortalContext"
 import { useFavsPortalContext } from "@/context/FavsPortalContext"
+import { useAppSelector } from "@/redux/features/storeHooks"
+import { selectFavsTotalQty } from "@/redux/features/favs/favsSelectors"
+import { selectCartTotalQty } from "@/redux/features/cart/cartSelectors"
 
 type Props = {
     className?: string,
@@ -21,6 +24,8 @@ const TopBar = ({ disabled, className }: Props) => {
 
     const { cartOpen } = useCartPortalContext();
     const { favsOpen } = useFavsPortalContext();
+    const FavsTotalQty = useAppSelector(selectFavsTotalQty);
+    const cartsTotalQty = useAppSelector(selectCartTotalQty);
 
     // on scroll header stick
     const [isScrolled, setIsScrolled] = useState<boolean>(false);
@@ -97,8 +102,23 @@ const TopBar = ({ disabled, className }: Props) => {
                             onClick={() => handleProfileLoginClick(data.text)}
                             className="flex flex-col gap-1.5 justify-center items-center text-gray group cursor-pointer"
                         >
-                            <span className="text-[20px] group-hover:scale-110 transition">
+                            <span className="text-[20px] group-hover:scale-110 transition relative">
                                 {data.icon}
+
+                                {/* icons badges */}
+                                {(
+                                    data.text === 'Wishlist' ||
+                                    data.text === 'Cart'
+                                ) &&
+                                    <div className="absolute -top-2.5 -right-2.5">
+                                        <div className="w-5 h-5 bg-primary/85 text-white txt-tiny grid place-items-center rounded-full">
+                                            {data.text === 'Wishlist'
+                                                ? (<>{FavsTotalQty}</>)
+                                                : (<>{cartsTotalQty}</>)
+                                            }
+                                        </div>
+                                    </div>
+                                }
                             </span>
                             <p className="max-sm:hidden txt-tiny">
                                 {data.text}

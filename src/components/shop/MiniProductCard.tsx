@@ -6,11 +6,12 @@ type Props = {
     item: IProductItem,
     removeFromClick: (id: string) => void,
     addToClick: (item: AddItemPayloadTy) => void,
+    crossAddToClick: (item: AddItemPayloadTy) => void,
     deleteFromClick: (id: string) => void,
 }
 
 const MiniProductCard = ({
-    variant, item, removeFromClick, addToClick, deleteFromClick }: Props
+    variant, item, removeFromClick, addToClick, crossAddToClick, deleteFromClick }: Props
 ) => {
 
     const { id, title, image, price, qty, totalPrice } = item;
@@ -81,6 +82,7 @@ const MiniProductCard = ({
                 item={item}
                 removeFromClick={removeFromClick}
                 addToClick={addToClick}
+                crossAddToClick={crossAddToClick}
                 deleteFromClick={deleteFromClick}
             />
         </div>

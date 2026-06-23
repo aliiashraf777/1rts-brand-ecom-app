@@ -6,6 +6,7 @@ import PortalsHead from "../PortalsHead";
 import { useAppSelector } from "@/redux/features/storeHooks";
 import { selectCartItemsList } from "@/redux/features/cart/cartSelectors";
 import { useCartActions } from "@/redux/features/cart/useCartActions";
+import { useFavsActions } from "@/redux/features/favs/useFavsActions";
 
 type Props = {}
 
@@ -14,6 +15,7 @@ const CartPortal = (props: Props) => {
     const { isCartPortalOpen, cartClose } = useCartPortalContext();
     const cartItemsList = useAppSelector(selectCartItemsList);
     const { addToCart, removeFromCart, deleteFromCart, emptyCart } = useCartActions();
+    const { addToFavs } = useFavsActions();
 
     useEffect(() => {
         if (!isCartPortalOpen) return;
@@ -62,6 +64,7 @@ const CartPortal = (props: Props) => {
                     clearClick={emptyCart}
                     removeFromClick={removeFromCart}
                     addToClick={addToCart}
+                    crossAddToClick={addToFavs}
                     deleteFromClick={deleteFromCart}
                 />
             </aside>
