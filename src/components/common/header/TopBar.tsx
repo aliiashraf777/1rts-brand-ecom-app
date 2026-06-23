@@ -11,6 +11,7 @@ import { useFavsPortalContext } from "@/context/FavsPortalContext"
 import { useAppSelector } from "@/redux/features/storeHooks"
 import { selectFavsTotalQty } from "@/redux/features/favs/favsSelectors"
 import { selectCartTotalQty } from "@/redux/features/cart/cartSelectors"
+import { useComparePortalContext } from "@/context/ComparePortalContext"
 
 type Props = {
     className?: string,
@@ -24,7 +25,9 @@ const TopBar = ({ disabled, className }: Props) => {
 
     const { cartOpen } = useCartPortalContext();
     const { favsOpen } = useFavsPortalContext();
-    const FavsTotalQty = useAppSelector(selectFavsTotalQty);
+    const { compareOpen } = useComparePortalContext();
+
+    const favsTotalQty = useAppSelector(selectFavsTotalQty);
     const cartsTotalQty = useAppSelector(selectCartTotalQty);
 
     // on scroll header stick
@@ -40,6 +43,9 @@ const TopBar = ({ disabled, className }: Props) => {
 
         text === 'Wishlist' &&
             favsOpen();
+
+        text === 'Compare' &&
+            compareOpen();
     }
 
     const handleScroll = () => {
@@ -113,9 +119,19 @@ const TopBar = ({ disabled, className }: Props) => {
                                     <div className="absolute -top-2.5 -right-2.5">
                                         <div className="w-5 h-5 bg-primary/85 text-white txt-tiny grid place-items-center rounded-full">
                                             {data.text === 'Wishlist'
-                                                ? (<>{FavsTotalQty}</>)
+                                                ? (<>{favsTotalQty}</>)
                                                 : (<>{cartsTotalQty}</>)
                                             }
+                                        </div>
+                                    </div>
+                                }
+
+                                {(
+                                    data.text === 'Compare'
+                                ) &&
+                                    <div className="absolute -top-2.5 -right-2.5">
+                                        <div className="w-5 h-5 bg-primary/85 text-white txt-tiny grid place-items-center rounded-full">
+                                            {favsTotalQty + cartsTotalQty}
                                         </div>
                                     </div>
                                 }
