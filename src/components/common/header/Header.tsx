@@ -3,6 +3,7 @@ import NavBar from "./NavBar"
 import CartPortal from "../portals/cart/CartPortal"
 import FavsPortal from "../portals/favs/FavsPortal"
 import TopBar from "./TopBar"
+import ComparePortal from "../portals/compare/ComparePortal"
 
 type Props = {}
 
@@ -19,6 +20,8 @@ const Header = (props: Props) => {
       <CartPortal />
 
       <FavsPortal />
+
+      <ComparePortal />
 
     </header>
   )
