@@ -1,5 +1,5 @@
 import { Check } from "lucide-react"
-import StarsDynamicRatings from "./StarsDynamicRatings"
+import StarsDynamicRatings from "../products/StarsDynamicRatings"
 import type { IfilterOption } from "@/data/shopFiltersData"
 
 type Props = {

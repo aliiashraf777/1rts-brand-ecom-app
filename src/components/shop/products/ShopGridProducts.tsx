@@ -1,17 +1,15 @@
-import { productsData, type IproductsDataItem } from "@/data/productsData"
-import StarsDynamicRatings from "./StarsDynamicRatings"
-import { AddCartHeartBtn } from "../common/btns/Button"
-import { Link } from "react-router"
-import { ProductGridActionBtns } from "../common/btns/ProductActionBtns"
-import { useCartActions } from "@/redux/features/cart/useCartActions"
-import { useFavsActions } from "@/redux/features/favs/useFavsActions"
+import { type IproductsDataItem } from "@/data/productsData";
+import StarsDynamicRatings from "./StarsDynamicRatings";
+import { Link } from "react-router";
+import { ProductGridActionBtns } from "../../common/btns/ProductActionBtns";
+import { useCartActions } from "@/redux/features/cart/useCartActions";
+import { useFavsActions } from "@/redux/features/favs/useFavsActions";
 
 type Props = {
-  filteredProductsH: IproductsDataItem[],
-}
+  filteredProductsH: IproductsDataItem[];
+};
 
 const ShopGridProducts = ({ filteredProductsH }: Props) => {
-
   const { addToCart } = useCartActions();
   const { addToFavs } = useFavsActions();
 
@@ -25,8 +23,7 @@ const ShopGridProducts = ({ filteredProductsH }: Props) => {
             className="brand-card group transition-all duration-300 ease-out hover:-translate-y-1 group"
           >
             {/* img */}
-            <div
-              className="flex items-center justify-center aspect-squarex h-[230px] w-[230px]x border-b border-gray-200 relative">
+            <div className="flex items-center justify-center aspect-squarex h-[230px] w-[230px]x border-b border-gray-200 relative">
               <img
                 src={item.image}
                 alt={item.title}
@@ -34,36 +31,33 @@ const ShopGridProducts = ({ filteredProductsH }: Props) => {
               />
 
               <ProductGridActionBtns
-                addToFav={() => addToFavs({
-                  id: item.id,
-                  title: item.title,
-                  image: item.image,
-                  price: item.price,
-                })}
-              // quickView={}
+                addToFav={() =>
+                  addToFavs({
+                    id: item.id,
+                    title: item.title,
+                    image: item.image,
+                    price: item.price,
+                  })
+                }
+                // quickView={}
               />
             </div>
 
             {/* textBox */}
             <div className="px-section py-4.5 relative">
-
               {/* price */}
               <div className="flex items-center gap-2 mb-2">
-                <h4 className="heading-h4">
-                  ${item.price}
-                </h4>
-                {item.oldPrice &&
+                <h4 className="heading-h4">${item.price}</h4>
+                {item.oldPrice && (
                   <p className="txt-body-medium line-through text-gray-500">
                     ${item?.oldPrice}
                   </p>
-                }
+                )}
               </div>
 
               {/* ratings & details */}
               <div className="flex items-center mb-2.5">
-                <StarsDynamicRatings
-                  rating={Number(item.ratings)}
-                />
+                <StarsDynamicRatings rating={Number(item.ratings)} />
 
                 <p className="txt-small text-card-orange md:txt-base md:text-card-orange pl-2">
                   {item.ratings}
@@ -81,19 +75,21 @@ const ShopGridProducts = ({ filteredProductsH }: Props) => {
               {/* add to wishlist btn */}
               <ProductGridActionBtns
                 variant="single"
-                addToCart={() => addToCart({
-                  id: item.id,
-                  title: item.title,
-                  image: item.image,
-                  price: item.price
-                })}
+                addToCart={() =>
+                  addToCart({
+                    id: item.id,
+                    title: item.title,
+                    image: item.image,
+                    price: item.price,
+                  })
+                }
               />
             </div>
           </div>
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ShopGridProducts
+export default ShopGridProducts;

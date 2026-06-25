@@ -3,7 +3,7 @@ import FilterItem from "./FilterItem"
 import { searchCategoriesData } from "@/data/navigationData";
 import { filterBrandsData, filterConditionData, filterFeaturesData, filterRatingsData, } from "@/data/shopFiltersData";
 import CheckboxBtn from "./CheckboxBtn";
-import Button from "../common/btns/Button";
+import Button from "../../common/btns/Button";
 import { type ProductFiltersTy } from "@/pages/shop/Shop";
 import ClearAllFilters from "./ClearAllFilters";
 import type { PriceRangeForConsumerTy } from "@/hooks/usePriceRange";

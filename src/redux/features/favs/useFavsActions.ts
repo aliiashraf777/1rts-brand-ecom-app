@@ -1,6 +1,7 @@
 import { useMemo } from "react"
 import { useAppDispatch } from "../storeHooks"
-import { favsReducerActions, type IFavItem } from "./favsSlice";
+import { favsReducerActions, } from "./favsSlice";
+import type { AddItemPayloadTy } from "@/types/productTypes";
 
 
 export const useFavsActions = () => {
@@ -10,7 +11,7 @@ export const useFavsActions = () => {
     return useMemo(
         () => ({
             addToFavs: (
-                item: Omit<IFavItem, 'qty' | 'totalPrice'>
+                item: AddItemPayloadTy
             ) => {
                 dispatch(favsReducerActions.addToFavs(item))
                 dispatch(favsReducerActions.itemAddedToast())
