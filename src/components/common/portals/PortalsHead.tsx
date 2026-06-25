@@ -14,6 +14,8 @@ const PortalsHead = ({ arrowClick, title }: Props) => {
             />
 
             <p>{title}</p>
+
+            <button className="">clear all</button>
         </div>
 
         <div className="flex">
