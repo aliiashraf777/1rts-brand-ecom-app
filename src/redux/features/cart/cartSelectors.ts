@@ -3,8 +3,8 @@ import type { RootState } from "../../store";
 
 // base selector for memoized selectors
 export const selectBaseCartState = (state: RootState) => {
-    console.log('redux state: ', state);
-    console.log('cart redux state: ', state.cartReducer);
+    // console.log('redux state: ', state);
+    // console.log('cart redux state: ', state.cartReducer);
     return state.cartReducer;
 }
 

@@ -2,6 +2,7 @@ import { useMemo } from "react"
 import { useAppDispatch } from "../storeHooks"
 import { favsReducerActions, } from "./favsSlice";
 import type { AddItemPayloadTy } from "@/types/productTypes";
+import { toasts } from "@/utils/toasts";
 
 
 export const useFavsActions = () => {
@@ -13,31 +14,25 @@ export const useFavsActions = () => {
             addToFavs: (
                 item: AddItemPayloadTy
             ) => {
-                dispatch(favsReducerActions.addToFavs(item))
-                dispatch(favsReducerActions.itemAddedToast())
+                dispatch(favsReducerActions.addToFavs(item));
+                toasts.itemAdded();
             },
-
             removeFromFavs: (id: string) => {
-                dispatch(favsReducerActions.removeFromFavs(id))
-                dispatch(favsReducerActions.itemRemovedToast())
+                dispatch(favsReducerActions.removeFromFavs(id));
+                toasts.itemRemoved();
             },
-
             deleteFromFavs: (id: string) => {
-                dispatch(favsReducerActions.deleteFromFavs(id))
-                dispatch(favsReducerActions.itemRemovedToast())
+                dispatch(favsReducerActions.deleteFromFavs(id));
+                toasts.itemRemoved();
             },
-
             emptyFavs: () => {
-                dispatch(favsReducerActions.emptyFavs())
-                dispatch(favsReducerActions.itemRemovedToast())
+                dispatch(favsReducerActions.emptyFavs());
+                toasts.itemRemoved();
             },
-
-            itemAddedToast: () =>
-                dispatch(favsReducerActions.itemAddedToast()),
-
-            itemRemovedToast: () =>
-                dispatch(favsReducerActions.itemRemovedToast()),
-
+            orderAddedFromFavs: () => {
+                dispatch(favsReducerActions.emptyFavs());
+                toasts.orderPlaced();
+            }
         }), [dispatch]
     )
 }

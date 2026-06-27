@@ -1,5 +1,6 @@
 import type { IProductItem } from "@/types/productTypes";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { toast, Zoom } from "react-toastify";
 
 export interface IOrdersItem {
   orderId: string;
@@ -30,6 +31,14 @@ export const ordersReducerSlice = createSlice({
         items: items,
         total: items.reduce((total, i) => total + i.totalPrice, 0),
       });
+    },
+    deleteFromOrders: (state, action: PayloadAction<string>) => {
+      const toDeleteItemId = action.payload;
+      state.ordersItemsList = state.ordersItemsList.filter(
+        (item) => item.orderId !== toDeleteItemId)
+    },
+    emptyOrders: (state) => {
+      state.ordersItemsList = [];
     },
   },
 });

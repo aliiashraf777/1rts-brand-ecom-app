@@ -16,21 +16,54 @@ const AppRoutes = (props: Props) => {
                     index: true,
                     Component: Home,
                 },
-                {
-                    path: "shop",
-                    Component: Shop,
-                    handle: { crumb: () => "Shop" },
-                },
-                {
-                    path: "shop/:id",
-                    Component: SingleProductDetail,
-                    handle: { crumb: (data: any) => data?.product?.name ?? "Product" }
-                },
+                // {
+                //     path: "shop",
+                //     Component: Shop,
+                //     handle: { crumb: () => "Shop" },
+                //     children: [
+                //         {
+                //             path: "product-details/:productId",
+                //             Component: SingleProductDetail,
+                //             handle: { crumb: (data: any) => data?.product?.name ?? "Product" }
+                //         },
+                //     ]
+                // },
+                // {
+                //     path: "shop/:id",
+                //     Component: SingleProductDetail,
+                //     handle: { crumb: (data: any) => data?.product?.name ?? "Product" }
+                // },
                 {
                     path: "*",
                     Component: NotFound,
                 },
             ]
+        },
+        {
+            path: "/shop",
+            Component: MainLayout,
+            children: [
+                {
+                    index: true,
+                    Component: Shop,
+                },
+                {
+                    path: "product-details/:productId",
+                    Component: SingleProductDetail,
+                    handle: { crumb: (data: any) => data?.product?.name ?? "Product" },
+                }
+            ]
+        },
+        {
+            path: "/product-details/:productId",
+            Component: MainLayout,
+            children: [
+                {
+                    index: true,
+                    Component: SingleProductDetail,
+                    handle: { crumb: (data: any) => data?.product?.name ?? "Product" },
+                }
+            ],
         },
         {
             Component: CartLayout,
@@ -39,7 +72,7 @@ const AppRoutes = (props: Props) => {
                     index: true,
                     path: "cart",
                     Component: Cart,
-                    handle: {crumb: () => "Cart"},
+                    handle: { crumb: () => "Cart" },
                 },
                 {
                     path: "login",

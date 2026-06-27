@@ -3,8 +3,8 @@ import { createSelector } from "@reduxjs/toolkit";
 
 
 export const selectBaseFavsState = (state: RootState) => {
-    console.log('redux state: ', state);
-    console.log('redux favs state: ', state.favsReducer);
+    // console.log('redux state: ', state);
+    // console.log('redux favs state: ', state.favsReducer);
 
     return state.favsReducer;
 }

@@ -1,5 +1,6 @@
 import { cn } from "@/utils/cn"
 import { Eye, Heart, ShoppingCart, Trash2 } from "lucide-react"
+import type React from "react"
 import { Link } from "react-router"
 
 type Props = {
@@ -23,7 +24,7 @@ const Button = ({ variant = 'gradient', size = 'normal', className, disabled, ch
 
                 // 2. size variants
                 size === 'normal' && 'px-5 py-2.5',
-                size === 'full' && 'w-full px-5 py-2.5',
+                size === 'full' && 'w-full flex-1 px-5 py-2.5',
 
                 // 3. color variants
                 variant === 'gradient' && 'bg-gradient-primary hover:bg-gradient-primary-reverse text-white',
@@ -56,10 +57,29 @@ export const LinkBtn = ({ children, to, className }: LinkBtnTy) => {
     return (
         <Link
             to={to}
-            className={`txt-small text-primary md:txt-body-medium md:text-primary border-b-2 border-transparent w-max hover:border-b-2 hover:border-primary transition-all duration-300 ease-out ${className || ""}`}
+            className={`txt-small text-primary md:txt-body-medium md:text-primary border-b-2 border-transparent w-max hover:border-b-2 hover:border-primary transition-all duration-300 ease-out cursor-pointer ${className || ""}`}
         >
             {children}
         </Link>
+    )
+}
+
+type LinkClickBtnTy = {
+    children: React.ReactNode,
+    onClick?: () => void,
+    className?: string,
+}
+
+export const LinkClickBtn = ({ children, onClick, className }: LinkClickBtnTy) => {
+
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            className={`flex items-center gap-1 txt-small text-primary md:txt-base md:text-primary border-b border-transparent w-max hover:border-b hover:border-primary transition-all duration-300 ease-out cursor-pointer ${className || ""}`}
+        >
+            {children}
+        </button>
     )
 }
 
@@ -92,6 +112,25 @@ export const AddCartHeartBtn = ({ className, onClick, variant = 'heart' }: Heart
                 <Trash2 />
             }
 
+        </button>
+    )
+}
+
+type BorderReorderPropsTy = {
+    onClick?: () => void,
+    className?: string,
+    children: React.ReactNode,
+}
+
+export const BorderReorderBtn = ({ onClick, className, children }: BorderReorderPropsTy) => {
+
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            className={`flex items-center gap-1 txt-tiny text-primary border border-primary rounded-card px-2 py-1 hover:bg-primary hover:text-white transition-all duration-300 ease-out cursor-pointer ${className || ""}`}
+        >
+            {children}
         </button>
     )
 }

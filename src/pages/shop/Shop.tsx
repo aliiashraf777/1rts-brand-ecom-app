@@ -100,7 +100,10 @@ const Shop = () => {
 
             {/* products grid/list layout */}
             {isListView ? (
-              <ShopListProducts filteredProductsH={filteredProductsH} />
+              <ShopListProducts
+                filteredProductsH={filteredProductsH}
+                basePath="/shop"
+              />
             ) : (
               <ShopGridProducts filteredProductsH={filteredProductsH} />
             )}

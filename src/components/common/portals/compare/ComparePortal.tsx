@@ -28,7 +28,7 @@ const ComparePortal = (props: Props) => {
 
   // orders slice
   const ordersItemsList = useAppSelector(selectOrdersItemsList);
-  const { placeCartOrder } = useOrdersActions();
+  const { placeCartOrder, placeFavsOrder, deleteFromOrder, emptyOrderHistory } = useOrdersActions();
 
   // onReOrder = place a new order from past order's items.
   // then add these orders back to cart, so they appear in cart tab for reorder
@@ -104,11 +104,12 @@ const ComparePortal = (props: Props) => {
         {/* header default */}
         <PortalsHead
           arrowClick={() => compareClose()}
-          title="Compare Shopping List"
+          title="Compare List"
+        // clearClick={emptyOrderHistory}
         />
 
         {/* header tabs */}
-        <div className="flex justify-between items-center gap-2 p-4">
+        <div className="flex justify-between items-center gap-2 py-4">
           {tabsData.map((item) => {
             return (
               <button
@@ -129,16 +130,16 @@ const ComparePortal = (props: Props) => {
         </div>
 
         {/* header divider lines */}
-        <div className="flex px-4">
+        <div className="flex px-4x">
           <div
-            className={`flex-1 h-0.5 bg-gray-100 ${activeTab === "Cart" ? "bg-primary/50" : ""}`}
+            className={`flex-1 h-px bg-gray-100 ${activeTab === "Cart" ? "bg-primary/50" : ""}`}
           ></div>
 
           <div
-            className={`flex-1 h-0.5 bg-gray-100 ${activeTab === "Favorites" ? "bg-primary/50" : ""}`}
+            className={`flex-1 h-px bg-gray-100 ${activeTab === "Favorites" ? "bg-primary/50" : ""}`}
           ></div>
           <div
-            className={`flex-1 h-0.5 bg-gray-100 ${activeTab === "Orders" ? "bg-primary/50" : ""}`}
+            className={`flex-1 h-px bg-gray-100 ${activeTab === "Orders" ? "bg-primary/50" : ""}`}
           ></div>
         </div>
 
@@ -167,6 +168,7 @@ const ComparePortal = (props: Props) => {
             addToClick={addToFavs}
             crossAddToClick={addToCart}
             deleteFromClick={deleteFromFavs}
+            placeOrder={() => placeFavsOrder(favsItemsList)}
           />
         )}
 
@@ -175,6 +177,8 @@ const ComparePortal = (props: Props) => {
             data={ordersItemsList}
             viewLink="/dashboard"
             onReOrder={onReOrder}
+            clearClick={emptyOrderHistory}
+            deleteFromOrder={deleteFromOrder}
           />
         )}
       </aside>
