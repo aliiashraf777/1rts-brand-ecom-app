@@ -1,4 +1,3 @@
-import type { IproductsDataItem } from "@/data/productsData"
 import { AddCartHeartBtn } from "./Button"
 import type { AddItemPayloadTy, IProductItem } from "@/types/productTypes"
 

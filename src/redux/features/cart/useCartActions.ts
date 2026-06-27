@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { cartReducerActions } from "./cartSlice";
 import { useAppDispatch } from "../storeHooks";
 import type { AddItemPayloadTy } from "@/types/productTypes";
+import { toasts } from "@/utils/toasts";
 
 // reducer actions dispatchers
 export const useCartActions = () => {
@@ -11,27 +12,27 @@ export const useCartActions = () => {
     () => ({
       addToCart: (item: AddItemPayloadTy) => {
         dispatch(cartReducerActions.addToCart(item));
-        dispatch(cartReducerActions.itemAddedToast());
+        toasts.itemAdded();
       },
 
       removeFromCart: (id: string) => {
         dispatch(cartReducerActions.removeFromCart(id));
-        dispatch(cartReducerActions.itemRemovedToast());
+        toasts.itemRemoved();
       },
 
       deleteFromCart: (id: string) => {
         dispatch(cartReducerActions.deleteFromCart(id));
-        dispatch(cartReducerActions.itemRemovedToast());
+        toasts.itemRemoved();
       },
 
       emptyCart: () => {
         dispatch(cartReducerActions.emptyCart());
-        dispatch(cartReducerActions.itemRemovedToast());
+        toasts.itemRemoved();
       },
 
       orderAddedFromCart: () => {
         dispatch(cartReducerActions.emptyCart());
-        dispatch(cartReducerActions.orderPlacedToast());
+        toasts.orderPlaced();
       },
     }),
     [dispatch],

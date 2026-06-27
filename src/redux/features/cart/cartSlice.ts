@@ -27,7 +27,6 @@ export const cartReducerSlice = createSlice({
         existingItem.qty++;
         existingItem.totalPrice += newItem.price;
 
-        console.log("add to cart");
       } else {
         state.cartItemsList.push({
           id: newItem.id,
@@ -37,8 +36,6 @@ export const cartReducerSlice = createSlice({
           qty: 1,
           totalPrice: newItem.price,
         });
-
-        console.log("add to cart");
       }
     },
 
@@ -71,48 +68,6 @@ export const cartReducerSlice = createSlice({
 
     emptyCart: (state) => {
       state.cartItemsList = [];
-    },
-
-    itemAddedToast: () => {
-      toast.success("item added...!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: false,
-        progress: undefined,
-        theme: "light",
-        transition: Zoom,
-      });
-    },
-
-    itemRemovedToast: () => {
-      toast.warn("item removed...!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: false,
-        progress: undefined,
-        theme: "light",
-        transition: Zoom,
-      });
-    },
-
-    orderPlacedToast: () => {
-      toast.success("order placed successfully...!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: false,
-        progress: undefined,
-        theme: "light",
-        transition: Zoom,
-      });
     },
   },
 });

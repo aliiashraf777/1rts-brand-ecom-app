@@ -7,6 +7,7 @@ import { useAppSelector } from "@/redux/features/storeHooks";
 import { selectCartItemsList } from "@/redux/features/cart/cartSelectors";
 import { useCartActions } from "@/redux/features/cart/useCartActions";
 import { useFavsActions } from "@/redux/features/favs/useFavsActions";
+import { useOrdersActions } from "@/redux/features/orders/useOrdersActions";
 
 type Props = {}
 
@@ -16,6 +17,7 @@ const CartPortal = (props: Props) => {
     const cartItemsList = useAppSelector(selectCartItemsList);
     const { addToCart, removeFromCart, deleteFromCart, emptyCart } = useCartActions();
     const { addToFavs } = useFavsActions();
+    const { placeCartOrder } = useOrdersActions();
 
     useEffect(() => {
         if (!isCartPortalOpen) return;
@@ -54,6 +56,7 @@ const CartPortal = (props: Props) => {
                 <PortalsHead
                     arrowClick={() => cartClose()}
                     title="Shopping cart"
+                    clearClick={emptyCart}
                 />
 
                 {/* body */}
@@ -66,6 +69,7 @@ const CartPortal = (props: Props) => {
                     addToClick={addToCart}
                     crossAddToClick={addToFavs}
                     deleteFromClick={deleteFromCart}
+                    placeOrder={() => placeCartOrder(cartItemsList)}
                 />
             </aside>
         </div>,

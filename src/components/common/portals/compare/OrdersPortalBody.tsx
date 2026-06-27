@@ -1,7 +1,7 @@
 import type { IOrdersItem } from "@/redux/features/orders/ordersSlice";
 import type { IProductItem } from "@/types/productTypes";
 import { ShoppingBag } from "lucide-react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import Button from "../../btns/Button";
 import OrderCard from "./OrderCard";
 
@@ -9,19 +9,25 @@ type Props = {
   data: IOrdersItem[];
   viewLink?: string;
   onReOrder: (item: IProductItem[]) => void;
+  clearClick?: () => void;
+  deleteFromOrder: (orderId: string) => void;
 };
 
 const OrdersPortalBody = ({
   data,
   viewLink = "/dashboard",
   onReOrder,
+  clearClick,
+  deleteFromOrder,
 }: Props) => {
+
+  const navigate = useNavigate();
 
   if (data.length === 0) {
     return (
-      <div className="w-full h-[85vh] flex flex-col gap-4 items-center justify-center text-gray-300">
-        <ShoppingBag strokeWidth={1} />
-        <p className="heading-4 text-gray-300 capitalize">No orders yet</p>
+      <div className="w-full h-[85vh] flex flex-col gap-4 items-center justify-center text-gray-300 heading-h2 md:text-5xl capitalize text-center">
+        <ShoppingBag />
+        <p className="text-gray-200">No orders yet</p>
         <NavLink to="/shop">
           <Button variant="gradient" size="normal">
             Shop Now
@@ -42,24 +48,33 @@ const OrdersPortalBody = ({
       </div>
 
       {/* orders list - newset first */}
-      <div className="flex flex-col divide-x divide-gray-100">
+      <div className="flex flex-col divide-y divide-gray-100">
         {/* {data.reverse().map((order) => ( */}
         {[...data].reverse().map((order) => (
           <OrderCard
             key={order.orderId}
             order={order}
             onReOrder={onReOrder}
+            deleteFromOrder={() => deleteFromOrder(order.orderId)}
           />
         ))}
       </div>
 
       {/* footer */}
-      <div className="p-4 mt-2">
-        <NavLink to={viewLink}>
-          <Button variant="gradient" size="full">
-            View All Orders
-          </Button>
-        </NavLink>
+      <div className="flex flex-col gap-2 p-4 mt-2">
+        <Button variant="gradient" size="full"
+          onClick={() => navigate(viewLink)}
+        >
+          View All Orders
+        </Button>
+
+        <Button
+          variant="white"
+          size="full"
+          onClick={clearClick}
+        >
+          Clear Orders
+        </Button>
       </div>
     </div>
   );

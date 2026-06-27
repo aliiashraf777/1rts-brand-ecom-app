@@ -1,7 +1,8 @@
 import MiniProductCard from "@/components/shop/products/MiniProductCard";
-import { NavLink } from "react-router";
+import { Navigate, NavLink, useNavigate } from "react-router";
 import Button from "../../btns/Button";
 import type { AddItemPayloadTy, IProductItem } from "@/types/productTypes";
+import { ShoppingBag } from "lucide-react";
 
 type Props = {
   variant: "cart" | "favs";
@@ -12,7 +13,7 @@ type Props = {
   addToClick: (item: AddItemPayloadTy) => void;
   crossAddToClick: (item: AddItemPayloadTy) => void;
   deleteFromClick: (id: string) => void;
-  placeOrder: (item: IProductItem[]) => void
+  placeOrder: () => void
 };
 
 const CartPortalBody = ({
@@ -26,49 +27,69 @@ const CartPortalBody = ({
   deleteFromClick,
   placeOrder,
 }: Props) => {
+
+  const navigate = useNavigate()
+
+  if (data.length === 0) {
+    return (
+      <div className="w-full h-[85vh] flex flex-col gap-4 items-center justify-center text-gray-300 heading-h2 md:text-5xl capitalize text-center">
+        <ShoppingBag />
+        <p className="text-gray-200">
+          {variant === "cart" ? "Empty Cart" : "Empty Favorites"}
+        </p>
+
+        <NavLink
+          to={"/shop"}
+        >
+          <Button
+            variant="gradient"
+            size="normal"
+          >
+            Shop Now
+          </Button>
+        </NavLink>
+      </div>
+    )
+  }
+
   return (
-    <>
-      <div className={`w-full flex flex-col`}>
-        {data.length > 0 ? (
-          <div className="w-full">
-            {data.map((item) => (
-              <MiniProductCard
-                key={item.id}
-                variant={variant}
-                item={item}
-                removeFromClick={removeFromClick}
-                addToClick={addToClick}
-                crossAddToClick={crossAddToClick}
-                deleteFromClick={deleteFromClick}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="w-full h-[85vh] grid place-items-center heading-h1 md:text-5xl text-gray-200 capitalize text-center">
-            <p>{variant === "cart" ? "Empty Cart" : "Empty Favorites"}</p>
-          </div>
-        )}
+    <div className="w-full flex flex-col pb-10">
+      <div className="w-full flex flex-col">
+        <div className="w-full">
+          {data.map((item) => (
+            <MiniProductCard
+              key={item.id}
+              variant={variant}
+              item={item}
+              removeFromClick={removeFromClick}
+              addToClick={addToClick}
+              crossAddToClick={crossAddToClick}
+              deleteFromClick={deleteFromClick}
+            />
+          ))}
+        </div>
       </div>
 
       {/* footer */}
-      {data.length > 0 && (
-        <div className="flex flex-col gap-2 p-4 mb-10">
-          <NavLink to={viewLink}>
-            <Button variant="gradient" size="full">
-              {variant === "cart" ? "View Cart" : "View Favorites"}
-            </Button>
-          </NavLink>
+      <div className="flex-1 flex flex-col gap-2 p-4 mb-10">
 
-          <Button variant="white" size="full" onClick={placeOrder}>
-            place order
+        <div className="w-full flex gap-2">
+          <Button variant="gradient" size="full"
+            onClick={() => navigate(viewLink)}
+          >
+            {variant === "cart" ? "View Cart" : "View Favorites"}
           </Button>
 
           <Button variant="white" size="full" onClick={clearClick}>
             {variant === "cart" ? "Clear Cart" : "Clear Favorites"}
           </Button>
         </div>
-      )}
-    </>
+
+        <Button variant="white" size="full" onClick={placeOrder}>
+          place order
+        </Button>
+      </div>
+    </div>
   );
 };
 

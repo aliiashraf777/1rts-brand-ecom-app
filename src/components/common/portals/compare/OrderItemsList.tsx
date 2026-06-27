@@ -18,7 +18,7 @@ const OrderItemsList = ({ item }: Props) => {
             </div>
 
             {/* name + qty */}
-            <div className="flex flex-col gap-0.5 flex-1 min-w-0">
+            <div className="flex flex-1 flex-col gap-0.5 min-w-0">
                 <p className="txt-small text-text-primary truncate">
                     {item.title}
                 </p>

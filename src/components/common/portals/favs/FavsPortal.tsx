@@ -6,6 +6,7 @@ import { useAppSelector } from "@/redux/features/storeHooks";
 import { selectFavsItemsList } from "@/redux/features/favs/favsSelectors";
 import { useFavsActions } from "@/redux/features/favs/useFavsActions";
 import { useCartActions } from "@/redux/features/cart/useCartActions";
+import { useOrdersActions } from "@/redux/features/orders/useOrdersActions";
 
 type Props = {}
 
@@ -15,6 +16,7 @@ const FavsPortal = (props: Props) => {
     const favsItemsList = useAppSelector(selectFavsItemsList);
     const { addToFavs, removeFromFavs, deleteFromFavs, emptyFavs } = useFavsActions();
     const { addToCart } = useCartActions()
+    const { placeFavsOrder } = useOrdersActions()
 
     return createPortal(
         <div
@@ -36,6 +38,7 @@ const FavsPortal = (props: Props) => {
                 <PortalsHead
                     arrowClick={() => favsClose()}
                     title="Wishlist items"
+                    clearClick={emptyFavs}
                 />
 
                 <CartPortalBody
@@ -47,6 +50,7 @@ const FavsPortal = (props: Props) => {
                     addToClick={addToFavs}
                     crossAddToClick={addToCart}
                     deleteFromClick={deleteFromFavs}
+                    placeOrder={() => placeFavsOrder(favsItemsList)}
                 />
 
             </aside>

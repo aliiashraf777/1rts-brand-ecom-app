@@ -1,15 +1,17 @@
 import type { IOrdersItem } from "@/redux/features/orders/ordersSlice";
 import type { IProductItem } from "@/types/productTypes";
-import { ChevronDown, RotateCcw } from "lucide-react";
+import { ChevronDown, RotateCcw, Trash2 } from "lucide-react";
 import { useState } from "react";
 import OrderItemsList from "./OrderItemsList";
+import { BorderReorderBtn, LinkClickBtn } from "../../btns/Button";
 
 type OrderCardProps = {
     order: IOrdersItem;
     onReOrder: (item: IProductItem[]) => void;
+    deleteFromOrder: () => void;
 };
 
-const OrderCard = ({ order, onReOrder }: OrderCardProps) => {
+const OrderCard = ({ order, onReOrder, deleteFromOrder }: OrderCardProps) => {
     const [isOrderExpanded, setIsOrderExpanded] = useState(false);
 
     const formattedDate = new Date(order.placedAt).toLocaleDateString("en-US", {
@@ -23,7 +25,7 @@ const OrderCard = ({ order, onReOrder }: OrderCardProps) => {
         minute: "2-digit",
     });
 
-    return <div className="flex flex-col gap-3 p-4">
+    return <div className="flex flex-col gap-3 p-4 border-bx border-gray-100x">
 
         {/* order header */}
         <div className="flex items-start justify-between gap-2">
@@ -50,28 +52,36 @@ const OrderCard = ({ order, onReOrder }: OrderCardProps) => {
                     ${order.total.toFixed(2)}
                 </p>
 
-                <button
-                    type="button"
+                <BorderReorderBtn
                     onClick={() => onReOrder(order.items)}
-                    className="flex items-center gap-1 txt-tiny text-primary border border-primary rounded-card px-2 py-1 hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer"
                 >
-                    <RotateCcw size={12} />
+                    <RotateCcw className="w-3 h-3" />
                     Reorder
-                </button>
+                </BorderReorderBtn>
             </div>
         </div>
 
         {/* expand orders toggler */}
-        <button
-            type="button"
-            onClick={() => setIsOrderExpanded((prev) => !prev)}
-            className="w-max flex items-center gap-1 txt-tiny text-gray-400 hover:text-gray-600 transition-colors duration-300 ease-out cursor-poitner"
-        >
-            <ChevronDown
-                className={`w-4 h-4 ${isOrderExpanded ? "rotate-180" : ''}`}
-            />
-            {isOrderExpanded ? "Hide items" : "Show items"}
-        </button>
+        <div className="flex items-center justify-between">
+            <button
+                type="button"
+                onClick={() => setIsOrderExpanded((prev) => !prev)}
+                className="w-max flex items-center gap-1 txt-tiny text-gray-400 hover:text-gray-600 transition-colors duration-300 ease-out cursor-pointer"
+            >
+                <ChevronDown
+                    className={`w-4 h-4 ${isOrderExpanded ? "rotate-180" : ''}`}
+                />
+                {isOrderExpanded ? "Hide items" : "Show items"}
+            </button>
+
+            <LinkClickBtn
+                className="txt-tiny! text-gray-400! hover:text-gray-600!"
+                onClick={deleteFromOrder}
+            >
+                <Trash2 className="w-3 h-3" />
+                Delete order
+            </LinkClickBtn>
+        </div>
 
         {/* items-list expandable */}
         {isOrderExpanded && (
