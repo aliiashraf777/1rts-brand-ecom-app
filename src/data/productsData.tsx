@@ -1,4 +1,4 @@
-import { product1, product10, product2, product3, product4, product5, product6, product7, product8, product9 } from "@/assets";
+import { flag0, product1, product10, product2, product3, product4, product5, product6, product7, product8, product9 } from "@/assets";
 
 export interface IproductsDataItem {
     id: string,
@@ -155,5 +155,51 @@ export const productsData: IproductsDataItem[] = [
         ratings: "4",
         detailsLink: "/",
         orders: '156'
+    },
+]
+
+export interface IProductDetailsDataItem {
+    id: string,
+    price: string,
+    type: string,
+    material: string,
+    design: string,
+    customization: string,
+    protection: string,
+    warranty: string,
+}
+
+export const productDetailsData: IProductDetailsDataItem[] = [
+    {
+        id: 'detail1',
+        price: 'Negotiable',
+        type: 'Classic shoes',
+        material: 'Plastic material',
+        design: 'Modern nice',
+        customization: 'Customized logo and design custom packages',
+        protection: 'Refund policy',
+        warranty: '2 year full warranty',
+    },
+]
+
+export interface ISuppliersDataItem {
+    id: string,
+    name: string,
+    profileLetter: string,
+    countryFlag: string,
+    countryName: string,
+    isVerified: string,
+    isGlobalShip: string,
+}
+
+export const suppliersData: ISuppliersDataItem[] = [
+    {
+        id: 'supplier1',
+        name: 'Guanjoi Trading LLC',
+        profileLetter: 'G',
+        countryFlag: flag0,
+        countryName: 'Germany, Berlin',
+        isVerified: 'Verified Seller',
+        isGlobalShip: 'Worldwide Shipping',
     },
 ]

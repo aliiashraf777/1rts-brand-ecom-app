@@ -18,6 +18,7 @@ import {
   selectCartTotalQty,
 } from "@/redux/features/cart/cartSelectors";
 import { useComparePortalContext } from "@/context/ComparePortalContext";
+import SectionContainer from "../section/SectionContainer";
 
 type Props = {
   className?: string;
@@ -68,13 +69,10 @@ const TopBar = ({ disabled, className }: Props) => {
   }, []);
 
   return (
-    <div
-      className={`topbar page-padding border-b border-gray-300  bg-white ${isScrolled ? "scrolled" : ""}
-                `}
+    <SectionContainer
+      sectionClass={`topbar border-b border-gray-300 bg-white ${isScrolled ? "scrolled" : ""} px-2.5`}
+      className={`py-2.5 lg:py-section flex justify-between items-center gap-2.5 ${className || ""}`}
     >
-      <div
-        className={`container-custom py-2.5 lg:py-section borderx border-blue-600 flex justify-between items-center gap-2.5 ${className || ""}`}
-      >
         {/* hamBurger + logo */}
         <div className="flex items-center gap-section lg:gap-0">
           <button
@@ -99,7 +97,7 @@ const TopBar = ({ disabled, className }: Props) => {
         {!disabled && <SearchBar />}
 
         {/* topbar icons */}
-        <div className="flex justify-between items-center max-sm:gap-2.5 sm:gap-4 md:gap-section relative">
+        <div className="flex justify-between items-center max-sm:gap-3 sm:gap-4 md:gap-section relative">
           {topIconsData.map((data, idx) => (
             <button
               key={idx}
@@ -137,17 +135,15 @@ const TopBar = ({ disabled, className }: Props) => {
           ))}
 
           <div
-            className={`w-max h-max absolute top-full left-0 -translate-x-1/2 mt-2 z-20 transition-all duration-300 ease-out ${
-              isLoginOpen
-                ? "pointer-events-auto opacity-100 translate-y-0"
-                : "pointer-events-none opacity-0 -translate-y-2"
-            }`}
+            className={`w-max h-max absolute top-full left-0 -translate-x-1/2 mt-2 z-20 transition-all duration-300 ease-out ${isLoginOpen
+              ? "pointer-events-auto opacity-100 translate-y-0"
+              : "pointer-events-none opacity-0 -translate-y-2"
+              }`}
           >
             <HeroLoginCard />
           </div>
         </div>
-      </div>
-    </div>
+    </SectionContainer>
   );
 };
 

@@ -80,12 +80,16 @@ const CartPortalBody = ({
             {variant === "cart" ? "View Cart" : "View Favorites"}
           </Button>
 
-          <Button variant="white" size="full" onClick={clearClick}>
+          <Button variant="white" size="full" onClick={clearClick}
+            className="border border-gray-300"
+          >
             {variant === "cart" ? "Clear Cart" : "Clear Favorites"}
           </Button>
         </div>
 
-        <Button variant="white" size="full" onClick={placeOrder}>
+        <Button variant="white" size="full" onClick={placeOrder}
+          className="border border-gray-300"
+        >
           place order
         </Button>
       </div>
