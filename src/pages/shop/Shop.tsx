@@ -64,54 +64,52 @@ const Shop = () => {
 
   const { isListView } = useProductViewContext();
 
-  return (
-    <div className="w-full">
-      <DynamicBreadCrumb />
+  return (<>
+    <DynamicBreadCrumb />
 
-      <SectionContainer>
-        <div className="flex gap-4">
-          {/* filters */}
-          <ShopFilters
+    <SectionContainer>
+      <div className="flex gap-4">
+        {/* filters */}
+        <ShopFilters
+          productFilters={productFilters}
+          setProductFilters={setProductFilters}
+          priceRangeH={{
+            ...priceRangeH,
+            applyPriceRange: () =>
+              priceRangeH.applyPriceRange(filtersHandlers.updatePriceRange),
+          }}
+          clearAllFilters={() => clearAllFilters(priceRangeH.reset)}
+          onClickFiltersHandlers={filtersHandlers}
+        />
+
+        {/* right side */}
+        <div className="flex-1 min-w-0 p-2.5 md:p-0">
+          {/* top filters bar */}
+          <TopFiltersBar
             productFilters={productFilters}
-            setProductFilters={setProductFilters}
-            priceRangeH={{
-              ...priceRangeH,
-              applyPriceRange: () =>
-                priceRangeH.applyPriceRange(filtersHandlers.updatePriceRange),
-            }}
-            clearAllFilters={() => clearAllFilters(priceRangeH.reset)}
-            onClickFiltersHandlers={filtersHandlers}
+            updateVerified={filtersHandlers.updateVerified}
           />
 
-          {/* right side */}
-          <div className="flex-1 min-w-0 p-2.5 md:p-0">
-            {/* top filters bar */}
-            <TopFiltersBar
-              productFilters={productFilters}
-              updateVerified={filtersHandlers.updateVerified}
-            />
+          {/* appliedFiltersChips */}
+          <AppliedFiltersChips
+            appliedFiltersChipsH={appliedFiltersChipsH}
+            productFilters={productFilters}
+            clearAllFilters={() => clearAllFilters(priceRangeH.reset)}
+          />
 
-            {/* appliedFiltersChips */}
-            <AppliedFiltersChips
-              appliedFiltersChipsH={appliedFiltersChipsH}
-              productFilters={productFilters}
-              clearAllFilters={() => clearAllFilters(priceRangeH.reset)}
+          {/* products grid/list layout */}
+          {isListView ? (
+            <ShopListProducts
+              filteredProductsH={filteredProductsH}
+              basePath="/shop"
             />
-
-            {/* products grid/list layout */}
-            {isListView ? (
-              <ShopListProducts
-                filteredProductsH={filteredProductsH}
-                basePath="/shop"
-              />
-            ) : (
-              <ShopGridProducts filteredProductsH={filteredProductsH} />
-            )}
-          </div>
+          ) : (
+            <ShopGridProducts filteredProductsH={filteredProductsH} />
+          )}
         </div>
-      </SectionContainer>
-    </div>
-  );
+      </div>
+    </SectionContainer>
+  </>);
 };
 
 export default Shop;

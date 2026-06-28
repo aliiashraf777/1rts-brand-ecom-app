@@ -73,7 +73,9 @@ export const DynamicBreadCrumb = () => {
         }));
 
     return (
-        <SectionContainer className="py-section text-gray-500">
+        <SectionContainer className="py-section text-gray-500"
+        sectionClass="px-2.5 md:px-0xx"
+        >
             <nav aria-label="breadcrumb">
                 <ol className="flex items-center gap-2 flex-wrap text-gray-500 transition-all duration-300 ease-out">
                     <li>

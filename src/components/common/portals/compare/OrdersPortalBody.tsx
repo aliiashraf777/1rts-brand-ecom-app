@@ -72,6 +72,7 @@ const OrdersPortalBody = ({
           variant="white"
           size="full"
           onClick={clearClick}
+          className="border border-gray-300"
         >
           Clear Orders
         </Button>

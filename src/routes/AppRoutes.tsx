@@ -3,88 +3,64 @@ import MainLayout from "../layouts/MainLayout"
 import { Cart, Home, Login, NotFound, Register, Shop, SingleProductDetail } from "../pages"
 import CartLayout from "../layouts/CartLayout"
 
-type Props = {}
 
-const AppRoutes = (props: Props) => {
+const router = createBrowserRouter([
+    {
+        path: "/",
+        Component: MainLayout,
+        children: [
+            {
+                index: true,
+                Component: Home,
+            },
+            {
+                path: "shop",
+                handle: { crumb: () => "Shop" },
+                children: [
+                    {
+                        index: true,
+                        Component: Shop,
+                    },
+                    {
+                        path: "product-details/:productId",
+                        Component: SingleProductDetail,
+                        handle: { crumb: (data: any) => data?.product?.name ?? "Product" },
+                    },
+                ]
+            },
+            {
+                path: "product-details/:productId",
+                Component: SingleProductDetail,
+                handle: { crumb: (data: any) => data?.product?.name ?? "Product" },
+            },
+            {
+                path: "*",
+                Component: NotFound,
+            },
+        ]
+    },
+    {
+        Component: CartLayout,
+        children: [
+            {
+                index: true,
+                path: "cart",
+                Component: Cart,
+                handle: { crumb: () => "Cart" },
+            },
+            {
+                path: "login",
+                Component: Login,
+            },
+            {
+                path: 'register',
+                Component: Register,
+            }
+        ]
+    }
+])
 
-    const router = createBrowserRouter([
-        {
-            path: "/",
-            Component: MainLayout,
-            children: [
-                {
-                    index: true,
-                    Component: Home,
-                },
-                // {
-                //     path: "shop",
-                //     Component: Shop,
-                //     handle: { crumb: () => "Shop" },
-                //     children: [
-                //         {
-                //             path: "product-details/:productId",
-                //             Component: SingleProductDetail,
-                //             handle: { crumb: (data: any) => data?.product?.name ?? "Product" }
-                //         },
-                //     ]
-                // },
-                // {
-                //     path: "shop/:id",
-                //     Component: SingleProductDetail,
-                //     handle: { crumb: (data: any) => data?.product?.name ?? "Product" }
-                // },
-                {
-                    path: "*",
-                    Component: NotFound,
-                },
-            ]
-        },
-        {
-            path: "/shop",
-            Component: MainLayout,
-            children: [
-                {
-                    index: true,
-                    Component: Shop,
-                },
-                {
-                    path: "product-details/:productId",
-                    Component: SingleProductDetail,
-                    handle: { crumb: (data: any) => data?.product?.name ?? "Product" },
-                }
-            ]
-        },
-        {
-            path: "/product-details/:productId",
-            Component: MainLayout,
-            children: [
-                {
-                    index: true,
-                    Component: SingleProductDetail,
-                    handle: { crumb: (data: any) => data?.product?.name ?? "Product" },
-                }
-            ],
-        },
-        {
-            Component: CartLayout,
-            children: [
-                {
-                    index: true,
-                    path: "cart",
-                    Component: Cart,
-                    handle: { crumb: () => "Cart" },
-                },
-                {
-                    path: "login",
-                    Component: Login,
-                },
-                {
-                    path: 'register',
-                    Component: Register,
-                }
-            ]
-        }
-    ])
+const AppRoutes = () => {
 
     return (<>
         {/* <Routes>

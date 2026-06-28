@@ -1,9 +1,4 @@
 import { type IproductsDataItem } from "@/data/productsData";
-import StarsDynamicRatings from "./StarsDynamicRatings";
-import { Link } from "react-router";
-import { ProductGridActionBtns } from "../../common/btns/ProductActionBtns";
-import { useCartActions } from "@/redux/features/cart/useCartActions";
-import { useFavsActions } from "@/redux/features/favs/useFavsActions";
 import GridProductCard from "./GridProductCard";
 
 type Props = {
@@ -18,9 +13,9 @@ const ShopGridProducts = ({ filteredProductsH }: Props) => {
         {/* {productsData.slice(0, 9).map((item, idx) => ( */}
         {filteredProductsH.slice(1, 10).map((item) => (
           <GridProductCard
-            key={`${item.title}`}
+            key={`${item.id}`}
             item={item}
-            basePath=""
+            basePath="/shop"
           />
         ))}
       </div>

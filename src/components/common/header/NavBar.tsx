@@ -3,6 +3,7 @@ import { Menu } from "lucide-react"
 import { NavLink } from "react-router"
 import { CurrencySelector, FlagsSelector } from "./DropdownSelectors"
 import { useMobileMenuContext } from "@/context/MobileMenuContext"
+import SectionContainer from "../section/SectionContainer"
 
 type Props = {
   className?: string,
@@ -13,8 +14,8 @@ const NavBar = ({ className }: Props) => {
   const { openMobileMenu } = useMobileMenuContext();
 
   return (
-    <nav className="hidden lg:block page-padding border-b border-gray-300">
-      <div className={`container-custom py-3 flex justify-between items-center gap-2.5 ${className || ''}`}>
+    <nav className="hidden lg:block border-b border-gray-300">
+      <SectionContainer className={`py-3 flex justify-between items-center gap-2.5 ${className || ''}`}>
 
         {/* nav */}
         <div className="flex gap-1">
@@ -61,7 +62,7 @@ const NavBar = ({ className }: Props) => {
 
         </div>
         {/* dropdowns end */}
-      </div>
+      </SectionContainer>
     </nav>
   )
 }

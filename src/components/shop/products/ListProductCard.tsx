@@ -23,8 +23,6 @@ const ListProductCard = ({ item, basePath }: Props) => {
     ? `/shop/product-details/${item.id}`
     : `/product-details/${item.id}`;
 
-  const ProductDynamicLink = `${basePath}/product-details/${item.id}`
-
   const productDynamicLink = `${basePath}/product-details/${item.id}`
 
   return (

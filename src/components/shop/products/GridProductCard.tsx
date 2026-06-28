@@ -23,7 +23,7 @@ const GridProductCard = ({ item, basePath }: Props) => {
     ? `/shop/product-details/${item.id}`
     : `/product-details/${item.id}`;
 
-  const ProductDynamicLink = `${basePath}/product-details/${item.id}`;
+  const productDynamicLink = `${basePath}/product-details/${item.id}`;
 
   return (
     <div
@@ -74,7 +74,7 @@ const GridProductCard = ({ item, basePath }: Props) => {
         {/* title */}
         <Link
           // to={item.detailsLink}
-          to={ProductDynamicLink}
+          to={productDynamicLink}
           className="txt-body text-gray-800 capitalize w-[200px]"
         >
           {item.title}
