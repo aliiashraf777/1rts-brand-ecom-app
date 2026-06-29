@@ -182,6 +182,28 @@ export const productDetailsData: IProductDetailsDataItem[] = [
     },
 ]
 
+export interface IProductDetailsDataUpItem {
+    label: string,
+    value: string
+}
+
+// export type ProductDetailsDataUpTy = {
+//     detail: IProductDetailsDataUpItem[];
+// }
+
+// export const productDetailsDataUp: ProductDetailsDataUpTy[] = [
+//     detail = [
+//         { label: 'id', value: 'detail1' },
+//         { label: 'Price', value: 'Negotiable' },
+//         { label: 'Type', value: 'Classic shoes' },
+//         { label: 'Material', value: 'Plastic material' },
+//         { label: 'Design', value: 'Modern nice' },
+//         { label: 'Customization', value: 'Customized logo and design custom packages' },
+//         { label: 'Protection', value: 'Refund policy' },
+//         { label: 'Warranty', value: '2 year full warranty' },
+//     ],
+// ]
+
 export interface ISuppliersDataItem {
     id: string,
     name: string,
