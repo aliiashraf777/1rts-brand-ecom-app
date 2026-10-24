@@ -1,0 +1,5 @@
+@layer components {
+    .txt-body-c {
+        @apply text-[16px] text-text-primary font-normal leading-normal 
+    }
+}
