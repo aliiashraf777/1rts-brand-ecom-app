@@ -15,14 +15,6 @@ const ListProductCard = ({ item, basePath }: Props) => {
   const { addToCart } = useCartActions();
   const { addToFavs } = useFavsActions();
 
-  const isHomePage = location.pathname === "/";
-  const isShopPage = location.pathname === "/shop";
-  const isShopDetailPage = location.pathname.startsWith("/shop/product-details/");
-
-  const productLink = isShopPage || isShopDetailPage
-    ? `/shop/product-details/${item.id}`
-    : `/product-details/${item.id}`;
-
   const productDynamicLink = `${basePath}/product-details/${item.id}`
 
   return (

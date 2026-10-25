@@ -1,9 +1,7 @@
 import { HeaderCart } from "../components/common/header/Header"
 import BaseLayout from "./BaseLayout"
 
-type Props = {}
-
-const CartLayout = (props: Props) => {
+const CartLayout = () => {
     return (
         <BaseLayout header={<HeaderCart />} />
     )

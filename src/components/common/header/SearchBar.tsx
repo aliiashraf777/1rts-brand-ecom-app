@@ -2,9 +2,7 @@ import { searchCategoriesData } from "@/data/navigationData"
 import Button from "../btns/Button"
 import { ChevronDown } from "lucide-react"
 
-type Props = {}
-
-const SearchBar = (props: Props) => {
+const SearchBar = () => {
     return (
         <div className="w-full max-w-[665px] h-[40px] border-2 border-primary rounded-card hidden lg:flex items-center overflow-hidden">
             <input

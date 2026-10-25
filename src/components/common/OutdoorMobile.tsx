@@ -17,7 +17,7 @@ const OutdoorMobile = ({ heading, btnLink, data }: Props) => {
 
             {/* product cards */}
             <div className="flex overflow-x-auto border-b border-gray-300">
-                {data.map((item, idx) => (
+                {data.map((item) => (
                     <Link
                         to={item.link}
                         key={`${item.title}-${item.price}`}

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import FilterItem from "./FilterItem"
 import { searchCategoriesData } from "@/data/navigationData";
 import { filterBrandsData, filterConditionData, filterFeaturesData, filterRatingsData, } from "@/data/shopFiltersData";
@@ -12,13 +12,12 @@ import type { onClickFiltersHandlersTy } from "@/hooks/useFiltersUpdateHandlers"
 
 type Props = {
     productFilters: ProductFiltersTy,
-    setProductFilters: React.Dispatch<React.SetStateAction<ProductFiltersTy>>,
     priceRangeH: PriceRangeForConsumerTy,
     clearAllFilters: () => void,
     onClickFiltersHandlers: onClickFiltersHandlersTy,
 }
 
-const ShopFilters = ({ productFilters, setProductFilters, priceRangeH, clearAllFilters, onClickFiltersHandlers }: Props) => {
+const ShopFilters = ({ productFilters, priceRangeH, clearAllFilters, onClickFiltersHandlers }: Props) => {
 
     const [isCategoryFilterOpen, setIsCategoryFilterOpen] = useState<boolean>(true);
 

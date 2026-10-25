@@ -9,9 +9,7 @@ import { useCartActions } from "@/redux/features/cart/useCartActions";
 import { useFavsActions } from "@/redux/features/favs/useFavsActions";
 import { useOrdersActions } from "@/redux/features/orders/useOrdersActions";
 
-type Props = {}
-
-const CartPortal = (props: Props) => {
+const CartPortal = () => {
 
     const { isCartPortalOpen, cartClose } = useCartPortalContext();
     const cartItemsList = useAppSelector(selectCartItemsList);

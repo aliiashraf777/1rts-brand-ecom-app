@@ -9,9 +9,7 @@ import { gadgetsData, outdoorData } from "@/data/outdoorData"
 import Hero from "@/screens/Hero"
 
 
-type Props = {}
-
-const Home = (props: Props) => {
+const Home = () => {
     return (
         <div className="w-full">
             <Hero />

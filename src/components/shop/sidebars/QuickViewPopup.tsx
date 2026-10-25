@@ -1,6 +1,4 @@
-type Props = {}
-
-const QuickViewPopup = (props: Props) => {
+const QuickViewPopup = () => {
   return (
     <div>QuickViewPopup</div>
   )

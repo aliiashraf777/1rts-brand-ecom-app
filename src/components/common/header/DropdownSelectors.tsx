@@ -2,15 +2,11 @@ import { useCurrencyContext } from "@/context/CurrencyContext";
 import { useFlagsContext } from "@/context/FlagsContext";
 import { useSortContext } from "@/context/TopSortContext";
 import { langCurrencyData, shipToFlagsData } from "@/data/navigationData";
-import { sortTopData, type IfilterOption } from "@/data/shopFiltersData";
-import { ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { sortTopData } from "@/data/shopFiltersData";
+import { ChevronDown } from "lucide-react";
 
 
 export const CurrencySelector = () => {
-
-    // const [selectedCurrency, setSelectedCurrency] = useState(langCurrencyData[0]);
-    // const [isCurrencyOpen, setIsCurrencyOpen] = useState<boolean>(false);
 
     const {
         selectedCurrency, isCurrencyOpen, currencyToggle, currencyClose, currencySet

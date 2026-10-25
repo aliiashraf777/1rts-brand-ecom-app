@@ -1,6 +1,5 @@
 import type { AddItemPayloadTy, IProductItem } from "@/types/productTypes";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { toast, Zoom } from "react-toastify";
 
 export type ICartItem = IProductItem;
 

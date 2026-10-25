@@ -13,9 +13,7 @@ import { useOrdersActions } from "@/redux/features/orders/useOrdersActions";
 import OrdersPortalBody from "./OrdersPortalBody";
 import type { IProductItem } from "@/types/productTypes";
 
-type Props = {};
-
-const ComparePortal = (props: Props) => {
+const ComparePortal = () => {
   const { isComparePortalOpen, compareClose } = useComparePortalContext();
 
   const cartItemsList = useAppSelector(selectCartItemsList);

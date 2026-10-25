@@ -90,11 +90,11 @@ type MiniProductBtnsProp = {
 }
 
 export const MiniProductActionBtns = ({
-    variant, item, removeFromClick, addToClick, crossAddToClick, deleteFromClick
+    variant, item, crossAddToClick, deleteFromClick
 
 }: MiniProductBtnsProp) => {
 
-    const { id, title, image, price, qty, totalPrice } = item;
+    const { id, title, image, price } = item;
 
     return (
         <div

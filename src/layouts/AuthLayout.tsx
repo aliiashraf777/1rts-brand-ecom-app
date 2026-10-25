@@ -1,6 +1,4 @@
-type Props = {}
-
-const AuthLayout = (props: Props) => {
+const AuthLayout = () => {
   return (
     <div>AuthLayout</div>
   )

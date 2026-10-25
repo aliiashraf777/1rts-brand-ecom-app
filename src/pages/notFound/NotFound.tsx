@@ -1,8 +1,6 @@
 import SectionContainer from "../../components/common/section/SectionContainer"
 
-type Props = {}
-
-const NotFound = (props: Props) => {
+const NotFound = () => {
   return (
     <SectionContainer>
       Not Found

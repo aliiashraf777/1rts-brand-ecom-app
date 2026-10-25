@@ -4,9 +4,7 @@ import { useState } from "react"
 import { Link, NavLink } from "react-router"
 import Button from "../common/btns/Button"
 
-type Props = {}
-
-const HeroCategories = (props: Props) => {
+const HeroCategories = () => {
 
   const [selectedCategory, setSelectedCategory] = useState<IsearchCategoriesItem>(searchCategoriesData[1]);
 

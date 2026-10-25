@@ -1,11 +1,8 @@
-import { formBg } from "@/assets"
 import SectionContainer from "../common/section/SectionContainer"
 import Button from "../common/btns/Button"
 import FormQuote from "./FormQuote"
 
-type Props = {}
-
-const QuoteForm = (props: Props) => {
+const QuoteForm = () => {
 
     return (
         <SectionContainer sectionClass="mb-section-30" className="rounded-none md:rounded-card overflow-hidden">

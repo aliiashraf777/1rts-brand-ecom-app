@@ -1,4 +1,4 @@
-import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router"
+import { createBrowserRouter, RouterProvider } from "react-router"
 import MainLayout from "../layouts/MainLayout"
 import { Cart, Home, Login, NotFound, Register, Shop, SingleProductDetail } from "../pages"
 import CartLayout from "../layouts/CartLayout"

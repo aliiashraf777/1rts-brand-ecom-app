@@ -3,8 +3,6 @@ import HeroCategories from "@/components/home/HeroCategories"
 import HeroInfoCard from "@/components/home/HeroInfoCard"
 import HeroLoginCard from "@/components/home/HeroLoginCard"
 
-type Props = {}
-
 interface heroInfoCardsItem {
     text: string,
     bgColor: string,
@@ -21,7 +19,7 @@ export const heroInfoCardsData: heroInfoCardsItem[] = [
     },
 ]
 
-const Hero = (props: Props) => {
+const Hero = () => {
     return (
         <SectionContainer>
             <div className="bg-white lg:p-section flex gap-section rounded-card lg:border border-gray-300 mt-section mb-section-30">

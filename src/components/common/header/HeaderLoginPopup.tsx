@@ -1,8 +1,6 @@
 
 
-type Props = {}
-
-const HeaderLoginPopup = (props: Props) => {
+const HeaderLoginPopup = () => {
   return (
     <div>HeaderLoginPopup</div>
   )

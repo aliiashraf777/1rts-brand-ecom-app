@@ -1,9 +1,7 @@
 import Header from "../components/common/header/Header"
 import BaseLayout from "./BaseLayout"
 
-type Props = {}
-
-const MainLayout = (props: Props) => {
+const MainLayout = () => {
     return (
         <BaseLayout header={<Header />} />
     )

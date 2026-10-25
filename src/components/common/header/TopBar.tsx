@@ -11,11 +11,9 @@ import { useFavsPortalContext } from "@/context/FavsPortalContext";
 import { useAppSelector } from "@/redux/features/storeHooks";
 import {
   selectFavsItemsList,
-  selectFavsTotalQty,
 } from "@/redux/features/favs/favsSelectors";
 import {
   selectCartItemsList,
-  selectCartTotalQty,
 } from "@/redux/features/cart/cartSelectors";
 import { useComparePortalContext } from "@/context/ComparePortalContext";
 import SectionContainer from "../section/SectionContainer";
@@ -36,20 +34,14 @@ const TopBar = ({ disabled, className }: Props) => {
   const cartItemsList = useAppSelector(selectCartItemsList);
   const favsItemsList = useAppSelector(selectFavsItemsList);
 
-  const favsTotalQty = useAppSelector(selectFavsTotalQty);
-  const cartsTotalQty = useAppSelector(selectCartTotalQty);
-
   // on scroll header stick
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   const handleProfileLoginClick = (text: string): void => {
-    text === "Profile" && setIsLoginOpen((prev) => !prev);
-
-    text === "Cart" && cartOpen();
-
-    text === "Wishlist" && favsOpen();
-
-    text === "Compare" && compareOpen();
+    if (text === "Profile") setIsLoginOpen((prev) => !prev);
+    if (text === "Cart") cartOpen();
+    if (text === "Wishlist") favsOpen();
+    if (text === "Compare") compareOpen();
   };
 
   const handleScroll = () => {

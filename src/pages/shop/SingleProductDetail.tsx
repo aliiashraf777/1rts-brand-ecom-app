@@ -3,7 +3,6 @@ import SectionContainer from "@/components/common/section/SectionContainer";
 import { DynamicBreadCrumb } from "@/components/shop/BreadCrumb";
 import StarsDynamicRatings from "@/components/shop/products/StarsDynamicRatings";
 import { productDetailsData, productsData, suppliersData } from "@/data/productsData"
-import { useCartActions } from "@/redux/features/cart/useCartActions";
 import { selectFavsItemsList } from "@/redux/features/favs/favsSelectors";
 import { useFavsActions } from "@/redux/features/favs/useFavsActions";
 import { useAppSelector } from "@/redux/features/storeHooks";
@@ -12,9 +11,7 @@ import { Check, Globe, HeartIcon, MessageSquareText, ShieldCheck, ShoppingBasket
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router"
 
-type Props = {}
-
-const SingleProductDetail = (props: Props) => {
+const SingleProductDetail = () => {
 
   const { productId } = useParams();
   const product = productsData.find(
@@ -24,6 +21,8 @@ const SingleProductDetail = (props: Props) => {
   const [selectedThumbIdx, setSelectedThumbIdx] = useState(0);
 
   const navigate = useNavigate()
+  const { addToFavs } = useFavsActions();
+  const favsItemsList = useAppSelector(selectFavsItemsList);
 
   if (!product) {
     return (
@@ -42,14 +41,10 @@ const SingleProductDetail = (props: Props) => {
     )
   }
 
-  const { id, title, image, price, oldPrice, desc, ratings, detailsLink, orders, categoryId } = product;
+  const { id, title, image, price, ratings, orders } = product;
 
   // const thumbnails = product.images;
   const thumbnails = [image, image, image, image, image];
-
-  const { addToCart } = useCartActions();
-  const { addToFavs } = useFavsActions();
-  const favsItemsList = useAppSelector(selectFavsItemsList);
 
   const isAddedToFavs: IProductItem | undefined = favsItemsList.find((i) => i.id === id);
 

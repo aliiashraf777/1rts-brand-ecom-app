@@ -3,9 +3,7 @@ import SectionContainer from "../common/section/SectionContainer"
 import SectionHeading from "../common/section/SectionHeading"
 import { Link } from "react-router"
 
-type Props = {}
-
-const ServicesCards = (props: Props) => {
+const ServicesCards = () => {
   return (
     <SectionContainer sectionClass="mb-section-30">
       <div className="px-2.5 md:px-0">

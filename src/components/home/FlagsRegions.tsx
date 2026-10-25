@@ -2,9 +2,7 @@ import { shipToFlagsData } from "@/data/navigationData"
 import SectionContainer from "../common/section/SectionContainer"
 import SectionHeading from "../common/section/SectionHeading"
 
-type Props = {}
-
-const FlagsRegions = (props: Props) => {
+const FlagsRegions = () => {
     return (
         <SectionContainer sectionClass="mb-[46px]">
             <div className="px-2.5 md:px-0">

@@ -72,7 +72,6 @@ const Shop = () => {
         {/* filters */}
         <ShopFilters
           productFilters={productFilters}
-          setProductFilters={setProductFilters}
           priceRangeH={{
             ...priceRangeH,
             applyPriceRange: () =>

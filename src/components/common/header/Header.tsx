@@ -5,9 +5,7 @@ import FavsPortal from "../portals/favs/FavsPortal"
 import TopBar from "./TopBar"
 import ComparePortal from "../portals/compare/ComparePortal"
 
-type Props = {}
-
-const Header = (props: Props) => {
+const Header = () => {
 
   return (
     <header className={`header w-full bg-white

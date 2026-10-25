@@ -2,9 +2,7 @@ import { dealsData } from "@/data/dealsData"
 import SectionContainer from "../common/section/SectionContainer"
 import { Link } from "react-router"
 
-type Props = {}
-
-const Deals = (props: Props) => {
+const Deals = () => {
     return (
         <SectionContainer
             sectionClass="mb-section"

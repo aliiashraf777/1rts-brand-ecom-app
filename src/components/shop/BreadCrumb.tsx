@@ -1,7 +1,13 @@
 import { Link, useMatches } from "react-router"
 import SectionContainer from "../common/section/SectionContainer"
 import { ChevronRight } from "lucide-react"
-import type { breadCrumbItemTy } from "@/pages/shop/Shop"
+import type { ReactNode } from "react"
+
+type breadCrumbItemTy = {
+    id: string,
+    label: ReactNode,
+    link: string,
+}
 
 type Props = {
     breadCrumbItems: breadCrumbItemTy[],

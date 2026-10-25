@@ -8,9 +8,7 @@ import { useFavsActions } from "@/redux/features/favs/useFavsActions";
 import { useCartActions } from "@/redux/features/cart/useCartActions";
 import { useOrdersActions } from "@/redux/features/orders/useOrdersActions";
 
-type Props = {}
-
-const FavsPortal = (props: Props) => {
+const FavsPortal = () => {
 
     const { isFavsPortalOpen, favsClose } = useFavsPortalContext();
     const favsItemsList = useAppSelector(selectFavsItemsList);

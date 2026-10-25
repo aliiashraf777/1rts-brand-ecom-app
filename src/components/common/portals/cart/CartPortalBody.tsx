@@ -1,5 +1,5 @@
 import MiniProductCard from "@/components/shop/products/MiniProductCard";
-import { Navigate, NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import Button from "../../btns/Button";
 import type { AddItemPayloadTy, IProductItem } from "@/types/productTypes";
 import { ShoppingBag } from "lucide-react";

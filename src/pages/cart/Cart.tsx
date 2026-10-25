@@ -1,8 +1,6 @@
 import SectionContainer from "../../components/common/section/SectionContainer"
 
-type Props = {}
-
-const Cart = (props: Props) => {
+const Cart = () => {
   return (
     <SectionContainer>
       Cart Page

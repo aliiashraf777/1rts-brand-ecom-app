@@ -1,9 +1,7 @@
 import { loginAvatar } from "@/assets"
 import Button from "../common/btns/Button"
 
-type Props = {}
-
-const HeroLoginCard = (props: Props) => {
+const HeroLoginCard = () => {
     return (
         <div className="w-full h-max bg-primary-light px-2.5 py-3.5 rounded-card flex flex-col gap-2">
             <div className="flex items-center gap-2.5 mb-1">

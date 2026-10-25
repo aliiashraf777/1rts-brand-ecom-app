@@ -1,6 +1,4 @@
-type Props = {}
-
-const FormQuote = (props: Props) => {
+const FormQuote = () => {
   return (
     <div>FormQuote</div>
   )

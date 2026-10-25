@@ -1,11 +1,9 @@
 import Button from "../common/btns/Button";
-import SectionContainer, { SectionFull } from "../common/section/SectionContainer"
+import { SectionFull } from "../common/section/SectionContainer"
 import { Mail } from 'lucide-react';
 
 
-type Props = {}
-
-const NewsLetter = (props: Props) => {
+const NewsLetter = () => {
 
   return (
     <SectionFull

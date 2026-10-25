@@ -5,9 +5,7 @@ import { footerData, footerSocials } from "@/data/footerData"
 import { Link } from "react-router"
 import { FlagsSelector } from "./header/DropdownSelectors"
 
-type Props = {}
-
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <footer className="w-full">
       <NewsLetter />
@@ -32,7 +30,7 @@ const Footer = (props: Props) => {
             </p>
 
             <div className="flex items-center gap-2.5">
-              {footerSocials.map((item, idx) => {
+              {footerSocials.map((item) => {
 
                 const Icon = item.icon
 
