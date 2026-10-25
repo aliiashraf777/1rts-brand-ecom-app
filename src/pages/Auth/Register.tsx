@@ -1,3 +1,5 @@
+// 2tsBrandEcom\src\pages\auth\Register.tsx
+
 import SectionContainer from "@/components/common/section/SectionContainer"
 
 const Register = () => {
