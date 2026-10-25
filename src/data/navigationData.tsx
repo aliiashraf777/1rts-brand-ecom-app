@@ -225,51 +225,67 @@ export const shipToFlagsData: IshipToFlagsItem[] = [
 
 export const mobileMenuData: ImobileMenuItem[] = [
     {
+        id: 0,
         icon: House,
         text: 'Home',
         link: '/',
     },
     {
+        id: 1,
+        icon: ShoppingCart,
+        text: 'Shop',
+        link: '/shop',
+    },
+    {
+        id: 2,
         icon: List,
         text: 'Categories',
         link: '/',
     },
     {
+        id: 3,
         icon: Heart,
         text: 'Wishlist',
         link: '/',
     },
     {
+        id: 4,
         icon: PillBottle,
         text: 'My orders',
         link: '/',
     },
     {
+        id: 5,
         icon: Globe,
         text: 'English | US',
         link: '/',
     },
     {
+        id: 6,
         icon: Headset,
         text: 'Contact us',
         link: '/',
     },
     {
+        id: 7,
         icon: Building,
         text: 'About',
         link: '/',
     },
     {
+        id: 8,
         icon: ArrowRight,
         text: 'User agreement',
         link: '/',
     },
     {
+        id: 9,
         icon: ArrowRight,
         text: 'Partnership',
         link: '/',
     },
     {
+        id: 10,
         icon: ArrowRight,
         text: 'Privacy policy',
         link: '/',

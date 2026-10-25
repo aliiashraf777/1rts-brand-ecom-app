@@ -36,6 +36,7 @@ export interface IshipToFlagsItem {
 }
 
 export interface ImobileMenuItem {
+    id?: number,
     icon?: LucideIcon,
     text: string,
     link: string,
