@@ -28,7 +28,7 @@ It covers the core shopping flow: browse and filter products, open product detai
 
 <p align="center">
 
-  <img src="./public/assets/preview.png" />
+  <img src="./public/brand-home.png" />
 
 </p>
 
