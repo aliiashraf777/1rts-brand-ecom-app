@@ -120,15 +120,15 @@ It covers the core shopping flow: browse and filter products, open product detai
 
 ### 🏠 Home
 
-![Home](./public/assets/home.png)
+![Home](./public/brand-home.png)
 
 ### 🛍️ Shop
 
-![Shop](./public/assets/shop.png)
+![Shop](./public/brand-shop.png)
 
 ### 📦 Product Detail
 
-![Product Detail](./public/assets/product-detail.png)
+![Product Detail](./public/brand-product.png)
 
 ## 📂 Folder Structure
 
